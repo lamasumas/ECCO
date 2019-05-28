@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" type="text/css" media="screen" href="styles.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<title> Demo </title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<select id="selector" onchange=" energySelector()" >
+			
+			<option disabled selected value> -- select an option -- </option>
+			<option value="IWH">Irradiation-Wind-Hydro</option>
+			<option value="DW">Demolish wood</option>
+			<option value="Saw">Sawdust</option>
+			<option value="Man">Manure</option>
+		</select>
+		<p>
+		<img id="title" src="img/Example.png" alt="Input / Processing/ Output">
+		</p>
+		<span id="ExtraData"></span>	
+		<table id="results">
+			<tr>
+				<th>Country</th>
+				<th>tonCO2/year</th>
+				<th>Trees</th>
+				<th>Houses</th>
+			</tr>
+			<tr>
+				<th> 
+					<select id="country">
+						<option value="EU-28"> EU-28</option>
+						<option value="Bel">Belgium</option>
+						<option value ="Ir">Ireland</option>
+					</select>
+				</th>
+				<th> <span id="co2"></span> </th>
+				<th id="trees"></th>
+				<th id="houses"></th>			
+
+			</tr>
+		</table>
+	<footer>
+		  <script  src="GHG.js"></script>
+
+	</footer>
+	</body>
+
+
+
+
+
+</html>
