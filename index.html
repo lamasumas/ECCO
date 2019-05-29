@@ -7,39 +7,55 @@
 		<meta charset="utf-8"/>
 	</head>
 	<body>
-		<select id="selector" onchange=" energySelector()" >
+		<header>
+			<select id="selector" onchange=" energySelector()" >
+				
+				<option disabled selected value> -- select an option -- </option>
+				<option value="IWH">Irradiation-Wind-Hydro</option>
+				<option value="DW">Demolish wood</option>
+				<option value="Saw">Sawdust</option>
+				<option value="Man">Manure</option>
+			</select>
+		</header>
+		<main>
+			<img id="title" src="img/Example.png" alt="Input / Processing/ Output">
 			
-			<option disabled selected value> -- select an option -- </option>
-			<option value="IWH">Irradiation-Wind-Hydro</option>
-			<option value="DW">Demolish wood</option>
-			<option value="Saw">Sawdust</option>
-			<option value="Man">Manure</option>
-		</select>
-		<p>
-		<img id="title" src="img/Example.png" alt="Input / Processing/ Output">
-		</p>
-		<span id="ExtraData"></span>	
-		<table id="results">
-			<tr>
-				<th>Country</th>
-				<th>tonCO2/year</th>
-				<th>Trees</th>
-				<th>Houses</th>
-			</tr>
-			<tr>
-				<th> 
-					<select id="country">
-						<option value="EU-28"> EU-28</option>
-						<option value="Bel">Belgium</option>
-						<option value ="Ir">Ireland</option>
-					</select>
-				</th>
-				<th> <span id="co2"></span> </th>
-				<th id="trees"></th>
-				<th id="houses"></th>			
+			<span class="myForm" id="WindForm" style="display:none"> 
+				<h3> Output</h3>
+				<h4>The annual production of the system:</h5>
+				<input type="text" id="yearProduction"></input>
+				(MWhelectricity/year) <br> 
+				<h4>Type of energy:</h5>
+				<select id="typeOfEnergy">
+					<option value="wind">Wind</option>
+					<option value="pv">Pv</option>
+					<option value="Hydroelectric">Hydro</option>
+				</select>
+				<br>
+				<button id="calculate" onclick="setUpIWH()"> Calculate</button>	
+			</span>	
+			<table id="results" style="display:none">
+				<tr>
+					<th>Country</th>
+					<th>tonCO2/year</th>
+					<th>Trees</th>
+					<th>Houses</th>
+				</tr>
+				<tr>
+					<th> 
+						<select id="country">
+							<option value="EU-28"> EU-28</option>
+							<option value="Bel">Belgium</option>
+							<option value ="Ir">Ireland</option>
+						</select>
+					</th>
+					<th> <span id="co2"></span> </th>
+					<th id="trees"></th>
+					<th id="houses"></th>			
 
-			</tr>
-		</table>
+				</tr>
+			</table>
+		</main>
 	<footer>
 		  <script  src="GHG.js"></script>
 

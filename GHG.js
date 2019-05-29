@@ -2,11 +2,12 @@
 
 function energySelector(){
 	var option = document.getElementById("selector").value;
+	resetForms();
 	switch (option)
 	{
 		case "IWH":
 			$("#title").attr("src", "img/IWH.png");
-			setUpIWH();
+			document.getElementById("WindForm").style.display="block";
 			break;
 		case "DW":
 			$("#title").attr("src", "img/DW.png");
@@ -22,31 +23,15 @@ function energySelector(){
 	}
 }
 
+function resetForms(){
+	document.getElementById("WindForm").style.display="none";	
+	document.getElementById("results").style.display ="none";
+
+}
 
 function setUpIWH(){
 
-	var spanToWrite = document.getElementById("ExtraData");
-	spanToWrite.innerHTML = "<h3> Output</h3> <br> The annual production of the system:<br> ";
-
-	var theSpan = document.createElement("span");
-	theSpan.innerHTML= "MWhelectricity/year<br> Type of energy<br> "
-	var inputAnnual = document.createElement("input");
-        inputAnnual.type="text";
-        inputAnnual.id="yearProduction"
-	var inputType = document.createElement("input");
-	inputType.type ="text";
-	inputType.type ="typeOfEnergy";
-	var btnCalculate = document.createElement("button");
-	btnCalculate.innerHTML= 'Calculate';
-	btnCalculate.addEventListener("click", function(){
-		calculate(inputType, inputAnnual);
-	});
-	spanToWrite.appendChild(inputAnnual);
-	spanToWrite.appendChild(theSpan);
-        
-	spanToWrite.appendChild(inputType);
-	spanToWrite.appendChild(btnCalculate);
-	
+	calculate(document.getElementById("typeOfEnergy"), document.getElementById("yearProduction"));
 }
 
 function calculate(typeOfEnergy, yearProduction)
@@ -59,9 +44,9 @@ function calculate(typeOfEnergy, yearProduction)
         {
                 case "EU-28":
                         var co2 = 1000;
-                        if (typeOfEnergy.value == "Wind")
+                        if (typeOfEnergy.value == "wind")
                                  co2 = (yearProduction.value  * 383.0) / 1000;
-                        else if(typeOfEnergy.value == "PV")
+                        else if(typeOfEnergy.value == "pV")
                                  co2 = (yearProduction.value * 363.0) / 1000;
                         else if(typeOfEnergy.value == "Hydroelectric")
                                  co2 = (yearProduction.value * 363.0) / 1000;
@@ -71,6 +56,7 @@ function calculate(typeOfEnergy, yearProduction)
                         document.getElementById("co2").innerHTML = co2;
                         document.getElementById("trees").innerHTML= trees;
                         document.getElementById("houses").innerHTML= house;
+			document.getElementById("results").style.display ="block";
                         break;
         }
 

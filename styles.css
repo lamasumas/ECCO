@@ -1,4 +1,28 @@
 
+
+html{
+	text-align:center;
+
+}
+main{
+	text-align:center;
+	margin-top:1%;
+}
+
+.myForm{
+	border-radius: 10px;
+	border: 1px solid black;
+	text-align:center;
+	background-color:lightgrey;
+	margin-top: 1%;
+}
+#typeOfEnergy{
+	width:30%;
+	text-align:center;
+}
+#calculate{
+	margin:2%;
+}
 tr, th {
 	border: 1px black solid;
 }
