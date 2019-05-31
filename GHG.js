@@ -2,18 +2,19 @@
 
 function energySelector(){
 	var option = document.getElementById("selector").value;
-	resetForms();
+	$("#results").fadeOut();
 	switch (option)
 	{
 		case "IWH":
 			$("#title").attr("src", "img/IWH.png");
-			document.getElementById("WindForm").style.display="block";
+			changeFormInDisplay("WindForm");
 			break;
 		case "DW":
 			$("#title").attr("src", "img/DW.png");
 			break;
 		case "Saw":
 			$("#title").attr("src", "img/Saw.png");
+			changeFormInDisplay("woodPellets");
 			break;
 		case "Man":
 			$("#title").attr("src", "img/Man.png");
@@ -23,9 +24,13 @@ function energySelector(){
 	}
 }
 
-function resetForms(){
-	document.getElementById("WindForm").style.display="none";	
-	document.getElementById("results").style.display ="none";
+
+function changeFormInDisplay(theId){
+	var copy = document.getElementById(theId).cloneNode(true);
+	copy.style.display = "block";
+	var generalDisplay = document.getElementById("show");
+	generalDisplay.replaceChild(copy, generalDisplay.childNodes[0]);
+			
 
 }
 
@@ -34,6 +39,13 @@ function setUpIWH(){
 	calculate(document.getElementById("typeOfEnergy"), document.getElementById("yearProduction"));
 }
 
+
+function loadFirstScreen(){
+	
+	$(".intro").css("display","none");
+	$(".firstScreen").fadeIn().css("display","block");
+	
+}
 function calculate(typeOfEnergy, yearProduction)
 {
 	

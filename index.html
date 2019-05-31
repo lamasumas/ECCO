@@ -7,7 +7,7 @@
 		<meta charset="utf-8"/>
 	</head>
 	<body>
-		<header>
+		<header class="firstScreen">
 			<select id="selector" onchange=" energySelector()" >
 				
 				<option disabled selected value> -- select an option -- </option>
@@ -18,14 +18,39 @@
 			</select>
 		</header>
 		<main>
-			<img id="title" src="img/Example.png" alt="Input / Processing/ Output">
+
+
+			<section class="intro">
+			<!--
+				<section id="banner">
+					<img  alt="ECCO logo">
+					<img alt="CIT logo">
+
+				</section>-->
+
+				<h3 id="titleIntro"> Greenhouse Gas (GHG) Calculation Tool</h3>
+				<p id="descriptionIntro">
+					This tool is created for the need of a simple, easy-to-use and accurate way to calculate the GHG in different renewable energy technologies.
+					<br>
+					The tool is developed thanks to the fund of the ECCO Intereg project.</p>
+				
+				<button id="start" onclick="loadFirstScreen()"> Start now </button>
+			</section>
+
+
+
+			<img id="title" class="firstScreen" src="img/Example.png" alt="Input / Processing/ Output">
 			
-			<span class="myForm" id="WindForm" style="display:none"> 
+			<section id="show">
+				<span></span>
+			</section>
+
+			<section class="myForm" id="WindForm" style="display:none"> 
 				<h3> Output</h3>
-				<h4>The annual production of the system:</h5>
-				<input type="text" id="yearProduction"></input>
+				<h4>The annual production of the system:</h4>
+				<input type="text" id="yearProduction">
 				(MWhelectricity/year) <br> 
-				<h4>Type of energy:</h5>
+				<h4>Type of energy:</h4>
 				<select id="typeOfEnergy">
 					<option value="wind">Wind</option>
 					<option value="pv">Pv</option>
@@ -33,7 +58,129 @@
 				</select>
 				<br>
 				<button id="calculate" onclick="setUpIWH()"> Calculate</button>	
-			</span>	
+			</section>
+
+			<section class="myForm" id="woodPellets" style="display: none">
+				<table id="woodPelletsTable">
+					<tr>
+						<th>Inputting</th>
+						<th>Pelletization</th>
+						<th>Transportation</th>
+						<th>Combustion</th>
+						<th>Output</th>
+					</tr>
+					<tr>
+						<td>Sawdust</td>
+						<td>Pellets</td>
+						<td>Trlansported pellets</td>
+						<td>Converted</td>
+						<td>Heat & Electricity</td>
+					</tr>
+					<tr>
+						<th colspan="5">
+							The annual output of the CHP plant 
+						</th>
+					</tr>
+					<tr>
+						<td colspan="4"></td>
+						<td>
+							<input id="pelletEllectOutput"> MWhelectricity <br>
+							<input id="pelletHeatOutput"> GJheat/year
+						</td>
+					</tr>
+					<tr>
+						<th colspan="5">The annual weight of pellets used in combustion</th>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+						<td>
+							<input id="trasportedPellets"> tontransported_pellets/year
+						</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th colspan="5">The percentage of weight loss between stages</th>
+					</tr>
+					<tr>
+						<td>
+							<input id="percentege_feedstock_sawdust_loss">
+							feedstock_sawdust_loss
+						</td>
+						<td><input id="sawdust_loss">
+							sawdust_loss
+						</td>
+						<td>
+							<input id="pellets_loss">
+							pellets_loss
+						</td>
+						<td>
+							<input id="transported_pellets_loss">
+							transported_pellets_loss
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="5">The electricity and/or gas used for the process</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input id="electricityPelletization"> kWhelectricity/tonpellets
+							<br>
+							<input id="heatPelletication">MJgas/tonpellets
+						</td>
+						<td></td>
+						<td>
+							<input id="electricityTransportedPellets">
+							kWhelectricity/tontransported_pellets
+							<br>
+							<input id="heatTransportedPellets">
+							kWhelectricity/tontransported_pellets
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5">The length of moving the pellets to the combustion plant by truck</td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+						<td>
+							<input id="kmTruckTransport">
+							kmtruck_transport
+						</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<td colspan="5">The moisture</td>
+					</tr>
+					<tr>
+						<td>
+							<input id="moisture_dust">
+							moisture_sawdust
+						</td>
+						<td>
+							<input id="moisture_pellets">
+							moisture_pellets
+						</td>
+						<td colspan="3"></td>
+					</tr>
+					<tr>
+						<td colspan="5">The temperature of useful heat at a point of delivery Th and the temperature of the surroundings T0</td>
+					</tr>
+					<tr>
+						<td colspan="3"></td>
+						<td>
+							<input id="usefulC"> 
+							°Cuseful_heat_output 
+							<br>
+							<input id="surroundC"> 
+							°Csurroundings
+						</td>
+					</tr>
+
+				</table>
+			</section>
+
+
 			<table id="results" style="display:none">
 				<tr>
 					<th>Country</th>
@@ -42,16 +189,16 @@
 					<th>Houses</th>
 				</tr>
 				<tr>
-					<th> 
+					<td> 
 						<select id="country">
 							<option value="EU-28"> EU-28</option>
 							<option value="Bel">Belgium</option>
 							<option value ="Ir">Ireland</option>
 						</select>
-					</th>
-					<th> <span id="co2"></span> </th>
-					<th id="trees"></th>
-					<th id="houses"></th>			
+					</td>
+					<td> <span id="co2"></span> </td>
+					<td id="trees"></td>
+					<td id="houses"></td>			
 
 				</tr>
 			</table>

@@ -9,12 +9,39 @@ main{
 	margin-top:1%;
 }
 
+.firstScreen{
+	display:none;
+
+}
+
 .myForm{
 	border-radius: 10px;
 	border: 1px solid black;
 	text-align:center;
 	background-color:lightgrey;
+	overflow-x:auto;
 	margin-top: 1%;
+	margin-left: 5%;
+	margin-right:5%;
+}
+.intro{
+	text-align: center;
+	margin-right: 20%  ;
+	margin-left: 20%:
+}
+#titleIntro{
+	border: 1px solid black;
+	margin-bottom:0%;
+}
+
+#descriptionIntro{
+	margin-top:0%;
+	border:1px solid black;
+}
+
+#title{
+	 margin-left: auto;
+	 margin-right: auto;
 }
 #typeOfEnergy{
 	width:30%;
@@ -23,6 +50,6 @@ main{
 #calculate{
 	margin:2%;
 }
-tr, th {
+ th, td {
 	border: 1px black solid;
 }
