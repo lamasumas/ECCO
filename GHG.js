@@ -11,6 +11,7 @@ function energySelector(){
 			break;
 		case "DW":
 			$("#title").attr("src", "img/DW.png");
+			changeFormInDisplay("woodChips")
 			break;
 		case "Saw":
 			$("#title").attr("src", "img/Saw.png");

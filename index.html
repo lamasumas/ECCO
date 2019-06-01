@@ -144,7 +144,7 @@
 					<tr>
 						<td colspan="2"></td>
 						<td>
-							<input id="kmTruckTransport">
+							<input id="kmTruckTransport_pellets">
 							kmtruck_transport
 						</td>
 						<td colspan="2"></td>
@@ -154,7 +154,7 @@
 					</tr>
 					<tr>
 						<td>
-							<input id="moisture_dust">
+							<input id="moisture_dust_pellets">
 							moisture_sawdust
 						</td>
 						<td>
@@ -169,15 +169,150 @@
 					<tr>
 						<td colspan="3"></td>
 						<td>
-							<input id="usefulC"> 
+							<input id="usefulC_pellets"> 
 							°Cuseful_heat_output 
 							<br>
-							<input id="surroundC"> 
+							<input id="surroundC_pellets"> 
 							°Csurroundings
 						</td>
 					</tr>
 				</table>
 			</section>
+
+
+			
+			<section class="myForm" id="woodChips" style="display: none">
+				<table id="woodPelletsTable">
+					<tr>
+						<th>Inputting</th>
+						<th>Chipping</th>
+						<th>Magnetic seperation</th>
+						<th>Transportation</th>
+						<th>Combustion</th>
+						<th>Output</th>
+					</tr>
+					<tr>
+						<td>Wood</td>
+						<td>Chips</td>
+						<td>Seperated chips</td>
+						<td>Transported chips</td>
+						<td>Heat & Electricity</td>
+					</tr>
+					<tr>
+						<th colspan="6">
+							The annual output of the CHP plant 
+						</th>
+					</tr>
+					<tr>
+						<td colspan="5"></td>
+						<td>
+							<input id="chipsellectOutput"> MWhelectricity <br>
+							<input id="chipsHeatOutput"> GJheat/year
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4"></td>
+						<th>The annual weight of pellets used in combustion</th>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="3"></td>
+						<td>
+							<input id="trasportedChips"> tontransported_pellets/year
+						</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th colspan="6">The percentage of weight loss between stages</th>
+					</tr>
+					<tr>
+						<td>
+							<input id="percentege_feedstock_Chips_loss">
+							feedstock_sawdust_loss
+						</td>
+						<td><input id="wood_chips_loss">
+							sawdust_loss
+						</td>
+						<td>
+							<input id="chips_loss">
+							pellets_loss
+						</td>
+						<td>
+							<input id="seperated_chips_loss">
+							eperated_chips_loss
+						</td>
+						<td>
+							<input id="transported_chips_loss">
+							transported_chips_loss
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="6">The electricity and/or gas used for the process</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input id="electricityChipping"> kWhelectricity/tonpellets
+						</td>
+						<td>
+							<input id="electricityMegneticSeparation"> kWhelectricity/tonpellets
+		
+						</td>
+						<td></td>
+						<td>
+							<input id="electricityTransportedChips">
+							kWhelectricity/tontransported_chipos
+							<br>
+							<input id="heatTransportedChips">
+							kWhelectricity/tontransported_chips
+						</td> 
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="6">TThe length of moving the chips to the combustion plant by truck</td>
+					</tr>
+					<tr>
+						<td colspan="3"></td>
+						<td>
+							<input id="kmTruckTransport_chips">
+							kmtruck_transport
+						</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<td colspan="6">The moisture</td>
+					</tr>
+					<tr>
+						<td>
+							<input id="moisture_dust_chips">
+							moisture_sawdust
+						</td>
+						<td>
+							<input id="moisture_chips">
+							moisture_pellets
+						</td>
+						<td colspan="4"></td>
+					</tr>
+					<tr>
+						<td colspan="6">The temperature of useful heat at a point of delivery Th and the temperature of the surroundings T0</td>
+					</tr>
+					<tr>
+						<td colspan="4"></td>
+						<td>
+							<input id="usefulC_chips"> 
+							°Cuseful_heat_output 
+							<br>
+							<input id="surroundC_chips"> 
+							°Csurroundings
+						</td>
+						<td></td>
+					</tr>
+				</table>
+			</section>
+
+
+
 			<table id="results" style="display:none">
 				<tr>
 					<th>Country</th>
@@ -198,6 +333,8 @@
 					<td id="houses"></td>			
 				</tr>
 			</table>
+
+			
 		</main>
 	<footer>
 		  <script  src="GHG.js"></script>
