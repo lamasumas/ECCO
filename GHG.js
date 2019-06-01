@@ -24,7 +24,7 @@ function energySelector(){
 
 	}
 }
-
+ 
 
 function changeFormInDisplay(theId){
 	var copy = document.getElementById(theId).cloneNode(true);
