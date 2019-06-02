@@ -247,7 +247,7 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td colspan="6">The electricity and/or gas used for the process</td>
+						<th colspan="6">The electricity and/or gas used for the process</th>
 					</tr>
 					<tr>
 						<td></td>
@@ -269,7 +269,7 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td colspan="6">TThe length of moving the chips to the combustion plant by truck</td>
+						<th colspan="6">TThe length of moving the chips to the combustion plant by truck</th>
 					</tr>
 					<tr>
 						<td colspan="3"></td>
@@ -294,7 +294,7 @@
 						<td colspan="4"></td>
 					</tr>
 					<tr>
-						<td colspan="6">The temperature of useful heat at a point of delivery Th and the temperature of the surroundings T0</td>
+						<th colspan="6">The temperature of useful heat at a point of delivery Th and the temperature of the surroundings T0</th>
 					</tr>
 					<tr>
 						<td colspan="4"></td>
@@ -306,6 +306,151 @@
 							°Csurroundings
 						</td>
 						<td></td>
+					</tr>
+				</table>
+			</section>
+
+			<section class="myForm" id="manure" style="display: none">
+				<table id="manureTable">
+					<tr>
+						<th>Inputting</th>
+						<th>Transportation</th>
+						<th>Handling & Storage</th>
+						<th>Digestion</th>
+						<th>Combustion</th>
+						<th>Output</th>
+					</tr>
+					<tr>
+						<td>Manure</td>
+						<td>Transported manure</td>
+						<td>Stored manure</td>
+						<td>Biogas</td>
+						<td>Converted biogas</td>
+						<td>Heat & Electricity</td>
+					</tr>
+					<tr>
+						<th colspan="6">
+							The annual output of the CHP plant 
+						</th>
+					</tr>
+					<tr>
+						<td colspan="5"></td>
+						<td>
+							<input id="manurellectOutput"> MWhelectricity <br>
+							<input id="manureHeatOutput"> GJheat/year
+						</td>
+					</tr>
+					<tr>
+						<th colspan="6">The annual weight of manure</th>
+					</tr>
+					<tr>
+						<td> <input id="annualManureWeightn">tonfeedstock_manure/year</td>
+						<td colspan="5"></td>
+					</tr>
+					<tr>
+						<th colspan="6">Efficiency of transformation from manure to biogas</th>
+					</tr>
+					<tr>
+						<td colspan="4"></td>
+						<td>
+							<input id="efficienyManureTransformation"> 
+							m3biogas/tonstored_manure
+						</td>
+					</tr>
+					<tr>
+						<th colspan="6">The percentage of weight loss between stages</th>
+					</tr>
+					<tr>
+						<td>
+							<input id="percentege_feedstock_manure_loss">
+							feedstock_manure_loss
+						</td>
+						<td><input id="manure_loss">
+							manure_loss
+						</td>
+						<td>
+							<input id="%transported_manures_loss">
+							transported_manure_loss
+						</td>
+						<td></td>
+						<td>
+							<input id="biogas_loss">
+							biogas_loss
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="6">The electricity and/or gas used for the process</th>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+						<td>
+							<input id="electricityTranportedManure"> kWh/tontransported_manure
+						</td>
+						<td>
+							<input id="electricityDigestionManure"> kWh/tonstored_manure 
+							<br>
+							<input id="heatDigestionManure"> MJ/tonstored_manure
+
+						</td>
+						<td>
+							<input id="electricityCombustionManure">
+							kWh/m3biogas
+							<br>
+							<input id="heatCombustionManure">
+							MJ/m3biogas
+						</td> 
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="6">The length of moving wet manure to the power plant by truck</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input id="kmTruckManure">
+							kmtruck_transport
+						</td>
+						<td colspan="4"></td>
+					</tr>
+					<tr>
+						<th colspan="6">The percentage of methane gas in the biogas</th>
+					</tr>
+					<tr>
+						<td colspan="3"></td>
+						<td>
+							<input id="methane_content">
+							methane_content
+						</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th colspan="6">The temperature of useful heat at a point of delivery Th and the temperature of the surroundings T0</th>
+					</tr>
+					<tr>
+						<td colspan="4"></td>
+						<td>
+							<input id="usefulC_Manure"> 
+							°Cuseful_heat_output 
+							<br>
+							<input id="surroundC_Manure"> 
+							°Csurroundings
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="6">The emission of gases directly generated</th>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+						<td>
+							<input id="co2ProducedManure">kgCO2/tontransported_manure
+							<br>
+							<input id="ch4ProducedManure">kgCH4/tontransported_manure
+							<br>
+							<input id = "N2oProducedManure"> kgN2O/tontransported_manure
+						</td>
+						<td colspan="3"></td>
 					</tr>
 				</table>
 			</section>

@@ -19,6 +19,7 @@ function energySelector(){
 			break;
 		case "Man":
 			$("#title").attr("src", "img/Man.png");
+			changeFormInDisplay("manure");
 			break;
 
 
