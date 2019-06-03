@@ -1,5 +1,31 @@
 
 
+
+
+$(document).ready(function (e) {
+
+		$(".maximizeRow").attr("onclick", "maximize()");
+		
+	
+});
+function maximize()
+{
+	var parentNode = event.target.parentElement.parentElement;
+	parentNode.nextElementSibling.style.display = "";
+	event.target.innerHTML ="-";
+	event.target.removeEventListener("click", maximize);
+	event.target.addEventListener("click", minimize);
+}
+function minimize()
+{
+	var parentNode = event.target.parentElement.parentElement;
+	parentNode.nextElementSibling.style.display = "none";
+	event.target.innerHTML ="+";
+	event.target.removeEventListener("click", minimize);
+	event.target.addEventListener("click", maximize );
+}
+
+
 function energySelector(){
 	var option = document.getElementById("selector").value;
 	$("#results").fadeOut();
@@ -48,6 +74,7 @@ function loadFirstScreen(){
 	$(".firstScreen").fadeIn().css("display","block");
 	
 }
+
 function calculate(typeOfEnergy, yearProduction)
 {
 	
