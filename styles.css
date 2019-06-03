@@ -9,6 +9,14 @@ main{
 	margin-top:1%;
 }
 
+.hiddenRow{
+	display: none;
+}
+
+.showRow{
+	display: "";
+}
+
 .firstScreen{
 	display:none;
 
@@ -23,6 +31,10 @@ main{
 	margin-top: 1%;
 	margin-left: 5%;
 	margin-right:5%;
+}
+
+#manureTable, #woodChipsTable,#woodPelletsTable{
+	width:100%;
 }
 .intro{
 	text-align: center;

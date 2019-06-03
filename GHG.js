@@ -11,7 +11,7 @@ $(document).ready(function (e) {
 function maximize()
 {
 	var parentNode = event.target.parentElement.parentElement;
-	parentNode.nextElementSibling.style.display = "";
+	parentNode.nextElementSibling.className= 'showRow';
 	event.target.innerHTML ="-";
 	event.target.removeEventListener("click", maximize);
 	event.target.addEventListener("click", minimize);
