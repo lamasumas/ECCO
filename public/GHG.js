@@ -1,4 +1,4 @@
-
+/*jshint esversion: 6 */
 
 
 $(document).ready(function (e) {
@@ -6,10 +6,28 @@ $(document).ready(function (e) {
 		$(".maximizeRow").attr("onclick", "maximize()");
 		var xhttp = new XMLHttpRequest();  
 		xhttp.open("GET", "/index.html/countries", true);
-		xhttp.send();
+		xhttp.send();;
+		$.get('/index.html/countries', function(responseText) {
+			var countries = responseText
+				addCountries(countries);
+		});
 		
 	
 });
+
+
+function addCountries(countries)
+{
+	var countryNames = countries.split("@");
+	countryNames.forEach((item) => {
+		if( item != "")
+		{
+			var option = new Option(item, item);
+			$("#country").append(option);
+		}
+	});
+}
+
 function maximize()
 {
 	var parentNode = event.target.parentElement.parentElement;
