@@ -5,7 +5,7 @@ $(document).ready(function (e) {
 
 		$(".maximizeRow").attr("onclick", "maximize()");
 		$.get('/index.html/countries', function(responseText) {
-			var countries = responseText
+			var countries = responseText;
 				addCountries(countries);
 		});
 		
@@ -82,7 +82,7 @@ function changeFormInDisplay(theId){
 
 function setUpIWH(){
 
-	calculate(document.getElementById("typeOfEnergy"), document.getElementById("yearProduction"));
+	calculate();
 }
 
 
@@ -93,36 +93,42 @@ function loadFirstScreen(){
 	
 }
 
-function calculate(typeOfEnergy, yearProduction)
+function calculate()
 {
 	
 
 	var theCountry = document.getElementById("country").value;
-
-
+	
 	$.get("/index.html/Irradiation?country="+theCountry, function(response) {
-		
+	
+		var typeOfEnergy = document.getElementById("typeOfEnergy").value;
+		var yearProduction = document.getElementById("yearProduction")
+		var co2 = 0;
+		switch(typeOfEnergy)
+		{
+			case "wind":
+					var esaved_wind = parseFloat(response.esaved_wind);
+					co2 = (yearProduction.value  * esaved_wind) / 1000;
+					break;
+			case "pV":
+					var esaved_PV = parseFloat(response.esaved_PV);
+					co2 = (yearProduction.value * esaved_PV) / 1000;
+					break;
+			case "Hydroelectric":
+					var esaved_hydro = parseFloat(response.esaved_hydro);
+					 co2 = (yearProduction.value * esaved_hydro) / 1000;
+					 break;
+		}
+			var trees = (co2 * 1000)/60;
+			var house = ( co2 * 1000)/1887.48;
+
+			document.getElementById("co2").innerHTML = Math.round(co2 * 100) / 100;
+			document.getElementById("trees").innerHTML= Math.round(trees * 100) / 100;
+			document.getElementById("houses").innerHTML= Math.round(house * 100) / 100;
+
 	});
 
 
-	switch (theCountry)
-        {
-
-                case "EU-28":
-                        var co2 = 1000;
-                        if (typeOfEnergy.value == "wind")
-                                 co2 = (yearProduction.value  * 383.0) / 1000;
-                        else if(typeOfEnergy.value == "pV")
-                                 co2 = (yearProduction.value * 363.0) / 1000;
-                        else if(typeOfEnergy.value == "Hydroelectric")
-                                 co2 = (yearProduction.value * 363.0) / 1000;
-                        var trees = (co2 * 1000)/60;
-                        var house = ( co2 * 1000)/1887.48;
-
-                        document.getElementById("co2").innerHTML = co2;
-                        document.getElementById("trees").innerHTML= trees;
-                        document.getElementById("houses").innerHTML= house;
-                        break;
-        }
+               
 
 }

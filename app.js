@@ -26,30 +26,24 @@ app.get('/index.html/countries', function (req, res) {
 
  app.get("/index.html/Irradiation", function(req, res) {
     var theCountrySelected = req.query.country;
-            
-    fs.readFile(__dirname+"/json/Countries.json", (err,fileData) => {
-        if(err){
-            console.log("Error while loading the json files");
-        }
-        try{
-            var jsons= JSON.parse(fileData);
-            var theSelectedCountryData;
-            jsons.forEach((item) => {
-                if(item.name == theCountrySelected)
-                {
-                    theSelectedCountryData = item;
-                    break;
-                }
-            });
+    var theSelectedCountryData;
 
-
-            res.send(names);
+    for( i = 0; i< loadedJsons.length; i++)
+    {
+        if (loadedJsons[i].country == theCountrySelected)
+        {
+            theSelectedCountryData = loadedJsons[i];
+            break;
         }
-        catch(err){
-            console.log(err);
-        }
+    }
 
-    });
+    var stringResponse = JSON.stringify(theSelectedCountryData);
+
+    res.send(stringResponse);
+    
+
+    
+     
 
 
  });
