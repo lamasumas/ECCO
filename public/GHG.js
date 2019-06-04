@@ -4,9 +4,6 @@
 $(document).ready(function (e) {
 
 		$(".maximizeRow").attr("onclick", "maximize()");
-		var xhttp = new XMLHttpRequest();  
-		xhttp.open("GET", "/index.html/countries", true);
-		xhttp.send();;
 		$.get('/index.html/countries', function(responseText) {
 			var countries = responseText
 				addCountries(countries);
@@ -47,8 +44,9 @@ function minimize()
 
 
 function energySelector(){
+
+	document.getElementById("results").style.display = "block";
 	var option = document.getElementById("selector").value;
-	$("#results").fadeOut();
 	switch (option)
 	{
 		case "IWH":
@@ -101,8 +99,15 @@ function calculate(typeOfEnergy, yearProduction)
 
 	var theCountry = document.getElementById("country").value;
 
+
+	$.get("/index.html/Irradiation?country="+theCountry, function(response) {
+		
+	});
+
+
 	switch (theCountry)
         {
+
                 case "EU-28":
                         var co2 = 1000;
                         if (typeOfEnergy.value == "wind")
@@ -117,7 +122,6 @@ function calculate(typeOfEnergy, yearProduction)
                         document.getElementById("co2").innerHTML = co2;
                         document.getElementById("trees").innerHTML= trees;
                         document.getElementById("houses").innerHTML= house;
-			document.getElementById("results").style.display ="block";
                         break;
         }
 
