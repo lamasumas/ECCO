@@ -1,10 +1,11 @@
 
 
 
-
 $(document).ready(function (e) {
 
 		$(".maximizeRow").attr("onclick", "maximize()");
+		var fileManager = new FileManager();
+		fileManager.listFiles();
 		
 	
 });
@@ -19,7 +20,7 @@ function maximize()
 function minimize()
 {
 	var parentNode = event.target.parentElement.parentElement;
-	parentNode.nextElementSibling.style.display = "none";
+	parentNode.nextElementSibling.className="hiddenRow";
 	event.target.innerHTML ="+";
 	event.target.removeEventListener("click", minimize);
 	event.target.addEventListener("click", maximize );
