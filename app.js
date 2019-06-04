@@ -9,6 +9,7 @@ app.get('/index.html', function (req, res) {
 
 app.get('/index.html/countries', function (req, res) {
     fileManager.listFiles();
+    
  });
 
  var server = app.listen(8081, function(){

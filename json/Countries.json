@@ -1,5 +1,6 @@
 [
   {
+    "country": "EU-28",
     "eelec": "393,00",
     "esaved_PV": "363,00",
     "esaved_wind": "383,00",
@@ -18,5 +19,26 @@
     "LHV_Methane": "50,00",
     "etree": "60,00",
     "ehouse": "1.887,48"
+  }.
+  {
+    "country": "Belgium",
+    "eelec": "199,00",
+    "esaved_PV": "169,00",
+    "esaved_wind": "189,00",
+    "esaved_hydro": "193,00",
+    "eheat": "",
+    "efuel": "",
+    "egas": "",
+    "fCH4-CO2": "",
+    "fN2O-CO2": "",
+    "nvehicle_Dry": "",
+    "etransport_exhaust_Dry": "",
+    "nvehicle_Liquid": "",
+    "etransport_exhaust_Liquid": "",
+    "LHV_Demolitoion_Wood": "",
+    "LHV_Sawdust": "",
+    "LHV_Methane": "",
+    "etree": "",
+    "ehouse": "3.665,35"
   }
 ]

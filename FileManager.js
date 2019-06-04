@@ -1,17 +1,30 @@
 
+var fs = require('fs');
+var countries;
 module.exports = {
     listFiles: function()
-    {    
+    {   
+        fs.readFile(__dirname+"/json/Countries.json", (err,fileData) => {
+                if(err){
+                    console.log("Error while loading the json files");
+                }
+                try{
+                    countries= JSON.parse(fileData);
+                    console.log(jsonFile[0].country);
 
-        var fs = require('fs');
-        fs.readdir(__dirname+"/json", function (err, files) {
-            //handling error
-            if (err) {
-                return console.log('Unable to scan directory: ' + err);
-            } 
-            //listing all files using forEach
-            console.log(files);
-        });
+                }
+                catch(err){
+                    console.log("an erro");
+                }
+
+            });
+            
+    },
+    getCountriesName: function(){
+
+
+
     }
 };
-    
+
+   
