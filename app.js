@@ -24,10 +24,13 @@ app.get('/index.html/countries', function (req, res) {
        
 });
 
- app.get("/index.html/Irradiation", function(req, res) {
+ app.get("/index.html/Irradiation", function(req, res) 
+ {
     var theCountrySelected = req.query.country;
-    var theSelectedCountryData;
+    var typeOfEnergy = req.query.typeOfEnergy;
+    var yearProduction = req.query.yearProduction;
 
+    var theSelectedCountryData;
     for( i = 0; i< loadedJsons.length; i++)
     {
         if (loadedJsons[i].country == theCountrySelected)
@@ -36,17 +39,26 @@ app.get('/index.html/countries', function (req, res) {
             break;
         }
     }
+		var co2 = 0;
+		switch(typeOfEnergy)
+		{
+			case "wind":
+					var esaved_wind = parseFloat(theSelectedCountryData.esaved_wind);
+					co2 = (yearProduction * esaved_wind) / 1000;
+					break;
+			case "pV":
+					var esaved_PV = parseFloat(theSelectedCountryData.esaved_PV);
+					co2 = (yearProduction * esaved_PV) / 1000;
+					break;
+			case "Hydroelectric":
+					var esaved_hydro = parseFloat(theSelectedCountryData.esaved_hydro);
+					 co2 = (yearProduction * esaved_hydro) / 1000;
+					 break;
+        }
 
-    var stringResponse = JSON.stringify(theSelectedCountryData);
-
-    res.send(stringResponse);
-    
-
-    
-     
-
-
+        res.send(co2.toString());
  });
+
  function readData(){
                
     fs.readFile(__dirname+"/json/Countries.json", (err, fileData) => {
