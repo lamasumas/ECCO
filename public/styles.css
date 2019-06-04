@@ -1,0 +1,67 @@
+
+
+html{
+	text-align:center;
+
+}
+main{
+	text-align:center;
+	margin-top:1%;
+}
+
+.hiddenRow{
+	display: none;
+}
+
+.showRow{
+	display: "";
+}
+
+.firstScreen{
+	display:none;
+
+}
+
+.myForm{
+	border-radius: 10px;
+	border: 1px solid black;
+	text-align:center;
+	background-color:lightgrey;
+	overflow-x:auto;
+	margin-top: 1%;
+	margin-left: 5%;
+	margin-right:5%;
+}
+
+#manureTable, #woodChipsTable,#woodPelletsTable{
+	width:100%;
+}
+.intro{
+	text-align: center;
+	margin-right: 20%  ;
+	margin-left: 20%;
+}
+#titleIntro{
+	border: 1px solid black;
+	margin-bottom:0%;
+}
+
+#descriptionIntro{
+	margin-top:0%;
+	border:1px solid black;
+}
+
+#title{
+	 margin-left: auto;
+	 margin-right: auto;
+}
+#typeOfEnergy{
+	width:30%;
+	text-align:center;
+}
+#calculate{
+	margin:2%;
+}
+ th, td {
+	border: 1px black solid;
+} 

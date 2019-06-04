@@ -1,14 +1,17 @@
 
-function FileManager()
-{   
-
-    var fs = require('fs');
-    var directory = "json/";
-    this.listFiles = function ()
+module.exports = {
+    listFiles: function()
     {    
-        var files = fs.readdirSync(directory);
-        alert(files);
+
+        var fs = require('fs');
+        fs.readdir(__dirname+"/json", function (err, files) {
+            //handling error
+            if (err) {
+                return console.log('Unable to scan directory: ' + err);
+            } 
+            //listing all files using forEach
+            console.log(files);
+        });
     }
-        
+};
     
-}
