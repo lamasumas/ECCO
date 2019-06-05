@@ -69,8 +69,8 @@ app.get('/index.html/countries', function (req, res) {
             
             loadedJsons = JSON.parse(fileData);
         }
-        catch(err){
-            console.log(err);
+        catch(error){
+            console.log(error);
         }
     } );
  }
@@ -80,3 +80,49 @@ app.get('/index.html/countries', function (req, res) {
      var host= server.address().address;
      var port = server.address().port;
  });
+
+
+
+
+ function calculateWoodChipsCo2(countryJSON,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedChipsYear, moistchipsParam){
+    // mCO2_total = (outputheat + 3.6 outputelec) (Efossil_heat afheat + Efossil_elec afelec) (%GHGsaved_total/100) /1000
+    // %GHGsaved_total = (afheat %GHGsaved_heat) + (afelec %GHGsaved_elec)
+    // %GHGsaved_heat = 100 (1 - Eheat /Efossil_heat)
+    // %GHGsaved_elec = 100 (1 - Eelec /Efossil_elec)
+    // Eheat = E afheat /nheat
+    // Eelec = E afelec /nelec
+    // afheat = Cheat nheat/(Celec nelec + Cheat nheat)
+    // afelec = Celec nelec/(Celec nelec + Cheat nheat)
+    // nelec = 3.6 outputelec /(inflow (1 - moistchips/100) LHV)
+    // nheat = outputheat /(inflow (1 - moistchips/100) LHV)
+
+    var efossil_heat = countryJSON.eheat;
+    var efossil_elec = countryJSON.eelec;
+    var cheat =  getCheatValue(usefulC, surroundingsC);
+    var celec = 1;
+    var inflow = tonsTransportedChipsYear;
+    var moistchips = (moistchipsParam == 0)? 33: moistchipsParam ;
+    var lhv = countryJSON.LHV_Demolitoion_Wood;
+    var nheat = ( inflow == 0 ) ? 0.45 : outputheat / ( inflow * ( 1 - moistchips / 100 )* lhv);
+    var nelec = (inflow == 0) ? 0.45 : 3.6 * outputelec / ( inflow * (1 - moistchips/ 100) * lhv);
+    var afheat = cheat * nheat / ( celec* nelec + cheat * nheat) ;
+    var afelec = celec * nelec / (celec * nelec +  cheat * nheat);
+
+    var ghgSavedTotal = (afheat * ghgSavedHeat) + ( afelec *  ghgsaved_elec);
+    var mCO2_totla = (outputheat + 3.6 * outputelec) * (Efossil_heat * afheat + Efossil_elec * afelec)*(ghgSavedTotal /100) /1000;
+
+
+
+}
+
+
+function getCheatValue(th,to){
+
+    if (th ==0)
+        th = 90;
+
+    if ( th > 150)
+        return (th- to)/(th + 273);
+    else
+        return 0.3546;
+}

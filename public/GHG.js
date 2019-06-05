@@ -55,7 +55,7 @@ function energySelector(){
 			break;
 		case "DW":
 			$("#title").attr("src", "img/DW.png");
-			changeFormInDisplay("woodChips")
+			changeFormInDisplay("woodChips");
 			break;
 		case "Saw":
 			$("#title").attr("src", "img/Saw.png");
@@ -99,7 +99,8 @@ function calculate()
 
 	var theCountry = document.getElementById("country").value;
 	var typeOfEnergy= document.getElementById("typeOfEnergy").value;
-	$.get("/index.html/Irradiation?country="+theCountry+"&typeOfEnergy="+(typeOfEnergy)+"&yearProduction="+(document.getElementById("yearProduction").value), function(response) {
+	$.get("/index.html/Irradiation?country="+theCountry+"&typeOfEnergy="+(typeOfEnergy)+"&yearProduction="+
+	(document.getElementById("yearProduction").value), function(response) {
 		
 		var co2 = response;
 		var trees = (co2 * 1000)/60;
