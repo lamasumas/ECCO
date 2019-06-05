@@ -76,7 +76,7 @@
 					<option value="Hydroelectric">Hydro</option>
 				</select>
 				<br>
-				<button id="calculate" onclick="setUpIWH()"> Calculate</button>	
+				<button id="calculateWind" > Calculate</button>	
 			</section>
 
 			<section class="myForm" id="woodPellets" style="display: none">
@@ -271,7 +271,7 @@
 					</tr>
 					<tr class="hiddenRow">
 						<td>
-							<input id="percentege_feedstock_Chips_loss">
+							<input id="feedstock_chips_loss">
 							feedstock_sawdust_loss
 						</td>
 						<td><input id="wood_chips_loss">
@@ -338,12 +338,12 @@
 					</tr>
 					<tr class="hiddenRow">
 						<td>
-							<input id="moisture_dust_chips">
-							moisture_sawdust
+							<input id="moisture_wood_chips">
+							moisture_wood
 						</td>
 						<td>
 							<input id="moisture_chips">
-							moisture_pellets
+							moisture_chips
 						</td>
 						<td colspan="4"></td>
 					</tr>
@@ -365,6 +365,7 @@
 						<td></td>
 					</tr>
 				</table>
+				<button id="calculateChips">Calculate</button>
 			</section>
 
 			<section class="myForm" id="manure" style="display: none">

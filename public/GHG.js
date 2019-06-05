@@ -4,6 +4,7 @@
 $(document).ready(function (e) {
 
 		$(".maximizeRow").attr("onclick", "maximize()");
+		$("#calculateWind").attr("onclick", "calculateWind()");
 		$.get('/index.html/countries', function(responseText) {
 			var countries = responseText;
 				addCountries(countries);
@@ -80,10 +81,6 @@ function changeFormInDisplay(theId){
 
 }
 
-function setUpIWH(){
-
-	calculate();
-}
 
 
 function loadFirstScreen(){
@@ -93,7 +90,15 @@ function loadFirstScreen(){
 	
 }
 
-function calculate()
+
+function calculateChips()
+{
+	var theCountry = document.getElementById("country").value;
+	$.get("");
+
+}
+
+function calculateWind()
 {
 	
 
