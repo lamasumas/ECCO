@@ -2,9 +2,9 @@
 
 
 $(document).ready(function (e) {
-
 		$(".maximizeRow").attr("onclick", "maximize()");
 		$("#calculateWind").attr("onclick", "calculateWind()");
+		$("#calculateChips").attr("onclick", "calculateChips()");
 		$.get('/index.html/countries', function(responseText) {
 			var countries = responseText;
 				addCountries(countries);
@@ -94,8 +94,39 @@ function loadFirstScreen(){
 function calculateChips()
 {
 	var theCountry = document.getElementById("country").value;
-	$.get("");
+	var allParameters ="country="+theCountry + "&";
+	allParameters += "outputheat="+getValidatedInput("chipsHeatOutput")+"&";
+	allParameters += "outputelec="+getValidatedInput("chipsellectOutput")+"&";
+	allParameters += "usefulC="+getValidatedInput("usefulC_chips")+"&";
+	allParameters += "surroundingsC="+getValidatedInput("surroundC_chips")+"&";
+	allParameters += "tonsTransportedChipsYear="+getValidatedInput("trasportedChips")+"&";
+	allParameters += "moistwoodParam="+getValidatedInput("moisture_wood_chips")+"&";
+	allParameters += "moistchipsParam="+getValidatedInput("moisture_chips")+"&";
+	allParameters += "feedstock_chips_loss="+getValidatedInput("feedstock_chips_loss")+"&";
+	allParameters += "electricityChipping="+getValidatedInput("electricityChipping")+"&";
+	allParameters += "transported_chips_loss="+getValidatedInput("transported_chips_loss")+"&";
+	allParameters += "seperated_chips_loss="+getValidatedInput("seperated_chips_loss")+"&";
+	allParameters += "chips_loss="+getValidatedInput("chips_loss")+"&";
+	allParameters += "wood_chips_loss="+getValidatedInput("wood_chips_loss")+"&";
+	allParameters += "kmTruckTransport_chips="+getValidatedInput("kmTruckTransport_chips")+"&";
+	allParameters += "heatTransportedChips="+getValidatedInput("heatTransportedChips")+"&";
+	allParameters += "electricityTransportedChips="+getValidatedInput("electricityTransportedChips")+"&";
+	allParameters += "electricityMegneticSeparation="+getValidatedInput("electricityMegneticSeparation");
+	$.get("index.html/WoodChipsC02?"+allParameters, function(respose){
+		
+		var co2 = response;
 
+		document.getElementById("co2").innerHTML = Math.round(co2 * 100) / 100;
+
+	});
+
+}
+function getValidatedInput(theId){
+	var x = parseFloat(document.getElementById(theId).value);
+	if(isNaN(x))
+		return 0;
+	else
+		return x;
 }
 
 function calculateWind()

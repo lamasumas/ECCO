@@ -59,26 +59,27 @@ app.get('/index.html/countries', function (req, res) {
         res.send(co2.toString());
  });
 
- app.get("index.html/WoodChipsC02", function(req, res){
+ app.get("/index.html/WoodChipsC02", function(req, res){
 
-    var countryJSON = getCountry();
-    var outputheat;
-    var outputelec;
-    var usefulC;
-    var surroundingsC;
-    var tonsTransportedChipsYear;
-    var moistwoodParam;
-    var moistchipsParam;
-    var feedstock_chips_loss;
-    var electricityChipping;
-    var transported_chips_loss;
-    var seperated_chips_loss;
-    var chips_loss;
-    var wood_chips_loss;
-    var kmTruckTransport_chips;
-    var heatTransportedChips;
-    var electricityTransportedChips;
-    var electricityMegneticSeparation;
+    console.log("calculate the co2for wood chips!!")
+    var countryJSON = getCountry(req.query.country);
+    var outputheat = parseFloat(req.query.outputheat);
+    var outputelec = parseFloat(req.query.outputelec);
+    var usefulC = parseFloat(req.query.usefulC);
+    var surroundingsC = parseFloat(req.query.surroundingsC);
+    var tonsTransportedChipsYear = parseFloat(req.query.tonsTransportedChipsYear);
+    var moistwoodParam = parseFloat(req.query.moistwoodParam);
+    var moistchipsParam = parseFloat(req.query.moistchipsParam);
+    var feedstock_chips_loss = parseFloat(req.query.feedstock_chips_loss);
+    var electricityChipping = parseFloat(req.query.electricityChipping);
+    var transported_chips_loss = parseFloat(req.query.transported_chips_loss);
+    var seperated_chips_loss = parseFloat(req.query.seperated_chips_loss);
+    var chips_loss = parseFloat(req.query.chips_loss);
+    var wood_chips_loss = parseFloat(req.query.wood_chips_loss);
+    var kmTruckTransport_chips = parseFloat(req.query.kmTruckTransport_chips);
+    var heatTransportedChips = parseFloat(req.query.heatTransportedChips);
+    var electricityTransportedChips = parseFloat(req.query.electricityTransportedChips);
+    var electricityMegneticSeparation = parseFloat(req.query.electricityMegneticSeparation);
 
 
 
@@ -87,8 +88,21 @@ app.get('/index.html/countries', function (req, res) {
     var co2 = calculateWoodChipsCo2(countryJSON,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedChipsYear,moistwoodParam,
         moistchipsParam,feedstock_chips_loss, electricityChipping, transported_chips_loss, seperated_chips_loss, chips_loss,
        wood_chips_loss, kmTruckTransport_chips, heatTransportedChips,electricityTransportedChips, electricityMegneticSeparation);
- })
+    
+    console.log("CO2: " +co2);
+    res.send(co2.toString());
+ });
 
+ function getCountry(name){
+    for( i = 0; i< loadedJsons.length; i++)
+    {
+        if (loadedJsons[i].country == name)
+        {
+            return loadedJsons[i] ;
+            
+        }
+    }
+ }
  function readData(){
                
     fs.readFile(__dirname+"/json/Countries.json", (err, fileData) => {
@@ -129,24 +143,25 @@ app.get('/index.html/countries', function (req, res) {
     // nheat = outputheat /(inflow (1 - moistchips/100) LHV)
 
 
+    console.log("CALCULATING");
 
 //eelec = telec
 //eheat = thear
     var pgas_combustion = heatTransportedChips;
     var pelec_combustion = electricityTransportedChips;
     var pelec_separation = (electricityMegneticSeparation==0)? 0.6: electricityMegneticSeparation;
-    var efossil_heat = countryJSON.eheat;
-    var efossil_elec = countryJSON.eelec;
+    var efossil_heat = parseFloat(countryJSON.eheat);
+    var efossil_elec = parseFloat(countryJSON.eelec)/3.6;
     var celec = 1;
-    var egas =countryJSON.egas ;
-    var efuel = countryJSON.efuel;
-    var nvehical = countryJSON.nvehicle_Dry;
+    var egas = parseFloat(countryJSON.egas );
+    var efuel = parseFloat(countryJSON.efuel);
+    var nvehical = parseFloat(countryJSON.nvehicle_Dry);
     var lengthtransport = ( kmTruckTransport_chips== 0)? 50:  kmTruckTransport_chips;
     var inflow = tonsTransportedChipsYear;
     var cheat =  getCheatValue(usefulC, surroundingsC);
     var moistchips = (moistchipsParam == 0)? 33: moistchipsParam ;
     var moistwood = (moistwoodParam == 0)? 50: moistwoodParam;
-    var lhv = countryJSON.LHV_Demolitoion_Wood;
+    var lhv = parseFloat(countryJSON.LHV_Demolitoion_Wood);
     var pelec_chipping = (electricityChipping == 0)?  75 : electricityChipping ;
     var nwfeedstock = 1- feedstock_chips_loss /100;
     var telec = efossil_elec;
@@ -157,8 +172,6 @@ app.get('/index.html/countries', function (req, res) {
     var afheat = cheat * nheat / ( celec* nelec + cheat * nheat) ;
     var afelec = celec * nelec / (celec * nelec +  cheat * nheat);
     
-    
-    var theYield = 1000 * nwtotal * (1 - moistchips / 100) * lhv;
     var nwchips = 1- wood_chips_loss /100;
     var nwchipping = nwchips * (1 - moistwood/100) /(1 - moistchips/100);
     var nwconvertion = 1- transported_chips_loss /100;
@@ -168,18 +181,20 @@ app.get('/index.html/countries', function (req, res) {
     //there is no seperation;
     var nwseperation = 1- chips_loss /100; 
     var nwtotal =  nwfeedstock * nwchipping * nwseparation * nwtransport * nwconvertion;
+    var theYield = 1000 * nwtotal * (1 - moistchips / 100) * lhv;
+  
 
     // ther is a 0 hardcoded
     var eCO2 = 0;
     var eCH4 = 0;
     var eN2O = 0;
-    var fCH4_CO2 = countryJSON.fCH4_CO2;
-    var fN2O_CO2 = countryJSON.fN2O_CO2;
+    var fCH4_CO2 = parseFloat(countryJSON.fCH4_CO2);
+    var fN2O_CO2 = parseFloat(countryJSON.fN2O_CO2);
     
     //This formula is bad written
     var edirect_combustion = 1000 *(eCO2 + eCH4 * (fCH4_CO2) + eN2O * (fN2O_CO2)) ;
 
-    var etransport_exhaust = countryJSON.etransport_exhaust_Dry;
+    var etransport_exhaust = parseFloat( countryJSON.etransport_exhaust_Dry);
     
     var echipping = nwfeedstock * (3.6 * pelec_chipping * telec) / theYield;
     var ecombustion = (nwfeedstock * nwchipping* nwseperation * nwtransport)* (edirect_combustion + 3.6* pelec_combustion* telec + pgas_combustion *egas) /theYield;
