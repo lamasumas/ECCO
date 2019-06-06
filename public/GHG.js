@@ -5,6 +5,7 @@ $(document).ready(function (e) {
 		$(".maximizeRow").attr("onclick", "maximize()");
 		$("#calculateWind").attr("onclick", "calculateWind()");
 		$("#calculateChips").attr("onclick", "calculateChips()");
+		$("#calculatePellets").attr("onclick", "calculatePellets()");
 		$.get('/index.html/countries', function(responseText) {
 			var countries = responseText;
 				addCountries(countries);
@@ -90,7 +91,9 @@ function loadFirstScreen(){
 	
 }
 
-
+function calculatePellets(){
+  //
+}
 function calculateChips()
 {
 	var theCountry = document.getElementById("country").value;
@@ -112,11 +115,16 @@ function calculateChips()
 	allParameters += "heatTransportedChips="+getValidatedInput("heatTransportedChips")+"&";
 	allParameters += "electricityTransportedChips="+getValidatedInput("electricityTransportedChips")+"&";
 	allParameters += "electricityMegneticSeparation="+getValidatedInput("electricityMegneticSeparation");
-	$.get("index.html/WoodChipsC02?"+allParameters, function(respose){
+	$.get("/index.html/WoodChips?"+allParameters, function(response){
 		
-		var co2 = response;
+		var splittedResponse = response.split("@");
+		var co2 = parseFloat(splittedResponse[0]);
+		var trees = parseFloat(splittedResponse[1]);
+		var houses  = parseFloat(splittedResponse[2]);
 
 		document.getElementById("co2").innerHTML = Math.round(co2 * 100) / 100;
+		document.getElementById("trees").innerHTML= Math.round(trees * 100) / 100;
+		document.getElementById("houses").innerHTML= Math.round(houses * 100) / 100;
 
 	});
 
