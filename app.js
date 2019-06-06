@@ -61,7 +61,6 @@ app.get('/index.html/countries', function (req, res) {
 
  app.get("/index.html/WoodChips", function(req, res){
 
-    console.log("calculate the co2 for wood chips!!");
     var countryJSON = getCountry(req.query.country);
     var outputheat = parseFloat(req.query.outputheat);
     var outputelec = parseFloat(req.query.outputelec);
@@ -94,17 +93,35 @@ app.get('/index.html/countries', function (req, res) {
 
 
 
-/* app.get("/index.html/WoodPellets", function(req, res){
+ app.get("/index.html/WoodPellets", function(req, res){
 
-    console.log("calculate the co2for wood chips!!");
     
+    var countryJSON = getCountry(req.query.country);
+    var outputheat = parseFloat(req.query.outputheat);
+    var outputelec = parseFloat( req.query.outputelec);
+    var usefulC = parseFloat(req.query.usefulC);
+    var surroundingsC = parseFloat(req.query.surroundingsC);
+    var tonsTransportedPelletsYear = parseFloat(req.query.tonsTransportedPelletsYear);
+    var moistpelletsParam = parseFloat(req.query.moistpelletsParam);
+    var moistFeedstockSawdustParam = parseFloat(req.query.moistFeedstockSawdustParam);
+    var pellets_loss = parseFloat(req.query.pellets_loss);
+    var electricityPelletization = parseFloat(req.query.electricityPelletization);
+    var transported_pellets_loss = parseFloat(req.query.transported_pellets_loss);
+    var percentege_feedstock_sawdust_loss = parseFloat(req.query.percentege_feedstock_sawdust_loss);
+    var sawdust_loss = parseFloat(req.query.sawdust_loss);
+    var kmTruckTransport_pellets = parseFloat(req.query.kmTruckTransport_pellets);
+    var heatTransportedPellets = parseFloat(req.query.heatTransportedPellets);
+    var electricityTransportedPellets = parseFloat(req.query.electricityTransportedPellets);
+    var heatPelletication = parseFloat(req.query.heatPelletication);
 
-
-    var data = calculatePellets();
-    console.log("CO2: " +co2);
-    res.send(co2.toString());
+    var data = calculateWoodPellets(countryJSON,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedPelletsYear,moistpelletsParam,
+        moistFeedstockSawdustParam, pellets_loss, electricityPelletization, transported_pellets_loss, percentege_feedstock_sawdust_loss,
+        sawdust_loss, kmTruckTransport_pellets, heatTransportedPellets,electricityTransportedPellets,heatPelletication);
+        
+    console.log("Data: " + data);
+    res.send(data.toString());
  });
-*/
+
 
  function getCountry(name){
     for( i = 0; i< loadedJsons.length; i++)
@@ -143,7 +160,7 @@ app.get('/index.html/countries', function (req, res) {
 
  function calculateWoodPellets(countryJSON,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedPelletsYear,moistpelletsParam,
     moistFeedstockSawdustParam, pellets_loss, electricityPelletization, transported_pellets_loss, percentege_feedstock_sawdust_loss,
-    sawdust_loss, kmTruckTransport_pellets, heatTransportedPellets,electricityTransportedPellets){
+    sawdust_loss, kmTruckTransport_pellets, heatTransportedPellets,electricityTransportedPellets,heatPelletication){
 
 //eelec = telec
 //eheat = thear
@@ -191,9 +208,9 @@ app.get('/index.html/countries', function (req, res) {
 
     var etransport_exhaust = parseFloat( countryJSON.etransport_exhaust_Dry);
     
-    var epelltization = nwfeedstock * ( 3.6 * pelec_pelletization * telec + pgas_pelletization* egas);
+    var epelltization = nwfeedstock * ( 3.6 * pelec_pelletization * telec + pgas_pelletization* egas)/theYield;
     var ecombustion = (nwfeedstock * nwpelletization * nwtransport)* (edirect_combustion + 3.6* pelec_combustion* telec + pgas_combustion *egas) /theYield;
-    var etransport = ( nwfeedstock  * nwseperation) * lengthtransport  *( nvehical * efuel + etransport_exhaust) / theYield;
+    var etransport = ( nwfeedstock  * nwpelletization) * lengthtransport  *( nvehical * efuel + etransport_exhaust) / theYield;
     
     var E = epelltization + etransport + ecombustion;
     var Eelec = E * afelec ;
@@ -208,6 +225,7 @@ app.get('/index.html/countries', function (req, res) {
 
     var trees = (co2 * 1000) / parseFloat(countryJSON.etree);
     var houses = (co2 * 1000) / parseFloat(countryJSON.ehouse);
+    return co2.toString() + "@" + trees.toString() + "@" + houses.toString();
 
  }
 
@@ -226,12 +244,12 @@ app.get('/index.html/countries', function (req, res) {
     var pgas_combustion = heatTransportedChips;
     var pelec_combustion = electricityTransportedChips;
     var pelec_separation = (electricityMegneticSeparation==0)? 0.6: electricityMegneticSeparation;
-    var efossil_heat = parseFloat(countryJSON.eheat);
-    var efossil_elec = parseFloat(countryJSON.eelec)/3.6;
+    var efossil_heat = parseFloat((countryJSON.eheat == "") ? generalJSON.eheat: countryJSON.eheat );
+    var efossil_elec = parseFloat((countryJSON.eelec == "") ? generalJSON.eelec: countryJSON.eelec )/3.6;
     var celec = 1;
-    var egas = parseFloat(countryJSON.egas );
-    var efuel = parseFloat(countryJSON.efuel);
-    var nvehical = parseFloat(countryJSON.nvehicle_Dry);
+    var egas = parseFloat((countryJSON.egas == "") ? generalJSON.egas: countryJSON.egas );
+    var efuel = parseFloat((countryJSON.efuel == "") ? generalJSON.efuel: countryJSON.efuel);
+    var nvehical = parseFloat((countryJSON.nvehicle_Dry == "") ? generalJSON.nvehicle_Dry: countryJSON.nvehicle_Dry);
     var lengthtransport = ( kmTruckTransport_chips== 0)? 50:  kmTruckTransport_chips;
     var inflow = tonsTransportedChipsYear;
     var cheat =  getCheatValue(usefulC, surroundingsC);
@@ -291,6 +309,9 @@ app.get('/index.html/countries', function (req, res) {
 
 
 }
+
+
+
 
 
 function getCheatValue(th,to){

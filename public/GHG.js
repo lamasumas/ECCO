@@ -91,8 +91,29 @@ function loadFirstScreen(){
 	
 }
 
-function calculatePellets(){
-  //
+function calculatePellets()
+{
+	var theCountry = document.getElementById("country").value;
+	var allParameters ="country="+theCountry + "&";
+
+	allParameters += "outputheat="+getValidatedInput("pelletHeatOutput")+"&";
+    allParameters += "outputelec="+getValidatedInput("pelletEllectOutput")+"&";
+	allParameters += "usefulC="+getValidatedInput("usefulC_pellets")+"&";
+	allParameters += "surroundingsC="+getValidatedInput("surroundC_pellets")+"&";
+    allParameters += "tonsTransportedPelletsYear="+getValidatedInput("trasportedPellets")+"&";
+    allParameters += "moistpelletsParam="+getValidatedInput("moisture_pellets")+"&";
+    allParameters += "moistFeedstockSawdustParam="+getValidatedInput("moisture_dust_pellets")+"&";
+    allParameters += "pellets_loss="+getValidatedInput("pellets_loss")+"&";
+    allParameters += "electricityPelletization="+getValidatedInput("electricityPelletization")+"&";
+    allParameters += "transported_pellets_loss="+getValidatedInput("transported_pellets_loss")+"&";
+    allParameters += "percentege_feedstock_sawdust_loss="+getValidatedInput("percentege_feedstock_sawdust_loss")+"&";
+    allParameters += "sawdust_loss="+getValidatedInput("sawdust_loss")+"&";
+    allParameters += "kmTruckTransport_pellets="+getValidatedInput("kmTruckTransport_pellets")+"&";
+	allParameters += "heatTransportedPellets="+getValidatedInput("heatTransportedPellets")+"&";
+	allParameters += "electricityTransportedPellets="+getValidatedInput("electricityTransportedPellets")+"&";
+	allParameters += "heatPelletication="+getValidatedInput("heatPelletication");
+
+	$.get("/index.html/WoodPellets?"+allParameters, (response) => writeResults(response));
 }
 function calculateChips()
 {
@@ -115,18 +136,7 @@ function calculateChips()
 	allParameters += "heatTransportedChips="+getValidatedInput("heatTransportedChips")+"&";
 	allParameters += "electricityTransportedChips="+getValidatedInput("electricityTransportedChips")+"&";
 	allParameters += "electricityMegneticSeparation="+getValidatedInput("electricityMegneticSeparation");
-	$.get("/index.html/WoodChips?"+allParameters, function(response){
-		
-		var splittedResponse = response.split("@");
-		var co2 = parseFloat(splittedResponse[0]);
-		var trees = parseFloat(splittedResponse[1]);
-		var houses  = parseFloat(splittedResponse[2]);
-
-		document.getElementById("co2").innerHTML = Math.round(co2 * 100) / 100;
-		document.getElementById("trees").innerHTML= Math.round(trees * 100) / 100;
-		document.getElementById("houses").innerHTML= Math.round(houses * 100) / 100;
-
-	});
+	$.get("/index.html/WoodChips?"+allParameters, (response) => writeResults(response));
 
 }
 function getValidatedInput(theId){
@@ -136,6 +146,18 @@ function getValidatedInput(theId){
 	else
 		return x;
 }
+
+function writeResults(response){
+	var splittedResponse = response.split("@");
+	var co2 = parseFloat(splittedResponse[0]);
+	var trees = parseFloat(splittedResponse[1]);
+	var houses  = parseFloat(splittedResponse[2]);
+
+	document.getElementById("co2").innerHTML = Math.round(co2 * 100) / 100;
+	document.getElementById("trees").innerHTML= Math.round(trees * 100) / 100;
+	document.getElementById("houses").innerHTML= Math.round(houses * 100) / 100;
+}
+
 
 function calculateWind()
 {
