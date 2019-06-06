@@ -244,12 +244,12 @@ app.get('/index.html/countries', function (req, res) {
     var pgas_combustion = heatTransportedChips;
     var pelec_combustion = electricityTransportedChips;
     var pelec_separation = (electricityMegneticSeparation==0)? 0.6: electricityMegneticSeparation;
-    var efossil_heat = parseFloat((countryJSON.eheat == "") ? generalJSON.eheat: countryJSON.eheat );
-    var efossil_elec = parseFloat((countryJSON.eelec == "") ? generalJSON.eelec: countryJSON.eelec )/3.6;
+    var efossil_heat = parseFloat(countryJSON.eheat);
+    var efossil_elec = parseFloat(countryJSON.eelec)/3.6;
     var celec = 1;
-    var egas = parseFloat((countryJSON.egas == "") ? generalJSON.egas: countryJSON.egas );
-    var efuel = parseFloat((countryJSON.efuel == "") ? generalJSON.efuel: countryJSON.efuel);
-    var nvehical = parseFloat((countryJSON.nvehicle_Dry == "") ? generalJSON.nvehicle_Dry: countryJSON.nvehicle_Dry);
+    var egas = parseFloat(countryJSON.egas );
+    var efuel = parseFloat(countryJSON.efuel);
+    var nvehical = parseFloat(countryJSON.nvehicle_Dry);
     var lengthtransport = ( kmTruckTransport_chips== 0)? 50:  kmTruckTransport_chips;
     var inflow = tonsTransportedChipsYear;
     var cheat =  getCheatValue(usefulC, surroundingsC);
@@ -309,7 +309,6 @@ app.get('/index.html/countries', function (req, res) {
 
 
 }
-
 
 
 
