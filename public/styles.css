@@ -9,6 +9,13 @@ main{
 	margin-top:1%;
 }
 
+#resultSection{
+	text-align: center;
+	border: 1px solid black;
+	display:table;
+	margin: auto;
+}
+
 .hiddenRow{
 	display: none;
 }
@@ -35,6 +42,11 @@ main{
 
 #manureTable, #woodChipsTable,#woodPelletsTable{
 	width:100%;
+}
+
+#results
+{
+	
 }
 .intro{
 	text-align: center;

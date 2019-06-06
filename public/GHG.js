@@ -95,7 +95,6 @@ function calculatePellets()
 {
 	var theCountry = document.getElementById("country").value;
 	var allParameters ="country="+theCountry + "&";
-
 	allParameters += "outputheat="+getValidatedInput("pelletHeatOutput")+"&";
     allParameters += "outputelec="+getValidatedInput("pelletEllectOutput")+"&";
 	allParameters += "usefulC="+getValidatedInput("usefulC_pellets")+"&";
