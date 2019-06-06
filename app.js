@@ -32,32 +32,29 @@ app.get('/index.html/countries', function (req, res) {
     var yearProduction = req.query.yearProduction;
 
     var theSelectedCountryData;
-    for( i = 0; i< loadedJsons.length; i++)
-    {
-        if (loadedJsons[i].country == theCountrySelected)
-        {
-            theSelectedCountryData = loadedJsons[i];
-            break;
-        }
-    }
+    country = getCountry(theCountrySelected);
 		var co2 = 0;
 		switch(typeOfEnergy)
 		{
 			case "wind":
-					var esaved_wind = parseFloat(theSelectedCountryData.esaved_wind);
+					var esaved_wind = getJSONData(country, "esaved_wind");
 					co2 = (yearProduction * esaved_wind) / 1000;
 					break;
 			case "pV":
-					var esaved_PV = parseFloat(theSelectedCountryData.esaved_PV);
+					var esaved_PV = getJSONData(country, "esaved_PV");
 					co2 = (yearProduction * esaved_PV) / 1000;
 					break;
 			case "Hydroelectric":
-					var esaved_hydro = parseFloat(theSelectedCountryData.esaved_hydro);
+					var esaved_hydro = getJSONData(country, "esaved_hydro");
 					 co2 = (yearProduction * esaved_hydro) / 1000;
 					 break;
         }
 
-        res.send(co2.toString());
+
+        var trees = (co2 * 1000) / getJSONData(country, "etree");
+        var houses = (co2 * 1000) / getJSONData(country, "ehouse");
+        res.send( co2.toString() + "@" + trees.toString() + "@" + houses.toString());
+        
  });
 
  app.get("/index.html/WoodChips", function(req, res){

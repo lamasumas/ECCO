@@ -166,16 +166,7 @@ function calculateWind()
 	var theCountry = document.getElementById("country").value;
 	var typeOfEnergy= document.getElementById("typeOfEnergy").value;
 	$.get("/index.html/Irradiation?country="+theCountry+"&typeOfEnergy="+(typeOfEnergy)+"&yearProduction="+
-	(document.getElementById("yearProduction").value), function(response) {
-		
-		var co2 = response;
-		var trees = (co2 * 1000)/60;
-		var house = ( co2 * 1000)/1887.48;
-		document.getElementById("co2").innerHTML = Math.round(co2 * 100) / 100;
-		document.getElementById("trees").innerHTML= Math.round(trees * 100) / 100;
-		document.getElementById("houses").innerHTML= Math.round(house * 100) / 100;
-
-	});
+	(document.getElementById("yearProduction").value), (response) => writeResults(response));
 
 
                
