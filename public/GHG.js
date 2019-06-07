@@ -113,7 +113,7 @@ function calculatePellets()
 	allParameters += "electricityTransportedPellets="+getValidatedInput("electricityTransportedPellets")+"&";
 	allParameters += "heatPelletication="+getValidatedInput("heatPelletication");
 
-	$.get("/index.html/WoodPellets?"+allParameters, (response) => writeResults(response));
+	$.get("/formulas/WoodPellets?"+allParameters, (response) => writeResults(response));
 }
 function calculateChips()
 {
@@ -136,7 +136,7 @@ function calculateChips()
 	allParameters += "heatTransportedChips="+getValidatedInput("heatTransportedChips")+"&";
 	allParameters += "electricityTransportedChips="+getValidatedInput("electricityTransportedChips")+"&";
 	allParameters += "electricityMegneticSeparation="+getValidatedInput("electricityMegneticSeparation");
-	$.get("/index.html/WoodChips?"+allParameters, (response) => writeResults(response));
+	$.get("/formulas/WoodChips?"+allParameters, (response) => writeResults(response));
 
 }
 function getValidatedInput(theId){
@@ -183,7 +183,7 @@ function calculateManure(){
 	allParameters += "electricityDigestionManure="+getValidatedInput("electricityDigestionManure")+"&";
 	allParameters += "heatDigestionManure="+getValidatedInput("heatDigestionManure");
 	console.log(getValidatedInput("electricityDigestionManure"));
-	$.get("/index.html/Manure?"+allParameters, (response) => writeResults(response) );
+	$.get("/formulas/Manure?"+allParameters, (response) => writeResults(response) );
 
 
 }
@@ -194,7 +194,7 @@ function calculateWind()
 
 	var theCountry = document.getElementById("country").value;
 	var typeOfEnergy= document.getElementById("typeOfEnergy").value;
-	$.get("/index.html/Irradiation?country="+theCountry+"&typeOfEnergy="+(typeOfEnergy)+"&yearProduction="+
+	$.get("/formulas/Irradiation?country="+theCountry+"&typeOfEnergy="+(typeOfEnergy)+"&yearProduction="+
 	(document.getElementById("yearProduction").value), (response) => writeResults(response));
 
 
