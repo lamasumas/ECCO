@@ -6,6 +6,7 @@ $(document).ready(function (e) {
 		$("#calculateWind").attr("onclick", "calculateWind()");
 		$("#calculateChips").attr("onclick", "calculateChips()");
 		$("#calculatePellets").attr("onclick", "calculatePellets()");
+		$("#calculateManure").attr("onclick", "calculateManure()");
 		$.get('/index.html/countries', function(responseText) {
 			var countries = responseText;
 				addCountries(countries);
@@ -157,6 +158,35 @@ function writeResults(response){
 	document.getElementById("houses").innerHTML= Math.round(houses * 100) / 100;
 }
 
+function calculateManure(){
+
+	var theCountry = document.getElementById("country").value;
+	var allParameters ="country="+theCountry + "&";
+	allParameters += "outputheat="+getValidatedInput("manureHeatOutput")+"&";
+	allParameters += "outputelec="+getValidatedInput("manurellectOutput")+"&";
+	allParameters += "usefulC="+getValidatedInput("usefulC_Manure")+"&";
+	allParameters += "surroundingsC="+getValidatedInput("surroundC_Manure")+"&";
+	allParameters += "heatCombustionManure="+getValidatedInput("heatCombustionManure")+"&";
+	allParameters += "electricityCombustionManure="+getValidatedInput("electricityCombustionManure")+"&";
+	allParameters += "kmTruckManure="+getValidatedInput("kmTruckManure")+"&";
+	allParameters += "annualManureWeight="+getValidatedInput("annualManureWeight")+"&";
+	allParameters += "manure_loss="+getValidatedInput("manure_loss")+"&";
+	allParameters += "percentege_feedstock_manure_loss="+getValidatedInput("percentege_feedstock_manure_loss")+"&";
+	allParameters += "transported_manures_loss="+getValidatedInput("transported_manures_loss")+"&";
+	allParameters += "biogas_loss="+getValidatedInput("biogas_loss")+"&";
+	allParameters += "efficienyManureTransformation="+getValidatedInput("efficienyManureTransformation")+"&";
+	allParameters += "methane_content="+getValidatedInput("methane_content")+"&";
+	allParameters += "co2ProducedManure="+getValidatedInput("co2ProducedManure")+"&";
+	allParameters += "ch4ProducedManure="+getValidatedInput("ch4ProducedManure")+"&";
+	allParameters += "electricityTranportedManure="+getValidatedInput("electricityTranportedManure")+"&";
+	allParameters += "n2oProducedManure="+getValidatedInput("N2oProducedManure")+"&";
+	allParameters += "electricityDigestionManure="+getValidatedInput("electricityDigestionManure")+"&";
+	allParameters += "heatDigestionManure="+getValidatedInput("heatDigestionManure");
+	console.log(getValidatedInput("electricityDigestionManure"));
+	$.get("/index.html/Manure?"+allParameters, (response) => writeResults(response) );
+
+
+}
 
 function calculateWind()
 {

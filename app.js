@@ -89,9 +89,39 @@ app.get('/index.html/countries', function (req, res) {
     res.send(theRespose);
  });
 
+app.get("/index.html/Manure", function(req, res){
 
+    var countryJSON = getCountry(req.query.country);
+    var outputelec = parseFloat(req.query.outputelec);
+    var outputheat = parseFloat(req.query.outputheat);
+    var heatCombustionManure = parseFloat(req.query.heatCombustionManure);
+    var electricityCombustionManure = parseFloat(req.query.electricityCombustionManure);
+    var kmTruckManure = parseFloat(req.query.kmTruckManure);
+    var annualManureWeight = parseFloat(req.query.annualManureWeight);
+    var usefulC = parseFloat(req.query.usefulC);
+    var surroundingsC = parseFloat(req.query.surroundingsC);
+    var manure_loss= parseFloat(req.query.manure_loss);
+    var percentege_feedstock_manure_loss = parseFloat(req.query.percentege_feedstock_manure_loss);
+    var transported_manures_loss= parseFloat(req.query.transported_manures_loss);
+    var biogas_loss = parseFloat(req.query.biogas_loss);
+    var efficienyManureTransformation = parseFloat(req.query.efficienyManureTransformation);
+    var methane_content = parseFloat(req.query.methane_content);
+    var co2ProducedManure = parseFloat(req.query.co2ProducedManure);
+    var ch4ProducedManure = parseFloat(req.query.ch4ProducedManure);
+    var heatDigestionManure = parseFloat(req.query.heatDigestionManure); 
+    var electricityTranportedManure= parseFloat(req.query.electricityTranportedManure);
+    var n2oProducedManure = parseFloat(req.query.n2oProducedManure);
+    var electricityDigestionManure = parseFloat(req.query.electricityDigestionManure);
 
- app.get("/index.html/WoodPellets", function(req, res){
+    var data = calculateManure(countryJSON, outputelec, outputheat,heatCombustionManure,electricityCombustionManure, kmTruckManure, annualManureWeight, usefulC, 
+        surroundingsC,manure_loss, percentege_feedstock_manure_loss, transported_manures_loss, biogas_loss,
+        efficienyManureTransformation, methane_content,co2ProducedManure,ch4ProducedManure, heatDigestionManure,
+        electricityTranportedManure, n2oProducedManure, electricityDigestionManure);
+    res.send(data);
+    
+});
+
+app.get("/index.html/WoodPellets", function(req, res){
 
     
     var countryJSON = getCountry(req.query.country);
@@ -156,13 +186,93 @@ app.get('/index.html/countries', function (req, res) {
  });
 
 
+function calculateManure(countryJSON, outputelec, outputheat,heatCombustionManure,electricityCombustionManure, kmTruckManure, annualManureWeightn, usefulC, 
+    surroundingsC,manure_loss, percentege_feedstock_manure_loss, transported_manures_loss, biogas_loss,
+    efficienyManureTransformation, methane_content,co2ProducedManure,ch4ProducedManure, heatDigestionManure,
+    electricityTranportedManure, n2oProducedManure, electricityDigestionManure)
+{
+
+    var pgas_combustion = heatCombustionManure;
+    var pellec_combustion = electricityCombustionManure;
+    var efossil_heat = getJSONData(countryJSON , "eheat");
+    var efossil_elec = getJSONData(countryJSON, "eelec")/3.6;
+    var celec = 1;
+    var egas = getJSONData(countryJSON, "egas" );
+    var efuel = getJSONData(countryJSON, "efuel");
+    var nvehical = getJSONData(countryJSON,"nvehicle_Liquid");
+    var lengthtransport = ( kmTruckManure== 0)? 50:  kmTruckManure;
+    var inflow = annualManureWeightn;
+    var cheat =  getCheatValue(usefulC, surroundingsC);
+    var lhv = getJSONData(countryJSON, "LHV_Methane");
+    
+    var nwfeedstock = 1- percentege_feedstock_manure_loss /100;
+    var telec = efossil_elec;
+
+    var ratioCH4 = ( methane_content == 0)? 55 : methane_content; 
+    var denCH4 = 0.71;
+   
+    var nwdigestion = (efficienyManureTransformation  == 0)?21: efficienyManureTransformation;
+    var nwtransport = 1- manure_loss /100;
+    var nwstorage = 1- transported_manures_loss / 100;
+    var nwconvertion = 1 - biogas_loss / 100;
+    var nwtotal = (( nwfeedstock * nwtransport * nwconvertion * nwstorage * nwdigestion) == nwdigestion)? nwdigestion*0.95: nwfeedstock * nwtransport * nwconvertion * nwstorage * nwdigestion;
+
+    var nheat =  ( inflow == 0)? 45: 1000* outputheat / (inflow * nwfeedstock * nwtransport * nwstorage * nwdigestion * denCH4 * lhv * ratioCH4 /100);
+    var nelec = (inflow == 0) ? 0.35 : 3600 * outputelec / (inflow * nwfeedstock * nwtransport * nwstorage * nwdigestion * denCH4* lhv * ratioCH4 /100);
+    var afheat = cheat * nheat / ( celec* nelec + cheat * nheat) ;
+    var afelec = celec * nelec / (celec * nelec +  cheat * nheat);
+    
+  
+    var theYield = nwtotal * (ratioCH4 / 100) * denCH4 *lhv;
+  
+    var eCO2_combustion = 0;
+    var eCH4_combustion = 0;
+    var eN2O_combustion = 0;
+    var eCO2_storage = co2ProducedManure;
+    var eCH4_storage = ch4ProducedManure;
+    var eN2O_storage = n2oProducedManure;
+    var fCH4_CO2 = getJSONData(countryJSON, "fCH4_CO2");
+    var fN2O_CO2 = getJSONData(countryJSON,"fN2O_CO2");
+
+    var pgas_digestion = heatDigestionManure;
+    var pelec_storage = electricityTranportedManure;
+    var pelec_digestion = electricityDigestionManure;
+    var edirect_combustion = 1000 * (eCO2_combustion + eCH4_combustion * fCH4_CO2 + eN2O_combustion * fN2O_CO2);
+    var etransport_exhaust = getJSONData(countryJSON,"etransport_exhaust_Dry");
+    var eCH4_leakage = denCH4 *nwdigestion * ratioCH4/10000;
+    var edirect_digestion = 1000* eCH4_leakage * fCH4_CO2;
+    var edirect_storage = 1000 * ( eCO2_storage + eCH4_storage * fCH4_CO2 + eN2O_storage * fN2O_CO2); 
+   
+    var ecombustion = (nwfeedstock * nwtransport * nwstorage * nwdigestion) * (edirect_combustion + 3.6 * pellec_combustion * telec + pgas_combustion * egas) /theYield;
+    var etransport = nwfeedstock * lengthtransport * ( nvehical * efuel + etransport_exhaust)/ theYield;
+    var edigestion = (nwfeedstock * nwtransport * nwstorage)* (edirect_digestion + 3.6 * pelec_digestion * telec + pgas_digestion *egas)/ theYield;
+    var estorage = (nwfeedstock * nwtransport ) * (edirect_storage + 3.6 * pelec_storage * telec) / theYield;
+   
+    var E = estorage + edigestion +etransport + ecombustion;
+    var Eelec = E * afelec ;
+    var Eheat = E * afheat ;
+    
+
+    var ghgSavedHeat = 100 * ( efossil_heat - Eheat / nheat ) / efossil_heat ;
+    var ghgsaved_elec = 100 * ( efossil_elec - Eelec / nelec) / efossil_elec ;
+    var ghgSavedTotal = (afheat * ghgSavedHeat) + ( afelec *  ghgsaved_elec);
+    var co2 =  (outputheat + 3.6 * outputelec) * (efossil_heat * afheat + efossil_elec * afelec)*(ghgSavedTotal /100) /1000;
+    
+    var trees = (co2 * 1000) / getJSONData(countryJSON, "etree");
+    var houses = (co2 * 1000) / getJSONData(countryJSON, "ehouse");
+    return co2.toString() + "@" + trees.toString() + "@" + houses.toString();
+// var trees = (co2 * 1000) / getJSONData(countryJSON, "etree");
+//   var houses = (co2 * 1000) / getJSONData(countryJSON, "ehouse");
+//  return co2.toString() + "@" + trees.toString() + "@" + houses.toString();
+
+}
 
  function calculateWoodPellets(countryJSON,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedPelletsYear,moistpelletsParam,
     moistFeedstockSawdustParam, pellets_loss, electricityPelletization, transported_pellets_loss, percentege_feedstock_sawdust_loss,
     sawdust_loss, kmTruckTransport_pellets, heatTransportedPellets,electricityTransportedPellets,heatPelletication){
 
 
-    console.log("CALCULATING WOOD CHIPS DATA");
+    console.log("CALCULATING WOOD PELLETS DATA");
 //eelec = telec
 //eheat = thear
     var pgas_combustion = heatTransportedPellets;
