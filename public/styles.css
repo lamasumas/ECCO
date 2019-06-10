@@ -4,6 +4,7 @@ html{
 	text-align:center;
 
 }
+
 main{
 	text-align:center;
 	margin-top:1%;
@@ -12,6 +13,15 @@ main{
 header{
 	text-align: center;
 }
+
+input{
+	max-width: 50px;
+}
+
+th, td {
+	border: 1px black solid;
+} 
+
 
 #resultSection{
 	text-align: center;
@@ -31,6 +41,14 @@ header{
 .firstScreen{
 	display:none;
 
+}
+
+.titleRow {
+	background-color: green;
+}
+
+.subtitleRow{
+	background-color: lightgreen;
 }
 
 .myForm{
@@ -84,6 +102,4 @@ header{
 #start{
 	margin: 2%;
 }
- th, td {
-	border: 1px black solid;
-} 
+ 

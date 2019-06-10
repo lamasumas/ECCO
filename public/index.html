@@ -12,18 +12,46 @@
 		<script  src="GHG.js"></script>
 		</head>
 	<body>
-		<header class="firstScreen">
-			<select id="selector"  onchange=" energySelector()" >
+		<header>
 				
-				<option disabled selected value> -- select an option -- </option>
-				<option value="IWH">Irradiation-Wind-Hydro</option>
-				<option value="DW">Demolish wood</option>
-				<option value="Saw">Sawdust</option>
-				<option value="Man">Manure</option>
-			</select>
+			<section class="firstScreen">
+							<select id="selector"  onchange=" energySelector()" >
+								
+								<option disabled selected value> -- select an option -- </option>
+								<option value="IWH">Irradiation-Wind-Hydro</option>
+								<option value="DW">Demolish wood</option>
+								<option value="Saw">Sawdust</option>
+								<option value="Man">Manure</option>
+							</select>
+						</section>
+		
+			
+		
+		
+					<img id="title" class="firstScreen" src="img/Example.png" alt="Input / Processing/ Output">
+					
 		</header>
 		<main>
 
+				<section id="resultSection"> 
+						<table id="results" style="display:none">
+							<tr>
+								<th>Country</th>
+								<th>tonCO2/year</th>
+								<th>Trees</th>
+								<th>Houses</th>
+							</tr>
+							<tr>
+								<td> 
+									<select id="country">
+									</select>
+									</td>
+								<td> <span id="co2"></span> </td>
+								<td id="trees"></td>
+								<td id="houses"></td>			
+								</tr>
+						</table>
+					</section>
 
 			<section class="intro">
 			<!--
@@ -41,30 +69,6 @@
 				<button id="start" class="btn btn-success" onclick="loadFirstScreen()"> Start   <i style="padding-left: 10%;" class="fas fa-play"></i> </button>
 				</p>
 			</section>
-
-	<section id="resultSection"> 
-		<table id="results" style="display:none">
-			<tr>
-				<th>Country</th>
-				<th>tonCO2/year</th>
-				<th>Trees</th>
-				<th>Houses</th>
-			</tr>
-			<tr>
-				<td> 
-					<select id="country">
-					</select>
-					</td>
-				<td> <span id="co2"></span> </td>
-				<td id="trees"></td>
-				<td id="houses"></td>			
-				</tr>
-		</table>
-	</section>
-
-
-			<img id="title" class="firstScreen" src="img/Example.png" alt="Input / Processing/ Output">
-			
 		
 			<section id="show">
 				<span></span>
@@ -87,14 +91,14 @@
 
 			<section class="myForm" id="woodPellets" style="display: none">
 				<table id="woodPelletsTable">
-					<tr>
+					<tr  class="titleRow">
 						<th>Inputting</th>
 						<th>Pelletization</th>
 						<th>Transportation</th>
 						<th>Combustion</th>
 						<th>Output</th>
 					</tr>
-					<tr>
+					<tr class="subtitleRow">
 						<td>Sawdust</td>
 						<td>Pellets</td>
 						<td>Trlansported pellets</td>
@@ -227,7 +231,7 @@
 			
 			<section class="myForm" id="woodChips" style="display: none">
 				<table id="woodChipsTable">
-					<tr>
+					<tr class="titleRow">
 						<th>Inputting</th>
 						<th>Chipping</th>
 						<th>Magnetic seperation</th>
@@ -235,7 +239,7 @@
 						<th>Combustion</th>
 						<th>Output</th>
 					</tr>
-					<tr>
+					<tr class="subtitleRow">
 						<td>Wood</td>
 						<td>Chips</td>
 						<td>Seperated chips</td>
@@ -377,7 +381,7 @@
 
 			<section class="myForm" id="manure" style="display: none">
 				<table id="manureTable">
-					<tr>
+					<tr  class="titleRow">
 						<th>Inputting</th>
 						<th>Transportation</th>
 						<th>Handling & Storage</th>
@@ -393,7 +397,7 @@
 						<td>Converted biogas</td>
 						<td>Heat & Electricity</td>
 					</tr>
-					<tr>
+					<tr class="subtitleRow">
 						<th colspan="6">
 							The annual output of the CHP plant 
 							<button class="maximizeRow">+</button>
