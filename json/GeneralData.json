@@ -1,0 +1,21 @@
+{
+    "country": "EU-28",
+    "eelec": "393.00",
+    "esaved_PV": "363.00",
+    "esaved_wind": "383.00",
+    "esaved_hydro": "387.00",
+    "eheat": "80.00",
+    "efuel": "87.64",
+    "egas": "68.51",
+    "fCH4_CO2": 28,
+    "fN2O_CO2": 265,
+    "nvehicle_Dry": "0.94",
+    "etransport_exhaust_Dry": "0.14",
+    "nvehicle_Liquid": "1.01",
+    "etransport_exhaust_Liquid": "0.14",
+    "LHV_Demolitoion_Wood": "17.70",
+    "LHV_Sawdust": "18.30",
+    "LHV_Methane": "50.00",
+    "etree": "60.00",
+    "ehouse": "1887.48"
+  }
