@@ -7,6 +7,7 @@ $(document).ready(function (e) {
 		$("#calculateChips").attr("onclick", "calculateChips()");
 		$("#calculatePellets").attr("onclick", "calculatePellets()");
 		$("#calculateManure").attr("onclick", "calculateManure()");
+		
 		$.get('/index.html/countries', function(responseText) {
 			var countries = responseText;
 				addCountries(countries);
@@ -50,22 +51,19 @@ function energySelector(){
 
 	document.getElementById("results").style.display = "block";
 	var option = document.getElementById("selector").value;
+	$("#title").css("display","none");
 	switch (option)
 	{
 		case "IWH":
-			$("#title").attr("src", "img/IWH.png");
 			changeFormInDisplay("WindForm");
 			break;
 		case "DW":
-			$("#title").attr("src", "img/DW.png");
 			changeFormInDisplay("woodChips");
 			break;
 		case "Saw":
-			$("#title").attr("src", "img/Saw.png");
 			changeFormInDisplay("woodPellets");
 			break;
 		case "Man":
-			$("#title").attr("src", "img/Man.png");
 			changeFormInDisplay("manure");
 			break;
 
