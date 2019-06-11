@@ -2,32 +2,56 @@
 
 html{
 	text-align:center;
+	background-image: url("img/background_image.jpeg");
 
 }
 
+body{
+	background: inherit;
+}
 main{
+	width: 100%;
+	height: 100%;
 	text-align:center;
 	margin-top:1%;
+	background: inherit;
+	
+	
+
 }
 
 header{
 	text-align: center;
+
+
 }
 
 input{
 	max-width: 50px;
+	max-height: 23px;
+	border-radius: 5px
+}
+
+
+input:focus{
+	background-color: wheat;
 }
 
 th, td {
 	border: 1px black solid;
 } 
 
+.myForm td:not(.subtitleCell){
+	font-size: 10px;
+}
 
 #resultSection{
 	text-align: center;
 	border: 1px solid black;
 	display:table;
 	margin: auto;
+
+	
 }
 
 .hiddenRow{
@@ -35,7 +59,7 @@ th, td {
 }
 
 .showRow{
-	display: "";
+	display: auto;
 }
 
 .firstScreen{
@@ -61,6 +85,13 @@ th, td {
 	margin-left: 5%;
 	margin-right:5%;
 }
+#results th {
+	background-color: green;
+}
+
+#results td{
+	background-color: lightgreen
+}
 
 #manureTable, #woodChipsTable,#woodPelletsTable{
 	width:100%;
@@ -68,8 +99,10 @@ th, td {
 
 .intro{
 	text-align: center;
-	margin-right: 20%  ;
+	margin-right: 20%;
 	margin-left: 20%;
+
+	
 }
 #titleIntro{
 	border: 1px solid black;
@@ -86,8 +119,6 @@ th, td {
 	border-radius: 0px 0px 10px;
 }
 
-
-
 #title{
 	 margin-left: auto;
 	 margin-right: auto;
@@ -102,4 +133,10 @@ th, td {
 #start{
 	margin: 2%;
 }
+
+#country{
+	background-color: lightgrey;
+}
+
+
  
