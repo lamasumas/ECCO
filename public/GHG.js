@@ -12,7 +12,7 @@ $(document).ready(function (e) {
 			var countries = responseText;
 				addCountries(countries);
 		});
-		
+		loadTooltips();
 	
 });
 
@@ -195,7 +195,21 @@ function calculateWind()
 	$.get("/formulas/Irradiation?country="+theCountry+"&typeOfEnergy="+(typeOfEnergy)+"&yearProduction="+
 	(document.getElementById("yearProduction").value), (response) => writeResults(response));
 
+}
 
-               
 
+function loadTooltips(){
+	var settings = {
+		"async": true,
+		"url": "./tooltips.json",
+	  	"method": "GET"
+	};
+	$.ajax(settings).done(function(response){
+		$(".fa-question-circle").each((x,y) =>{
+			y.setAttribute("title", response[y.id]);
+		});
+	}
+
+	);
+	
 }
