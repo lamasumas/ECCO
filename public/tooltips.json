@@ -1,4 +1,32 @@
 {
     "wind-anual": "Write in the text-box the anual ammount of electricity obtained",
-    "wind-type": "Select a type of energy"
+    "wind-type": "Select a type of energy",
+    "pellets-anual" : "Write in the text-boxes the anual amount of heat and electricity produced in the chp plant",
+    "pellets-anual-weight": "Write in the text-box the amount of pellets used in the combustion state",
+    "pellets-gas-electricity-used": "Write in the next row the amount of electricity and gas that was used in the pelletization and combustion process",
+    "pellets-truck": "Write the distance that the truck needs to drive",
+    "pellets-moisture":"Write down the moisture percentage in the sawdust and in the pellets",
+    "pellets-temp": "Write down the useful heat for having an efficient output and the surrounding heat",
+    "pellets-lost": "Write down the four percentages of material lost in each stage",
+    "chips-anual":"Write in the text-boxes the anual amount of heat and electricity produced in the chp plant",
+    "chips-weight": "Write in the text-box the amount of pellets used in the combustion state",
+    "chips-lost": "Write down the five percentages of the material lost in each stage ",
+    "chips-gas-electricity-used": "Write in the next row the amount of electricity and gas that was used in the chipping and combustion process",
+    "chips-truck": "Write the distance that the truck needs to drive",
+    "chips-moisture": "Write down the moisture percentage in the wood and in the wood chips",
+    "chips-temp":"Write down the useful heat for having an efficient output and the surrounding heat",
+    "manure-anual": "",
+    "manure-weight": "",
+    "manure-efficient":"",
+    "manure-lost": "",
+    "manure-gas-electricity-used": "",
+    "manure-truck": "",
+    "manure-mehtane": "",
+    "manure-temp": "",
+    "manure-emision": ""
+
+
+
+
+
 }
