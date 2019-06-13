@@ -1,0 +1,561 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title> Demo </title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="styles.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+		<script  src="GHG.js"></script>
+		</head>
+	<body>
+		<header>
+				
+			<section class="firstScreen">
+							<select id="selector"  onchange=" energySelector()" >
+								
+								<option disabled selected value> -- select an option -- </option>
+								<option value="IWH">Solar/Eólica/Hidro</option>
+								<option value="DW">Madera demolida</option>
+								<option value="Saw">Serrín</option>
+								<option value="Man">Abono</option>
+							</select>
+						</section>
+		
+			
+		
+		
+					<img id="title" class="firstScreen" src="img/Example.png" alt="Input / Processing/ Output">
+					
+		</header>
+		<main>
+
+				<section id="resultSection"> 
+						<table id="results" style="display:none">
+							<tr>
+								<th>País</th>
+								<th>tonCO2/año</th>
+								<th>Árboles</th>
+								<th>Casas</th>
+							</tr>
+							<tr>
+								<td > 
+									<select id="country">
+									</select>
+									</td>
+								<td> <span id="co2"></span> </td>
+								<td id="trees"></td>
+								<td id="houses"></td>			
+								</tr>
+						</table>
+					</section>
+
+			<section id="containerIntro">
+				<section class="intro">
+				<!--
+					<section id="banner">
+						<img  alt="ECCO logo">
+						<img alt="CIT logo">
+
+					</section>-->
+
+					<h3 id="titleIntro"> Calculador de gases de efecto invernadero (GHG) </h3>
+					<p id="descriptionIntro">
+                        Esta herramineta ha sido creada por la necesidad de tener una manera simple, facil de usar y precisa de calcular los GHG de las diferentes energias renovable.
+                        <br>
+                        Esta herramienta ha sido desarrollada gracias a los fondos recividos del proyecto ECCO Intereg.
+						<br>
+					<button id="start" class="btn btn-success" onclick="loadFirstScreen()"> Comenzar   <i style="padding-left: 10%;" class="fas fa-play"></i> </button>
+					</p>
+				</section>
+			</section>
+		
+			<section id="show">
+				<span></span>
+			</section>
+
+			<section class="myForm" id="WindForm" style="display:none"> 
+				<h3> Salida <i class="fas fa-plug"></i></h3>
+				<h4> <i id="wind-anual" class="far fa-question-circle"></i> Producción anual del systema:</h4>
+				<input type="text" id="yearProduction">
+				(MWhelectricidad/año) <br> 
+				<h4> <i id="wind-type" class="far fa-question-circle"></i>Tipos de energía:</h4>
+				<select id="typeOfEnergy">
+					<option value="wind">Eólica</option>
+					<option value="pV">Solar</option>
+					<option value="Hydroelectric">Hidráulica</option>
+				</select>
+				<br>
+				<button id="calculateWind" > Calcular</button>	
+			</section>
+
+			<section class="myForm" id="woodPellets" style="display: none">
+				<table id="woodPelletsTable">
+					<tr  class="titleRow">
+						<th>Entrada <i class="fas fa-tree"></i></th>
+						<th>Peletización <i class="fas fa-braille"></i></th>
+						<th>Transporte <i class="fas fa-truck-loading"></i></th>
+						<th>Combustión <i class="fab fa-gripfire"></i></th>
+						<th>Salida <i class="fas fa-plug"></i></th>
+					</tr>
+					<tr class="subtitleRow">
+						<td class="subtitleCell">Serrín</td>
+						<td class="subtitleCell">Pellets</td>
+						<td class="subtitleCell">Transporte de pellets</td>
+						<td class="subtitleCell">Conversion</td>
+						<td class="subtitleCell">Calor & Electricidad</td>
+					</tr>
+					<tr>
+						<th colspan="5">
+							<i id="pellets-anual" class="far fa-question-circle"></i>La producción anual de la planta CHP. 
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="4"></td>
+						<td>
+							<input id="pelletEllectOutput"> MWhelectricidad<br>
+							<input id="pelletHeatOutput"> GJcalor/año
+						</td>
+					</tr>
+					<tr>
+						<th colspan="5"><i id="pellets-anual-weight" class="far fa-question-circle"></i> La cantidad de pellets usadas en la combustión:
+							<button class="maximizeRow">+</button>
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="2"></td>
+						<td>
+							<input id="trasportedPellets"> tonPelles_transportados/año
+						</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th colspan="5"><i id="pellets-lost" class="far fa-question-circle"></i>El procentage de peso perdido entre etapas:
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td>
+							<input id="percentege_feedstock_sawdust_loss">
+							madera_perdida
+						</td>
+						<td><input id="sawdust_loss">
+							serrin_perdida
+						</td>
+						<td>
+							<input id="pellets_loss">
+							pellets_perdida
+						</td>
+						<td>
+							<input id="transported_pellets_loss">
+							pellets_transportados_perdidos
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="5"><i id="pellets-gas-electricity-used" class="far fa-question-circle"> </i> La electricidad y/o gas usado en el proceso:
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td></td>
+						<td>
+							<input id="electricityPelletization"> kWhelectricidad/tonpellets
+							<br>
+							<input id="heatPelletication">MJgas/tonpellets
+						</td>
+						<td></td>
+						<td>
+							<input id="electricityTransportedPellets">
+							kWhelectricidad/tonpellets_transportados
+							<br>
+							<input id="heatTransportedPellets">
+							kWhelectricidad/tonpellets_transportados
+						</td>
+					</tr>
+					<tr>
+						<th colspan="5"> <i id="pellets-truck" class="far fa-question-circle"> </i>La distancia conducida por un camión para transportar los pellets a la planta de combustion:
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr  class="hiddenRow">
+						<td colspan="2"></td>
+						<td>
+							<input id="kmTruckTransport_pellets">
+							kmConducidos
+						</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th colspan="5"><i id="pellets-moisture" class="far fa-question-circle"></i>La humedad:
+							<button class="maximizeRow">+</button>
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td>
+							<input id="moisture_dust_pellets">
+							Humedad_serrín
+						</td>
+						<td>
+							<input id="moisture_pellets">
+							Humedad_pellets
+						</td>
+						<td colspan="3"></td>
+					</tr>
+					<tr>
+						<th colspan="5"><i id="pellets-temp" class="far fa-question-circle"></i>La temperatura util en el punto de entrega Th y la temperatura del entorno T0:
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="3"></td>
+						<td>
+							<input id="usefulC_pellets"> 
+							°Ccalor_util
+							<br>
+							<input id="surroundC_pellets"> 
+							°Calrededores
+						</td>
+					</tr>
+				</table>
+				<button id="calculatePellets">Calcular</button>
+			</section>
+ 
+
+			
+			<section class="myForm" id="woodChips" style="display: none">
+				<table id="woodChipsTable">
+					<tr class="titleRow">
+						<th>Entrada <i class="fas fa-tree"></i></th>
+						<th>Troceo <i class="fas fa-haykal"></i></th>
+						<th>Separacion magnética <i class="fas fa-magnet"></i></th>
+						<th>Transporte <i class="fas fa-truck-loading"></i></th>
+						<th>Combustión <i class="fab fa-gripfire"></i></th>
+						<th>Salida  <i class="fas fa-plug"></i></th>
+					</tr>
+					<tr class="subtitleRow">
+						<td class="subtitleCell">Madera</td>
+						<td class="subtitleCell">Madera troceada</td>
+						<td class="subtitleCell">Madera troceada separada</td>
+						<td class="subtitleCell">Trozos transportados</td>
+						<td class="subtitleCell">Trozos convertidos</td>
+						<td class="subtitleCell">Calor & Electricidad</td>
+					</tr>
+					<tr>
+						<th colspan="6">
+							<i id="chips-anual" class="far fa-question-circle"></i> Producción anual de la planta CHP: 
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="5"></td>
+						<td>
+							<input id="chipsellectOutput"> MWhelectricidad <br>
+							<input id="chipsHeatOutput"> GJcalor/año
+						</td>
+					</tr>
+					<tr>
+						<th colspan="6"> <i id="chips-weight" class="far fa-question-circle"></i> Cantidad anual the madera troceada usada en la etapa de combustión:
+							<button class="maximizeRow">+</button>			
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="3"></td>
+						<td>
+							<input id="trasportedChips"> tonTrozos_transportada/año
+						</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th colspan="6"> <i id="chips-lost" class="far fa-question-circle"></i> Procentage the peso perdido entre etapas:
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td>
+							<input id="feedstock_chips_loss">
+							madera_perdida
+						</td>
+						<td><input id="wood_chips_loss">
+							madera_traceada_perdida
+						</td>
+						<td>
+							<input id="chips_loss">
+							trozos_perdido
+						</td>
+						<td>
+							<input id="seperated_chips_loss">
+							trozos_separados_perdidos
+						</td>
+						<td>
+							<input id="transported_chips_loss">
+							trozos_transportados_perdidos
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="6"> <i id="chips-gas-electricity-used" class="far fa-question-circle"></i>La electricidad y/o gas perdida en el proceso:
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td></td>
+						<td>
+							<input id="electricityChipping"> kWhelectricidad/tonpellets
+						</td>
+						<td>
+							<input id="electricityMegneticSeparation"> kWhelectricidad/tonpellets
+		
+						</td>
+						<td></td>
+						<td>
+							<input id="electricityTransportedChips">
+							kWhelectricidad/tonTrozos_transportados
+							<br>
+							<input id="heatTransportedChips">
+							kWhelectricidad/tonTransportados
+						</td> 
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="6"><i id="chips-truck" class="far fa-question-circle"></i>La distancia conducidad por un camión al transportar la madera trozeada a la planta de combustion:
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="3"></td>
+						<td>
+							<input id="kmTruckTransport_chips">
+							kmConducidos
+						</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th colspan="6"> <i id="chips-moisture" class="far fa-question-circle"></i> La humedad:
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td>
+							<input id="moisture_wood_chips">
+							humedad_madera
+						</td>
+						<td>
+							<input id="moisture_chips">
+							humedad_trozos
+						</td>
+						<td colspan="4"></td>
+					</tr>
+					<tr>
+						<th colspan="6"><i id="chips-temp" class="far fa-question-circle"></i>La temperatura util en el punto de entrega Th y la temperatura en los alrededores T0
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="4"></td>
+						<td>
+							<input id="usefulC_chips"> 
+							°Ccalor_util
+							<br>
+							<input id="surroundC_chips"> 
+							°Calrededores
+						</td>
+						<td></td>
+					</tr>
+				</table>
+				<button id="calculateChips">Calcular</button>
+			</section>
+
+			<section class="myForm" id="manure" style="display: none">
+				<table id="manureTable">
+					<tr  class="titleRow">
+						<th>Entrada <i class="fas fa-box-open"></i></th>
+						<th>Transporte <i class="fas fa-truck-loading"></i></th>
+						<th>Manejo & Almacenaje <i class="fas fa-boxes"></i></th>
+						<th>Digestión  <i class="fas fa-vials"></i></th>
+						<th>Combustión <i class="fab fa-gripfire"></i></th>
+						<th>Salida <i class="fas fa-plug"></i></th>
+					</tr>
+					<tr class="subtitleRow">
+						<td class="subtitleCell">Abono</td>
+						<td class="subtitleCell">Abono transportado</td>
+						<td class="subtitleCell">Abono almacenado</td>
+						<td class="subtitleCell">Biogas</td>
+						<td class="subtitleCell">Biogas convertido</td>
+						<td class="subtitleCell">Calor & Electricidad</td>
+					</tr>
+					<tr >
+						<th colspan="6">
+							<i id="manure-anual" class="far fa-question-circle"></i> Producción anual de la planta CHP: 
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="5"></td>
+						<td>
+							<input id="manurellectOutput"> MWhelectricidad <br>
+							<input id="manureHeatOutput"> GJcalor/año
+						</td>
+					</tr>
+					<tr>
+						<th colspan="6"><i id="manure-weight" class="far fa-question-circle"></i>La cantidad de abono anual:
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td> <input id="annualManureWeight">tonAbono/año</td>
+						<td colspan="5"></td>
+					</tr>
+					<tr>
+						<th colspan="6"><i id="manure-efficient" class="far fa-question-circle"></i>Eficiencia en la transformacion de abono a biogas:
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="4"></td>
+						<td>
+							<input id="efficienyManureTransformation"> 
+							m3biogas/tonAbonoAlmacenado
+						</td>
+					</tr>
+					<tr>
+						<th colspan="6"><i id="manure-lost" class="far fa-question-circle"></i>Porcentage de material perdido entre etapas:
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td>
+							<input id="percentege_feedstock_manure_loss">
+							abono_inicial_perdido
+						</td>
+						<td><input id="manure_loss">
+							abono_perdido
+						</td>
+						<td>
+							<input id="transported_manures_loss">
+							abono_transportado_perdido
+						</td>
+						<td></td>
+						<td>
+							<input id="biogas_loss">
+							biogas_perdido
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="6"><i id="manure-gas-electricity-used" class="far fa-question-circle"></i>La electricidad y/o gas usada en el proceso:
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="2"></td>
+						<td>
+							<input id="electricityTranportedManure"> kWh/tontransported_manure
+						</td>
+						<td>
+							<input id="electricityDigestionManure"> kWh/tonstored_manure 
+							<br>
+							<input id="heatDigestionManure"> MJ/tonstored_manure
+
+						</td>
+						<td>
+							<input id="electricityCombustionManure">
+							kWh/m3biogas
+							<br>
+							<input id="heatCombustionManure">
+							MJ/m3biogas
+						</td> 
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="6"><i id="manure-truck" class="far fa-question-circle"></i>The length of moving wet manure to the power plant by truck
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td></td>
+						<td>
+							<input id="kmTruckManure">
+							kmtruck_transport
+						</td>
+						<td colspan="4"></td>
+					</tr>
+					<tr>
+						<th colspan="6"><i id="manure-methane" class="far fa-question-circle"></i>The percentage of methane gas in the biogas
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="3"></td>
+						<td>
+							<input id="methane_content">
+							methane_content
+						</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th colspan="6"><i id="manure-temp" class="far fa-question-circle"></i>The temperature of useful heat at a point of delivery Th and the temperature of the surroundings T0
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="4"></td>
+						<td>
+							<input id="usefulC_Manure"> 
+							°Cuseful_heat_output 
+							<br>
+							<input id="surroundC_Manure"> 
+							°Csurroundings
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="6"><i id="manure-emision" class="far fa-question-circle"></i>The emission of gases directly generated
+							<button class="maximizeRow">+</button>
+					
+						</th>
+					</tr>
+					<tr class="hiddenRow">
+						<td colspan="2"></td>
+						<td>
+							<input id="co2ProducedManure">kgCO2/tontransported_manure
+							<br>
+							<input id="ch4ProducedManure">kgCH4/tontransported_manure
+							<br>
+							<input id = "N2oProducedManure"> kgN2O/tontransported_manure
+						</td>
+						<td colspan="3"></td>
+					</tr>
+				</table>
+				<button id="calculateManure">Calculate</button>
+			</section>
+
+			<h5 id="test"></h5>
+		</main>
+	<footer>
+	</footer>
+	</body>
+</html>
