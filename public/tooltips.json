@@ -15,15 +15,15 @@
     "chips-truck": "Write the distance that the truck needs to drive",
     "chips-moisture": "Write down the moisture percentage in the wood and in the wood chips",
     "chips-temp":"Write down the useful heat for having an efficient output and the surrounding heat",
-    "manure-anual": "",
-    "manure-weight": "",
-    "manure-efficient":"",
-    "manure-lost": "",
-    "manure-gas-electricity-used": "",
-    "manure-truck": "",
-    "manure-mehtane": "",
-    "manure-temp": "",
-    "manure-emision": ""
+    "manure-anual": "Write in the text-boxes the anual amount of heat and electricity produced in the chp plant",
+    "manure-weight": "Write in the text-box the amount of manure used in the combustion state",
+    "manure-efficient":"Write the expected efficiency in the transformation of the manure into biogas",
+    "manure-lost": "Write down the four percentages of material lost in each stage",
+    "manure-gas-electricity-used": "Write the amount of gas/electricity used in the storage, digestion and combustion stages",
+    "manure-truck": "Write the distance that the transportation truck should drive from one facility to another",
+    "manure-methane": "Write the amount of methane content produced in the digestion state",
+    "manure-temp": "Write down the useful heat for having an efficient output and the surrounding heat",
+    "manure-emision": "Wrtie down the amount of CO2, CH4 and N2O produced while handling and storaging the manure"
 
 
 
