@@ -1,0 +1,30 @@
+{
+  "name": "ecco",
+  "version": "2.0.0",
+  "description": "An GHG tool developed for the ECCO European program",
+  "main": "app.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+	  "start": "node app.js",
+	  "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lamasumas/ECCO.git"
+  },
+  "keywords": [
+    "GHG"
+  ],
+  "author": "lamasumas (Eduardo Lamas Suárez)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lamasumas/ECCO/issues"
+  },
+  "homepage": "https://github.com/lamasumas/ECCO#readme"
+}
