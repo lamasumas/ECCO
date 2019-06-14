@@ -1,0 +1,29 @@
+{
+    "wind-anual": "",
+    "wind-type": "",
+    "pellets-anual" : "",
+    "pellets-anual-weight": "",
+    "pellets-gas-electricity-used": "",
+    "pellets-truck": "",
+    "pellets-moisture":"",
+    "pellets-temp": "",
+    "pellets-lost": "",
+    "chips-anual":"",
+    "chips-weight": "",
+    "chips-lost": "",
+    "chips-gas-electricity-used": "",
+    "chips-truck": "",
+    "chips-moisture": "",
+    "chips-temp":"",
+    "manure-anual": "",
+    "manure-weight": "",
+    "manure-efficient":"",
+    "manure-lost": "",
+    "manure-gas-electricity-used": "",
+    "manure-truck": "",
+    "manure-methane": "",
+    "manure-temp": "",
+    "manure-emision": ""
+
+
+}

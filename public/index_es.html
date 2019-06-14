@@ -13,11 +13,12 @@
 		</head>
 	<body>
 		<header>
-				
+			<a href="index.html"><img class="icon" alt="English" src="img/English.png"> </a> 
+			<a href="index_es.html"> <img  class="icon" alt="Spainsh" src="img/Spain.png"></a>
 			<section class="firstScreen">
 							<select id="selector"  onchange=" energySelector()" >
 								
-								<option disabled selected value> -- select an option -- </option>
+								<option disabled selected value> -- Selecciona una opción -- </option>
 								<option value="IWH">Solar/Eólica/Hidro</option>
 								<option value="DW">Madera demolida</option>
 								<option value="Saw">Serrín</option>
@@ -135,7 +136,7 @@
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<th colspan="5"><i id="pellets-lost" class="far fa-question-circle"></i>El procentage de peso perdido entre etapas:
+						<th colspan="5"><i id="pellets-lost" class="far fa-question-circle"></i>El porcentaje de peso perdido entre etapas:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -277,7 +278,7 @@
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<th colspan="6"> <i id="chips-lost" class="far fa-question-circle"></i> Procentage the peso perdido entre etapas:
+						<th colspan="6"> <i id="chips-lost" class="far fa-question-circle"></i> Porcentaje the peso perdido entre etapas:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -437,7 +438,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-lost" class="far fa-question-circle"></i>Porcentage de material perdido entre etapas:
+						<th colspan="6"><i id="manure-lost" class="far fa-question-circle"></i>Porcentaje de material perdido entre etapas:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -470,13 +471,12 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input id="electricityTranportedManure"> kWh/tontransported_manure
+							<input id="electricityTranportedManure"> kWh/tonAbonoTransortado
 						</td>
 						<td>
-							<input id="electricityDigestionManure"> kWh/tonstored_manure 
+							<input id="electricityDigestionManure"> kWh/tonAnbonoTransportado
 							<br>
-							<input id="heatDigestionManure"> MJ/tonstored_manure
-
+							<input id="heatDigestionManure"> MJ/tonAbonoAlmacenado
 						</td>
 						<td>
 							<input id="electricityCombustionManure">
@@ -488,7 +488,7 @@
 						<td></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-truck" class="far fa-question-circle"></i>The length of moving wet manure to the power plant by truck
+						<th colspan="6"><i id="manure-truck" class="far fa-question-circle"></i> Distancia conducida por el camión para transportar el abono mojado a la planta de energía:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -497,12 +497,12 @@
 						<td></td>
 						<td>
 							<input id="kmTruckManure">
-							kmtruck_transport
+							kmConducido
 						</td>
 						<td colspan="4"></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-methane" class="far fa-question-circle"></i>The percentage of methane gas in the biogas
+						<th colspan="6"><i id="manure-methane" class="far fa-question-circle"></i>Porcentaje de metano en el biogas:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -511,12 +511,12 @@
 						<td colspan="3"></td>
 						<td>
 							<input id="methane_content">
-							methane_content
+							metano
 						</td>
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-temp" class="far fa-question-circle"></i>The temperature of useful heat at a point of delivery Th and the temperature of the surroundings T0
+						<th colspan="6"><i id="manure-temp" class="far fa-question-circle"></i>La temperatura util en el punto de entrega Th y la temperatura de los alrededores T0:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -525,15 +525,15 @@
 						<td colspan="4"></td>
 						<td>
 							<input id="usefulC_Manure"> 
-							°Cuseful_heat_output 
+							°Cutil
 							<br>
 							<input id="surroundC_Manure"> 
-							°Csurroundings
+							°Calrededores
 						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-emision" class="far fa-question-circle"></i>The emission of gases directly generated
+						<th colspan="6"><i id="manure-emision" class="far fa-question-circle"></i>La emision de gases directamente generados:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -541,16 +541,16 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input id="co2ProducedManure">kgCO2/tontransported_manure
+							<input id="co2ProducedManure">kgCO2/tonAbonoTransportado
 							<br>
-							<input id="ch4ProducedManure">kgCH4/tontransported_manure
+							<input id="ch4ProducedManure">kgCH4/tonAbonoTransportado
 							<br>
-							<input id = "N2oProducedManure"> kgN2O/tontransported_manure
+							<input id = "N2oProducedManure"> kgN2O/tontAbonoTransportado
 						</td>
 						<td colspan="3"></td>
 					</tr>
 				</table>
-				<button id="calculateManure">Calculate</button>
+				<button id="calculateManure">Calcular</button>
 			</section>
 
 			<h5 id="test"></h5>

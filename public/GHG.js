@@ -12,7 +12,10 @@ $(document).ready(function (e) {
 			var countries = responseText;
 				addCountries(countries);
 		});
-		loadTooltips();
+
+		var thePathName = location.pathname.split("/");
+		var htmlName = thePathName[thePathName.length-1];
+		loadTooltips(htmlName);
 	
 });
 
@@ -198,12 +201,34 @@ function calculateWind()
 }
 
 
-function loadTooltips(){
-	var settings = {
-		"async": true,
-		"url": "./tooltips.json",
-	  	"method": "GET"
-	};
+function loadTooltips(htmlName){
+	var settings;
+
+	switch (htmlName)
+	{
+		case "index.html":
+			settings = {
+				"async": true,
+				"url": "./tooltips_en.json",
+				"method": "GET"
+			};
+			break;
+		case "index_es.html":
+			settings = {
+			"async": true,
+			"url": "./tooltips_es.json",
+			  "method": "GET"
+			};
+			break;
+		default:
+			settings = {
+				"async": true,
+				"url": "./tooltips_en.json",
+				"method": "GET"
+			};
+			break;
+	}
+	
 	$.ajax(settings).done(function(response){
 		$(".fa-question-circle").each((x,y) =>{
 			y.setAttribute("title", response[y.id]);
