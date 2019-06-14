@@ -1,6 +1,8 @@
 /*jshint esversion: 6 */
 
-
+/**
+ * Executed when the document is loaded
+ */
 $(document).ready(function (e) {
 		$(".maximizeRow").attr("onclick", "maximize()");
 		$("#calculateWind").attr("onclick", "calculateWind()");
@@ -19,7 +21,11 @@ $(document).ready(function (e) {
 	
 });
 
-
+/**
+ * This method adds to the html country selector the actual values
+ * 
+ * @param {string} countries, string formated with the name of all the countries of the server
+ */
 function addCountries(countries)
 {
 	var countryNames = countries.split("@");
@@ -32,6 +38,9 @@ function addCountries(countries)
 	});
 }
 
+/**
+ * This is a method that maximize the next row in the table thanks to the tree sheme of the html
+ */
 function maximize()
 {
 	var parentNode = event.target.parentElement.parentElement;
@@ -40,6 +49,10 @@ function maximize()
 	event.target.removeEventListener("click", maximize);
 	event.target.addEventListener("click", minimize);
 }
+
+/**
+ * This is a method that minimize the next row in the table thanks to the tree sheme of the html
+ */
 function minimize()
 {
 	var parentNode = event.target.parentElement.parentElement;
@@ -49,7 +62,10 @@ function minimize()
 	event.target.addEventListener("click", maximize );
 }
 
-
+/**
+ * This method is a "event listener" for the energy selector, so it can call to the "animation" of 
+ * changing the energy form
+ */
 function energySelector(){
 
 	document.getElementById("results").style.display = "block";
@@ -74,7 +90,10 @@ function energySelector(){
 	}
 }
  
-
+/**
+ * This is th actual animation of changing the energy form
+ * @param {String} theId id of the energy form 
+ */
 function changeFormInDisplay(theId){
 	var copy = document.getElementById(theId).cloneNode(true);
 	copy.style.display = "block";
@@ -85,7 +104,9 @@ function changeFormInDisplay(theId){
 }
 
 
-
+/**
+ * This will prepare the first screen
+ */
 function loadFirstScreen(){
 	
 	$(".intro").css("display","none");
@@ -93,6 +114,11 @@ function loadFirstScreen(){
 	
 }
 
+/**
+ * This medthod sends a get request to the nodejs server, so it can calculate the co2, trees 
+ * and houses value of the pellets energy
+ * 
+ */
 function calculatePellets()
 {
 	var theCountry = document.getElementById("country").value;
@@ -116,6 +142,13 @@ function calculatePellets()
 
 	$.get("/formulas/WoodPellets?"+allParameters, (response) => writeResults(response));
 }
+
+
+/**
+ * This medthod sends a get request to the nodejs server, so it can calculate the co2, trees 
+ * and houses value of the wood chips energy
+ * 
+ */
 function calculateChips()
 {
 	var theCountry = document.getElementById("country").value;
@@ -140,6 +173,12 @@ function calculateChips()
 	$.get("/formulas/WoodChips?"+allParameters, (response) => writeResults(response));
 
 }
+
+/**
+ * This method will validate the input, and it will try to parse it into a number.
+ * If the input is not valid, a 0 will be reutrn 
+ * @param {string} theId, id of the text field
+ */
 function getValidatedInput(theId){
 	var x = parseFloat(document.getElementById(theId).value);
 	if(isNaN(x))
@@ -148,6 +187,10 @@ function getValidatedInput(theId){
 		return x;
 }
 
+/**
+ * This method will write into the result table the calculated data
+ * @param {String} response, a formated string with the actual values
+ */
 function writeResults(response){
 	var splittedResponse = response.split("@");
 	var co2 = parseFloat(splittedResponse[0]);
@@ -159,6 +202,12 @@ function writeResults(response){
 	document.getElementById("houses").innerHTML= Math.round(houses * 100) / 100;
 }
 
+
+/**
+ * This medthod sends a get request to the nodejs server, so it can calculate the co2, trees 
+ * and houses value of the manure energy
+ * 
+ */
 function calculateManure(){
 
 	var theCountry = document.getElementById("country").value;
@@ -189,6 +238,12 @@ function calculateManure(){
 
 }
 
+
+/**
+ * This medthod sends a get request to the nodejs server, so it can calculate the co2, trees 
+ * and houses value of the wind/hidro/pv energy
+ * 
+ */
 function calculateWind()
 {
 	
@@ -200,7 +255,11 @@ function calculateWind()
 
 }
 
-
+/**
+ * This method loads the tooltips depending on the language into the html
+ * 
+ * @param {string} htmlName name of the html file 
+ */
 function loadTooltips(htmlName){
 	var settings;
 

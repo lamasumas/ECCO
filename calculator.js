@@ -3,7 +3,9 @@
  var fs = require("fs");
  var generalJSON =  JSON.parse(fs.readFileSync(__dirname+"/json/GeneralData.json")) ;
 
-
+/**
+ * This exported method will calculate the value of the co2, trees and houses of the wood chips
+ */
 exports.calculateWoodChips = function (countryJSON,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedChipsYear,moistwoodParam,
     moistchipsParam,feedstock_chips_loss, electricityChipping, transported_chips_loss, seperated_chips_loss, chips_loss,
    wood_chips_loss, kmTruckTransport_chips, heatTransportedChips,electricityTransportedChips, electricityMegneticSeparation){
@@ -84,7 +86,9 @@ exports.calculateWoodChips = function (countryJSON,outputheat, outputelec, usefu
 
    };
 
-
+/**
+ * This exported method will calculate the value of the co2, trees and houses of the manure
+ */
    exports.calculateManure = function (countryJSON, outputelec, outputheat,heatCombustionManure,electricityCombustionManure, kmTruckManure, annualManureWeightn, usefulC, 
        surroundingsC,manure_loss, percentege_feedstock_manure_loss, transported_manures_loss, biogas_loss,
        efficienyManureTransformation, methane_content,co2ProducedManure,ch4ProducedManure, heatDigestionManure,
@@ -164,7 +168,9 @@ exports.calculateWoodChips = function (countryJSON,outputheat, outputelec, usefu
 
  
 
-
+/**
+ * This exported method will calculate the value of the co2, trees and houses of the wood pellets
+ */
 exports.calculateWoodPellets = function(countryJSON,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedPelletsYear,moistpelletsParam,
     moistFeedstockSawdustParam, pellets_loss, electricityPelletization, transported_pellets_loss, percentege_feedstock_sawdust_loss,
     sawdust_loss, kmTruckTransport_pellets, heatTransportedPellets,electricityTransportedPellets,heatPelletication){
@@ -238,7 +244,9 @@ exports.calculateWoodPellets = function(countryJSON,outputheat, outputelec, usef
 
  };
 
-
+/**
+ * This exported method will calculate the value of the co2, trees and houses of the wind/pv/hydro
+ */
 exports.calculateWind = function (country, typeOfEnergy, yearProduction) {
     var co2 = 0;
        switch(typeOfEnergy)
@@ -263,7 +271,11 @@ exports.calculateWind = function (country, typeOfEnergy, yearProduction) {
        return co2.toString() + "@" + trees.toString() + "@" + houses.toString();
 }
 
-
+/**
+ * This will return value used in the formulas
+ * @param {float} th, useful temperature
+ * @param {float} to, surroung temperature 
+ */
 function getCheatValue(th,to){
 
     if (th ==0)
@@ -275,6 +287,13 @@ function getCheatValue(th,to){
         return 0.3546;
 }
 
+/**
+ * This will check if the value exist in the json and returned.
+ * If the value is missing it will search in the general json (EU-28) and return that instead
+ * 
+ * @param {string} countryJSON, selected json country
+ * @param {string} desiredData , Desired key of the country json
+ */
 function getJSONData(countryJSON ,desiredData){
 
     var theData = parseFloat(countryJSON[desiredData]);

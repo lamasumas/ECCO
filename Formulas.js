@@ -1,13 +1,14 @@
 /*jshint esversion: 6 */
-
+//Required modules
 var fs = require("fs");
 var express = require('express');
 var calculator = require("./calculator.js");
 var router = express.Router();
 var loadedJsons;
-
+//Read all the json again
 readData();
 
+//This will handle the get request for the pv/wind/hidro calculation
 router.get("/Irradiation", function(req, res) 
 {
    var theCountrySelected = req.query.country;
@@ -19,7 +20,7 @@ router.get("/Irradiation", function(req, res)
        
 });
 
-
+//This will handle the get request for the wood chips calculation
  router.get("/WoodChips", function(req, res){
 
     var countryJSON = getCountry(req.query.country);
@@ -53,7 +54,7 @@ router.get("/Irradiation", function(req, res)
  });
 
 
-
+//This will handle the get request for the wood pellets calculation
 router.get("/WoodPellets", function(req, res){
 
     
@@ -85,7 +86,7 @@ router.get("/WoodPellets", function(req, res){
 
 
 
-
+//This will handle the get request for the manure calculation
  router.get("/Manure", function(req, res){
 
     var countryJSON = getCountry(req.query.country);
@@ -122,6 +123,13 @@ router.get("/WoodPellets", function(req, res){
 //export this router to use in our index.js
 module.exports = router;
 
+
+ 
+/**
+ * This method will return the country json requested
+ * 
+ * @param {String} name, name of the country
+ */
 function getCountry(name){
     for( i = 0; i< loadedJsons.length; i++)
     {
@@ -132,7 +140,10 @@ function getCountry(name){
         }
     }
  }
-
+ 
+/**
+  * This method will load all the json and it will set up the one array of json and the general european json
+  */
  function readData(){
                
     fs.readFile(__dirname+"/json/Countries.json", (err, fileData) => {
