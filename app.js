@@ -1,13 +1,69 @@
 /*jshint esversion: 6 */
-var loadedJsons;
-var generalJSON;
 
 //Some necessary modules
 var express = require("express");
 var fs = require("fs");
 var app = express();
+
+var mongo = require("mongoose");
+mongo.connect("mongodb://localhost/ecco",  { useNewUrlParser: true });
+var db = mongo.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    var countryScheme = new mongo.Schema({
+    country: String,
+    eelec: String,
+    esaved_PV: String,
+    esaved_wind: String,
+    esaved_hydro: String,
+    eheat: String,
+    efuel: String,
+    egas: String,
+    fCH4_CO2: String,
+    fN2O_CO2: String,
+    nvehicle_Dry: String,
+    etransport_exhaust_Dry: String,
+    nvehicle_Liquid: String,
+    etransport_exhaust_Liquid: String,
+    LHV_Demolitoion_Wood: String,
+    LHV_Sawdust: String,
+    LHV_Methane: String,
+    etree: String,
+    ehouse: String
+});
+
+    var Country = mongo.model("country", countryScheme, "country");
+
+
+    Country.deleteMany({}, function(erro, theCountry)  {
+        console.log("Database cleaned"); 
+    });
+
+   fs.readdir(__dirname+"/json", (err, files) => {
+            if(err){
+                console.log("Error while loading the json files");
+            }
+            try{
+                files.forEach(x =>  new Country(JSON.parse(fs.readFileSync(__dirname+"/json/"+x))).save(function(err, theCountry) {
+                    console.log("element added: "+ theCountry);
+                }));
+              
+            }
+            catch(error){
+                console.log(error);
+            }
+        } );
+       
+
+
+   
+
+    
+});
+
+
 //Read the json files
-readData();
+//readData();
 var formulas = require("./Formulas.js");
 
 //Declare where the static elements are stored (html, css, js(client_side))
@@ -24,53 +80,19 @@ app.get('/index.html', function (req, res) {
  //A get request of the client, in order to get the country names
 app.get('/index.html/countries', function (req, res) {
     
-   var names ="";
-    loadedJsons.forEach((item) => {
-        names += item.country +"@";
+    mongo.model("country").find({}, "country", function(err, names) {
+    var data = "";
+    names.forEach(name => data+="@"+ name.country)
+    
+        res.send(data);
     });
-    res.send(names);
+
+    
 
        
 });
 
 
- 
-/**
- * This method will return the country json requested
- * 
- * @param {String} name, name of the country
- */
- function getCountry(name){
-    for( i = 0; i< loadedJsons.length; i++)
-    {
-        if (loadedJsons[i].country == name)
-        {
-            return loadedJsons[i] ;
-            
-        }
-    }
- }
- 
- /**
-  * This method will load all the json and it will set up the one array of json and the general european json
-  */
- function readData(){
-               
-    fs.readFile(__dirname+"/json/Countries.json", (err, fileData) => {
-        if(err){
-            console.log("Error while loading the json files");
-        }
-        try{
-            
-            loadedJsons = JSON.parse(fileData);
-            generalJSON = getCountry("EU-28");
-        }
-        catch(error){
-            console.log(error);
-        }
-    } );
- }
-
-
  var server = app.listen(8081);
+
 

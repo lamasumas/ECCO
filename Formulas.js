@@ -4,57 +4,9 @@ var fs = require("fs");
 var express = require('express');
 var calculator = require("./calculator.js");
 var router = express.Router();
+
 var loadedJsons;
-var mongo = require("mongoose");
-mongo.connect("mongodb://localhost/ecco",  { useNewUrlParser: true });
 
-var countryScheme = {
-    country: String,
-    eelec: String,
-    esaved_PV: String,
-    esaved_wind: String,
-    esaved_hydro: String,
-    eheat: String,
-    efuel: String,
-    egas: String,
-    fCH4_CO2: String,
-    fN2O_CO2: String,
-    nvehicle_Dry: String,
-    etransport_exhaust_Dry: String,
-    nvehicle_Liquid: String,
-    etransport_exhaust_Liquid: String,
-    LHV_Demolitoion_Wood: String,
-    LHV_Sawdust: String,
-    LHV_Methane: String,
-    etree: String,
-    ehouse: String
-}
-
-mongo.model("country", countryScheme);
-
-mongo.model("country").find( function(err, country){
-    if(country.length == 0)
-    {
-                 
-    fs.readFile(__dirname+"/json/Countries.json", (err, fileData) => {
-        if(err){
-            console.log("Error while loading the json files");
-        }
-        try{
-    
-            mongo.model("country").insertMany(JSON.parse(fileData));
-        }
-        catch(error){
-            console.log(error);
-        }
-    } );
-    }
-});
-
-mongo.model("country").find( function(err, country){
-    console.log(country);
-});
-  
 //Read all the json again
 //readData();
 
