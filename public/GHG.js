@@ -197,9 +197,9 @@ function writeResults(response){
 	var trees = parseFloat(splittedResponse[1]);
 	var houses  = parseFloat(splittedResponse[2]);
 
-	document.getElementById("co2").innerHTML = Math.round(co2 * 100) / 100;
-	document.getElementById("trees").innerHTML= Math.round(trees * 100) / 100;
-	document.getElementById("houses").innerHTML= Math.round(houses * 100) / 100;
+	document.getElementById("co2").innerHTML = writeDots(Math.round(co2));
+	document.getElementById("trees").innerHTML= writeDots(Math.round(trees));
+	document.getElementById("houses").innerHTML= writeDots(Math.round(houses));
 }
 
 
@@ -296,4 +296,17 @@ function loadTooltips(htmlName){
 
 	);
 	
+	
 }
+function writeDots(theData)
+	{
+		var stringData = theData.toString();
+
+		var numberOfDots = (stringData.length-1)/3;
+		var rgx = /(\d+)(\d{3})/;
+		while (rgx.test(stringData)) {
+			stringData = stringData.replace(rgx, '$1' + '.' + '$2');
+		}
+		return stringData;
+
+	}
