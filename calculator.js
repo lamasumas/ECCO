@@ -1,17 +1,30 @@
  /*jshint esversion: 6 */
 
  var fs = require("fs");
- var generalJSON =  JSON.parse(fs.readFileSync(__dirname+"/json/GeneralData.json")) ;
+ var mongo = require("mongoose");
+ mongo.connect("mongodb://localhost/ecco",  { useNewUrlParser: true });
+
+ 
+
+ var generalJSON;
+  mongo.model("country").find({country:"EU-28"}, function(erro, theCountry)
+ {
+     generalJSON = theCountry[0];
+ });
 
 /**
  * This exported method will calculate the value of the co2, trees and houses of the wood chips
  */
-exports.calculateWoodChips = function (countryJSON,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedChipsYear,moistwoodParam,
+exports.calculateWoodChips = function (countryName,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedChipsYear,moistwoodParam,
     moistchipsParam,feedstock_chips_loss, electricityChipping, transported_chips_loss, seperated_chips_loss, chips_loss,
    wood_chips_loss, kmTruckTransport_chips, heatTransportedChips,electricityTransportedChips, electricityMegneticSeparation){
+    
+    mongo.model("country").find({country: countryName}, function(err, countryJSON)
+    {
+        
 
-
-
+    countryJSON = countryJSON[0];
+    console.log(countryJSON);
    console.log("CALCULATING WOOD CHIPS DATA");
 
    //eelec = telec
@@ -83,13 +96,14 @@ exports.calculateWoodChips = function (countryJSON,outputheat, outputelec, usefu
    
       return co2.toString() + "@" + trees.toString() + "@" + houses.toString();
    
+    });
 
    };
 
 /**
  * This exported method will calculate the value of the co2, trees and houses of the manure
  */
-   exports.calculateManure = function (countryJSON, outputelec, outputheat,heatCombustionManure,electricityCombustionManure, kmTruckManure, annualManureWeightn, usefulC, 
+   exports.calculateManure = function (country, outputelec, outputheat,heatCombustionManure,electricityCombustionManure, kmTruckManure, annualManureWeightn, usefulC, 
        surroundingsC,manure_loss, percentege_feedstock_manure_loss, transported_manures_loss, biogas_loss,
        efficienyManureTransformation, methane_content,co2ProducedManure,ch4ProducedManure, heatDigestionManure,
        electricityTranportedManure, n2oProducedManure, electricityDigestionManure)
@@ -171,7 +185,7 @@ exports.calculateWoodChips = function (countryJSON,outputheat, outputelec, usefu
 /**
  * This exported method will calculate the value of the co2, trees and houses of the wood pellets
  */
-exports.calculateWoodPellets = function(countryJSON,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedPelletsYear,moistpelletsParam,
+exports.calculateWoodPellets = function(country,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedPelletsYear,moistpelletsParam,
     moistFeedstockSawdustParam, pellets_loss, electricityPelletization, transported_pellets_loss, percentege_feedstock_sawdust_loss,
     sawdust_loss, kmTruckTransport_pellets, heatTransportedPellets,electricityTransportedPellets,heatPelletication){
 
@@ -252,21 +266,21 @@ exports.calculateWind = function (country, typeOfEnergy, yearProduction) {
        switch(typeOfEnergy)
        {
            case "wind":
-                   var esaved_wind = getJSONData(country, "esaved_wind");
+                   var esaved_wind = getJSONData(countryJSON, "esaved_wind");
                    co2 = (yearProduction * esaved_wind) / 1000;
                    break;
            case "pV":
-                   var esaved_PV = getJSONData(country, "esaved_PV");
+                   var esaved_PV = getJSONData(countryJSON, "esaved_PV");
                    co2 = (yearProduction * esaved_PV) / 1000;
                    break;
            case "Hydroelectric":
-                   var esaved_hydro = getJSONData(country, "esaved_hydro");
+                   var esaved_hydro = getJSONData(countryJSON, "esaved_hydro");
                     co2 = (yearProduction * esaved_hydro) / 1000;
                     break;
        }
 
-       var trees = (co2 * 1000) / getJSONData(country, "etree");
-       var houses = (co2 * 1000) / getJSONData(country, "ehouse");
+       var trees = (co2 * 1000) / getJSONData(countryJSON, "etree");
+       var houses = (co2 * 1000) / getJSONData(countryJSON, "ehouse");
        
        return co2.toString() + "@" + trees.toString() + "@" + houses.toString();
 }

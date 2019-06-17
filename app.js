@@ -33,7 +33,7 @@ db.once('open', function() {
 });
 
     var Country = mongo.model("country", countryScheme, "country");
-
+    module.exports = mongo.model("country");
 
     Country.deleteMany({}, function(erro, theCountry)  {
         console.log("Database cleaned"); 

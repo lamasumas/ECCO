@@ -2,22 +2,18 @@
 //Required modules
 var fs = require("fs");
 var express = require('express');
-var calculator = require("./calculator.js");
 var router = express.Router();
-
-var loadedJsons;
-
-//Read all the json again
-//readData();
-
+setTimeout(function(){
+    //do what you need here
+var calculator = require("./calculator.js");
 //This will handle the get request for the pv/wind/hidro calculation
 router.get("/Irradiation", function(req, res) 
 {
    var theCountrySelected = req.query.country;
    var typeOfEnergy = req.query.typeOfEnergy;
    var yearProduction = req.query.yearProduction;
-   var countryJSON = getCountry(theCountrySelected);
-   var result = calculator.calculateWind( countryJSON, typeOfEnergy, yearProduction);
+   var country = getCountry(theCountrySelected);
+   var result = calculator.calculateWind( country, typeOfEnergy, yearProduction);
    res.send( result);
        
 });
@@ -25,7 +21,7 @@ router.get("/Irradiation", function(req, res)
 //This will handle the get request for the wood chips calculation
  router.get("/WoodChips", function(req, res){
 
-    var countryJSON = getCountry(req.query.country);
+    var country = req.query.country;
     var outputheat = parseFloat(req.query.outputheat);
     var outputelec = parseFloat(req.query.outputelec);
     var usefulC = parseFloat(req.query.usefulC);
@@ -48,7 +44,7 @@ router.get("/Irradiation", function(req, res)
 
 
 
-    var theRespose = calculator.calculateWoodChips(countryJSON,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedChipsYear,moistwoodParam,
+    var theRespose = calculator.calculateWoodChips(country,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedChipsYear,moistwoodParam,
         moistchipsParam,feedstock_chips_loss, electricityChipping, transported_chips_loss, seperated_chips_loss, chips_loss,
        wood_chips_loss, kmTruckTransport_chips, heatTransportedChips,electricityTransportedChips, electricityMegneticSeparation);
     
@@ -60,7 +56,7 @@ router.get("/Irradiation", function(req, res)
 router.get("/WoodPellets", function(req, res){
 
     
-    var countryJSON = getCountry(req.query.country);
+    var country = getCountry(req.query.country);
     var outputheat = parseFloat(req.query.outputheat);
     var outputelec = parseFloat( req.query.outputelec);
     var usefulC = parseFloat(req.query.usefulC);
@@ -78,7 +74,7 @@ router.get("/WoodPellets", function(req, res){
     var electricityTransportedPellets = parseFloat(req.query.electricityTransportedPellets);
     var heatPelletication = parseFloat(req.query.heatPelletication);
 
-    var data = calculator.calculateWoodPellets(countryJSON,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedPelletsYear,moistpelletsParam,
+    var data = calculator.calculateWoodPellets(country,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedPelletsYear,moistpelletsParam,
         moistFeedstockSawdustParam, pellets_loss, electricityPelletization, transported_pellets_loss, percentege_feedstock_sawdust_loss,
         sawdust_loss, kmTruckTransport_pellets, heatTransportedPellets,electricityTransportedPellets,heatPelletication);
         
@@ -91,7 +87,7 @@ router.get("/WoodPellets", function(req, res){
 //This will handle the get request for the manure calculation
  router.get("/Manure", function(req, res){
 
-    var countryJSON = getCountry(req.query.country);
+    var country = getCountry(req.query.country);
     var outputelec = parseFloat(req.query.outputelec);
     var outputheat = parseFloat(req.query.outputheat);
     var heatCombustionManure = parseFloat(req.query.heatCombustionManure);
@@ -113,14 +109,14 @@ router.get("/WoodPellets", function(req, res){
     var n2oProducedManure = parseFloat(req.query.n2oProducedManure);
     var electricityDigestionManure = parseFloat(req.query.electricityDigestionManure);
 
-    var data = calculator.calculateManure(countryJSON, outputelec, outputheat,heatCombustionManure,electricityCombustionManure, kmTruckManure, annualManureWeight, usefulC, 
+    var data = calculator.calculateManure(country, outputelec, outputheat,heatCombustionManure,electricityCombustionManure, kmTruckManure, annualManureWeight, usefulC, 
         surroundingsC,manure_loss, percentege_feedstock_manure_loss, transported_manures_loss, biogas_loss,
         efficienyManureTransformation, methane_content,co2ProducedManure,ch4ProducedManure, heatDigestionManure,
         electricityTranportedManure, n2oProducedManure, electricityDigestionManure);
     res.send(data);
     
 });
-
+}, 100);
 
 //export this router to use in our index.js
 module.exports = router;
