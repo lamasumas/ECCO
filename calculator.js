@@ -2,8 +2,7 @@
 
  var fs = require("fs");
  var mongo = require("mongoose");
- mongo.connect("mongodb://localhost/ecco",  { useNewUrlParser: true });
- //docmongo.connect("mongodb://54.91.147.51:27017",  { useNewUrlParser: true });
+ mongo.connect("mongodb://mongo:27017/ecco:",  { useNewUrlParser: true });
 
  var generalJSON;
   mongo.model("country").find({country:"EU-28"}, function(erro, theCountry)
