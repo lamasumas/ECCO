@@ -12,7 +12,8 @@ $(document).ready(function (e) {
 		
 		$.get('/index.html/countries', function(responseText) {
 			var countries = responseText;
-				addCountries(countries);
+			alert(countries);
+			addCountries(countries);
 		});
 
 		loadTooltips(document.documentElement.lang);
