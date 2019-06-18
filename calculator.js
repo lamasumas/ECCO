@@ -3,7 +3,12 @@
  var fs = require("fs");
  var mongo = require("mongoose");
  mongo.connect("mongodb://localhost/ecco",  { useNewUrlParser: true });
+<<<<<<< HEAD
  //docmongo.connect("mongodb://54.91.147.51:27017",  { useNewUrlParser: true });
+=======
+
+ 
+>>>>>>> parent of a21f179... docker compose set up
 
  var generalJSON;
   mongo.model("country").find({country:"EU-28"}, function(erro, theCountry)
@@ -18,6 +23,7 @@ exports.calculateWoodChips = function (res, countryName,outputheat, outputelec, 
     moistchipsParam,feedstock_chips_loss, electricityChipping, transported_chips_loss, seperated_chips_loss, chips_loss,
    wood_chips_loss, kmTruckTransport_chips, heatTransportedChips,electricityTransportedChips, electricityMegneticSeparation){
     
+    var result;
     mongo.model("country").findOne({country: countryName},  function(err, countryJSON)
     {
         

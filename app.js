@@ -8,7 +8,10 @@ var app = express();
 console.log("Eduardo Lamas 1");
 var mongo = require("mongoose");
 mongo.connect("mongodb://localhost/ecco",  { useNewUrlParser: true });
+<<<<<<< HEAD
 //mongo.connect("mongodb://54.91.147.51:27017",  { useNewUrlParser: true });
+=======
+>>>>>>> parent of a21f179... docker compose set up
 var db = mongo.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
