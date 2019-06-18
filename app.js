@@ -82,9 +82,8 @@ app.get('/index.html/countries', function (req, res) {
     
     mongo.model("country").find({}, "country", function(err, names) {
     var data = "";
-    names.forEach(name => data+="@"+ name.country)
-    
-        res.send(data);
+    names.forEach(name => data+="@"+ name.country);
+    res.send(data);
     });
 
     

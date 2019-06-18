@@ -1,4 +1,4 @@
- /*jshint esversion: 6 */
+ /*jshint esversion:  8*/
 
  var fs = require("fs");
  var mongo = require("mongoose");
@@ -10,16 +10,17 @@
   mongo.model("country").find({country:"EU-28"}, function(erro, theCountry)
  {
      generalJSON = theCountry[0];
- });
+ }.bind(this));
 
 /**
  * This exported method will calculate the value of the co2, trees and houses of the wood chips
  */
-exports.calculateWoodChips = function (countryName,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedChipsYear,moistwoodParam,
+exports.calculateWoodChips = function (res, countryName,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedChipsYear,moistwoodParam,
     moistchipsParam,feedstock_chips_loss, electricityChipping, transported_chips_loss, seperated_chips_loss, chips_loss,
    wood_chips_loss, kmTruckTransport_chips, heatTransportedChips,electricityTransportedChips, electricityMegneticSeparation){
     
-    mongo.model("country").find({country: countryName}, function(err, countryJSON)
+    var result;
+    mongo.model("country").findOne({country: countryName},  function(err, countryJSON)
     {
         
 
@@ -94,21 +95,22 @@ exports.calculateWoodChips = function (countryName,outputheat, outputelec, usefu
       var trees = (co2 * 1000) / getJSONData(countryJSON, "etree");
       var houses = (co2 * 1000) / getJSONData(countryJSON, "ehouse");
    
-      return co2.toString() + "@" + trees.toString() + "@" + houses.toString();
-   
+      res.send(co2.toString() + "@" + trees.toString() + "@" + houses.toString());
+        
     });
-
    };
 
 /**
  * This exported method will calculate the value of the co2, trees and houses of the manure
  */
-   exports.calculateManure = function (country, outputelec, outputheat,heatCombustionManure,electricityCombustionManure, kmTruckManure, annualManureWeightn, usefulC, 
+   exports.calculateManure = function (res, countryName, outputelec, outputheat,heatCombustionManure,electricityCombustionManure, kmTruckManure, annualManureWeightn, usefulC, 
        surroundingsC,manure_loss, percentege_feedstock_manure_loss, transported_manures_loss, biogas_loss,
        efficienyManureTransformation, methane_content,co2ProducedManure,ch4ProducedManure, heatDigestionManure,
        electricityTranportedManure, n2oProducedManure, electricityDigestionManure)
    {
-   
+    mongo.model("country").findOne({country: countryName},  function(err, countryJSON)
+    {
+       
        var pgas_combustion = heatCombustionManure;
        var pellec_combustion = electricityCombustionManure;
        var efossil_heat = getJSONData(countryJSON , "eheat");
@@ -177,19 +179,21 @@ exports.calculateWoodChips = function (countryName,outputheat, outputelec, usefu
        
        var trees = (co2 * 1000) / getJSONData(countryJSON, "etree");
        var houses = (co2 * 1000) / getJSONData(countryJSON, "ehouse");
-       return co2.toString() + "@" + trees.toString() + "@" + houses.toString();
-   }; 
+       res.send(co2.toString() + "@" + trees.toString() + "@" + houses.toString());
+   });}; 
 
  
 
 /**
  * This exported method will calculate the value of the co2, trees and houses of the wood pellets
  */
-exports.calculateWoodPellets = function(country,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedPelletsYear,moistpelletsParam,
+exports.calculateWoodPellets = function(res, countryName,outputheat, outputelec, usefulC, surroundingsC, tonsTransportedPelletsYear,moistpelletsParam,
     moistFeedstockSawdustParam, pellets_loss, electricityPelletization, transported_pellets_loss, percentege_feedstock_sawdust_loss,
     sawdust_loss, kmTruckTransport_pellets, heatTransportedPellets,electricityTransportedPellets,heatPelletication){
 
-
+        mongo.model("country").findOne({country: countryName},  function(err, countryJSON)
+        {
+           
     console.log("CALCULATING WOOD PELLETS DATA");
 //eelec = telec
 //eheat = thear
@@ -254,14 +258,17 @@ exports.calculateWoodPellets = function(country,outputheat, outputelec, usefulC,
 
     var trees = (co2 * 1000) / getJSONData(countryJSON, "etree");
     var houses = (co2 * 1000) / getJSONData(countryJSON, "ehouse");
-    return co2.toString() + "@" + trees.toString() + "@" + houses.toString();
+    res.send(co2.toString() + "@" + trees.toString() + "@" + houses.toString());
 
- };
+ });};
 
 /**
  * This exported method will calculate the value of the co2, trees and houses of the wind/pv/hydro
  */
-exports.calculateWind = function (country, typeOfEnergy, yearProduction) {
+exports.calculateWind = function (res, countryName, typeOfEnergy, yearProduction) {
+    mongo.model("country").findOne({country: countryName},  function(err, countryJSON)
+    {
+       
     var co2 = 0;
        switch(typeOfEnergy)
        {
@@ -282,8 +289,8 @@ exports.calculateWind = function (country, typeOfEnergy, yearProduction) {
        var trees = (co2 * 1000) / getJSONData(countryJSON, "etree");
        var houses = (co2 * 1000) / getJSONData(countryJSON, "ehouse");
        
-       return co2.toString() + "@" + trees.toString() + "@" + houses.toString();
-}
+       res.send(co2.toString() + "@" + trees.toString() + "@" + houses.toString());
+});};
 
 /**
  * This will return value used in the formulas
