@@ -7,7 +7,7 @@ services:
     ports: 
       - "8081:8081"
     volumes:
-      - .:/app
+      - /app
     links:
       - mongo
     depends_on: 
