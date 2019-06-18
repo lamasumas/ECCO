@@ -82,7 +82,7 @@
 				<h3> Salida <i class="fas fa-plug"></i></h3>
 				<h4> <i id="wind-anual" class="far fa-question-circle"></i> Producción anual del systema:</h4>
 				<input type="text" id="yearProduction">
-				(MWhelectricidad/año) <br> 
+				(MWh<sub>electricidad</sub>/año) <br> 
 				<h4> <i id="wind-type" class="far fa-question-circle"></i>Tipos de energía:</h4>
 				<select id="typeOfEnergy">
 					<option value="wind">Eólica</option>
@@ -119,8 +119,8 @@
 					<tr class="hiddenRow">
 						<td colspan="4"></td>
 						<td>
-							<input id="pelletEllectOutput"> MWhelectricidad<br>
-							<input id="pelletHeatOutput"> GJcalor/año
+							<input id="pelletEllectOutput"> MWh<sub>electricidad</sub><br>
+							<input id="pelletHeatOutput"> GJ<sub>calor</sub>/año
 						</td>
 					</tr>
 					<tr>
@@ -131,7 +131,7 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input id="trasportedPellets"> tonPelles_transportados/año
+							<input id="trasportedPellets"> ton<sub>Pellets_transportados</sub>/año
 						</td>
 						<td colspan="2"></td>
 					</tr>
@@ -144,18 +144,18 @@
 					<tr class="hiddenRow">
 						<td>
 							<input id="percentege_feedstock_sawdust_loss">
-							&percnt;madera
+							&percnt;<sub>madera</sub>
 						</td>
 						<td><input id="sawdust_loss">
-							&percnt;serrin
+							&percnt;<sub>serrin</sub>
 						</td>
 						<td>
 							<input id="pellets_loss">
-							&percnt;pellets
+							&percnt;<sub>pellets</sub>
 						</td>
 						<td>
 							<input id="transported_pellets_loss">
-							&percnt;pellets_transportados
+							&percnt;<sub>pellets_transportados</sub>
 						</td>
 						<td></td>
 					</tr>
@@ -168,17 +168,17 @@
 					<tr class="hiddenRow">
 						<td></td>
 						<td>
-							<input id="electricityPelletization"> kWhelectricidad/tonpellets
+							<input id="electricityPelletization"> kWh<sub>electricidad</sub>/ton<sub>pellets</sub>
 							<br>
-							<input id="heatPelletication">MJgas/tonpellets
+							<input id="heatPelletication">MJ<sub>gas</sub>/ton<sub>pellets</sub>
 						</td>
 						<td></td>
 						<td>
 							<input id="electricityTransportedPellets">
-							kWhelectricidad/tonpellets_transportados
+							kWh<sub>electricidad</sub>/ton<sub>pellets_transportados</sub>
 							<br>
 							<input id="heatTransportedPellets">
-							MJgas/tonpellets
+							MJ<sub>gas</sub>/ton<sub>pellets</sub>
 						</td>
 					</tr>
 					<tr>
@@ -191,7 +191,7 @@
 						<td colspan="2"></td>
 						<td>
 							<input id="kmTruckTransport_pellets">
-							kmConducidos
+							km<sub>Camión</sub>
 						</td>
 						<td colspan="2"></td>
 					</tr>
@@ -203,11 +203,11 @@
 					<tr class="hiddenRow">
 						<td>
 							<input id="moisture_dust_pellets">
-							&percnt;Humedad_serrín
+							&percnt;<sub>serrín</sub>
 						</td>
 						<td>
 							<input id="moisture_pellets">
-							&percnt;Humedad_pellets
+							&percnt;<sub>pellets</sub>
 						</td>
 						<td colspan="3"></td>
 					</tr>
@@ -221,10 +221,10 @@
 						<td colspan="3"></td>
 						<td>
 							<input id="usefulC_pellets"> 
-							°Ccalor_util
+							°C<sub>Util</sub>
 							<br>
 							<input id="surroundC_pellets"> 
-							°Calrededores
+							°C<sub>Alrededores</sub>
 						</td>
 					</tr>
 				</table>
@@ -261,8 +261,8 @@
 					<tr class="hiddenRow">
 						<td colspan="5"></td>
 						<td>
-							<input id="chipsellectOutput"> MWhelectricidad <br>
-							<input id="chipsHeatOutput"> GJcalor/año
+							<input id="chipsellectOutput"> MWh<sub>electricidad</sub> <br>
+							<input id="chipsHeatOutput"> GJ<sub>calor</sub>/año
 						</td>
 					</tr>
 					<tr>
@@ -273,7 +273,7 @@
 					<tr class="hiddenRow">
 						<td colspan="3"></td>
 						<td>
-							<input id="trasportedChips"> tonAstillas_transportada/año
+							<input id="trasportedChips"> ton<sub>Astillas_transportada</sub>/año
 						</td>
 						<td colspan="2"></td>
 					</tr>
@@ -286,22 +286,22 @@
 					<tr class="hiddenRow">
 						<td>
 							<input id="feedstock_chips_loss">
-							&percnt;madera
+							&percnt;<sub>madera</sub>
 						</td>
 						<td><input id="wood_chips_loss">
-							&percnt;madera_traceada
+							&percnt;<sub>madera_traceada</sub>
 						</td>
 						<td>
 							<input id="chips_loss">
-							&percnt;astillas
+							&percnt;<sub>astillas</sub>
 						</td>
 						<td>
 							<input id="seperated_chips_loss">
-							&percnt;astillas_separados
+							&percnt;<sub>astillas_separados</sub>
 						</td>
 						<td>
 							<input id="transported_chips_loss">
-							&percnt;astillas_transportados
+							&percnt;<sub>astillas_transportados</sub>
 						</td>
 						<td></td>
 					</tr>
@@ -314,19 +314,19 @@
 					<tr class="hiddenRow">
 						<td></td>
 						<td>
-							<input id="electricityChipping"> kWhelectricidad/tonpellets
+							<input id="electricityChipping"> kWh<sub>electricidad</sub>/ton<sub>pellets</sub>
 						</td>
 						<td>
-							<input id="electricityMegneticSeparation"> kWhelectricidad/tonpellets
+							<input id="electricityMegneticSeparation"> kWh<sub>electricidad</sub>/ton<sub>pellets</sub>
 		
 						</td>
 						<td></td>
 						<td>
 							<input id="electricityTransportedChips">
-							kWhelectricidad/tonAstillas_transportados
+							kWh<sub>electricidad</sub>/ton<sub>Astillas_transportados</sub>
 							<br>
 							<input id="heatTransportedChips">
-							MJgas/tonpellets
+							MJ<sub>gas</sub>/ton<sub>pellets</sub>
 						</td> 
 						<td></td>
 					</tr>
@@ -340,7 +340,7 @@
 						<td colspan="3"></td>
 						<td>
 							<input id="kmTruckTransport_chips">
-							kmConducidos
+							km<sub>Camión</sub>
 						</td>
 						<td colspan="2"></td>
 					</tr>
@@ -353,11 +353,11 @@
 					<tr class="hiddenRow">
 						<td>
 							<input id="moisture_wood_chips">
-							&percnt;humedad_madera
+							&percnt;<sub>madera</sub>
 						</td>
 						<td>
 							<input id="moisture_chips">
-							&percnt;humedad_astillas
+							&percnt;<sub>astillas</sub>
 						</td>
 						<td colspan="4"></td>
 					</tr>
@@ -371,10 +371,10 @@
 						<td colspan="4"></td>
 						<td>
 							<input id="usefulC_chips"> 
-							°Ccalor_util
+							°C<sub>Util</sub>
 							<br>
 							<input id="surroundC_chips"> 
-							°Calrededores
+							°C<sub>Alrededores</sub>
 						</td>
 						<td></td>
 					</tr>
@@ -410,8 +410,8 @@
 					<tr class="hiddenRow">
 						<td colspan="5"></td>
 						<td>
-							<input id="manurellectOutput"> MWhelectricidad <br>
-							<input id="manureHeatOutput"> GJcalor/año
+							<input id="manurellectOutput"> MWh<sub>electricidad</sub> <br>
+							<input id="manureHeatOutput"> GJ<sub>calor</sub>/año
 						</td>
 					</tr>
 					<tr>
@@ -421,7 +421,7 @@
 						</th>
 					</tr>
 					<tr class="hiddenRow">
-						<td> <input id="annualManureWeight">tonAbono/año</td>
+						<td> <input id="annualManureWeight">ton<sub>Abono</sub>/año</td>
 						<td colspan="5"></td>
 					</tr>
 					<tr>
@@ -434,7 +434,7 @@
 						<td colspan="4"></td>
 						<td>
 							<input id="efficienyManureTransformation"> 
-							m3biogas/tonAbonoAlmacenado
+							m<sup>3</sup><sub>biogas</sub>/ton<sub>AbonoAlmacenado</sub>
 						</td>
 					</tr>
 					<tr>
@@ -446,19 +446,19 @@
 					<tr class="hiddenRow">
 						<td>
 							<input id="percentege_feedstock_manure_loss">
-							&percnt;abono_inicial
+							&percnt;<sub>abono_inicial</sub>
 						</td>
 						<td><input id="manure_loss">
-							&percnt;abono
+							&percnt;<sub>abono</sub>
 						</td>
 						<td>
 							<input id="transported_manures_loss">
-							&percnt;abono_transportado
+							&percnt;<sub>abono_transportado</sub>
 						</td>
 						<td></td>
 						<td>
 							<input id="biogas_loss">
-							&percnt;biogas
+							&percnt;<sub>biogas</sub>
 						</td>
 						<td></td>
 					</tr>
@@ -471,19 +471,19 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input id="electricityTranportedManure"> kWh/tonAbonoTransortado
+							<input id="electricityTranportedManure"> kWh/ton<sub>AbonoTransortado</sub>
 						</td>
 						<td>
-							<input id="electricityDigestionManure"> kWh/tonAnbonoTransportado
+							<input id="electricityDigestionManure"> kWh/ton<sub>AnbonoTransportado</sub>
 							<br>
-							<input id="heatDigestionManure"> MJ/tonAbonoAlmacenado
+							<input id="heatDigestionManure"> MJ/ton<sub>AbonoAlmacenado</sub>
 						</td>
 						<td>
 							<input id="electricityCombustionManure">
-							kWh/m3biogas
+							kWh/m<sup>3</sup><sub>biogas</sub>
 							<br>
 							<input id="heatCombustionManure">
-							MJ/m3biogas
+							MJ/m<sup>3</sup><sub>biogas</sub>
 						</td> 
 						<td></td>
 					</tr>
@@ -497,7 +497,7 @@
 						<td></td>
 						<td>
 							<input id="kmTruckManure">
-							kmConducido
+							km<sub>Camion</sub>
 						</td>
 						<td colspan="4"></td>
 					</tr>
@@ -511,7 +511,7 @@
 						<td colspan="3"></td>
 						<td>
 							<input id="methane_content">
-							&percnt;metano
+							&percnt;<sub>metano</sub>
 						</td>
 						<td colspan="2"></td>
 					</tr>
@@ -525,10 +525,10 @@
 						<td colspan="4"></td>
 						<td>
 							<input id="usefulC_Manure"> 
-							°Cutil
+							°C<sub>Util</sub>
 							<br>
 							<input id="surroundC_Manure"> 
-							°Calrededores
+							°C<sub>Alrededores</sub>
 						</td>
 						<td></td>
 					</tr>
@@ -541,11 +541,11 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input id="co2ProducedManure">kgCO2/tonAbonoTransportado
+							<input id="co2ProducedManure">kgCO<sup>2</sup>/ton<sub>AbonoTransportado</sub>
 							<br>
-							<input id="ch4ProducedManure">kgCH4/tonAbonoTransportado
+							<input id="ch4ProducedManure">kgCH<sup>4</sup>/ton<sub>AbonoTransportado</sub>
 							<br>
-							<input id = "N2oProducedManure"> kgN2O/tontAbonoTransportado
+							<input id = "N2oProducedManure"> kgN<sup>2</sup>O/ton<sub>AbonoTransportado</sub>
 						</td>
 						<td colspan="3"></td>
 					</tr>

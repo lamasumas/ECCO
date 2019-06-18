@@ -44,6 +44,7 @@ db.once('open', function() {
                 console.log("Error while loading the json files");
             }
             try{
+                
                 files.forEach(x =>  new Country(JSON.parse(fs.readFileSync(__dirname+"/json/"+x))).save(function(err, theCountry) {
                     console.log("element added: "+ theCountry);
                 }));
