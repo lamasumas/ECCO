@@ -15,9 +15,7 @@ $(document).ready(function (e) {
 				addCountries(countries);
 		});
 
-		var thePathName = location.pathname.split("/");
-		var htmlName = thePathName[thePathName.length-1];
-		loadTooltips(htmlName);
+		loadTooltips(document.documentElement.lang);
 	
 });
 
@@ -260,19 +258,19 @@ function calculateWind()
  * 
  * @param {string} htmlName name of the html file 
  */
-function loadTooltips(htmlName){
+function loadTooltips(language){
 	var settings;
 
-	switch (htmlName)
+	switch (language)
 	{
-		case "index.html":
+		case "en":
 			settings = {
 				"async": true,
 				"url": "./tooltips_en.json",
 				"method": "GET"
 			};
 			break;
-		case "index_es.html":
+		case "es":
 			settings = {
 			"async": true,
 			"url": "./tooltips_es.json",
@@ -288,6 +286,7 @@ function loadTooltips(htmlName){
 			break;
 	}
 	
+
 	$.ajax(settings).done(function(response){
 		$(".fa-question-circle").each((x,y) =>{
 			y.setAttribute("title", response[y.id]);
