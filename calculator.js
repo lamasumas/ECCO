@@ -25,7 +25,6 @@
      {
          
  
-     countryJSON = countryJSON[0];
      console.log(countryJSON);
     console.log("CALCULATING WOOD CHIPS DATA");
  
