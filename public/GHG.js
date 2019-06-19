@@ -14,7 +14,7 @@ $(document).ready(function (e) {
 			var countries = responseText;
 			addCountries(countries);
 		});
-
+ 
 		loadTooltips(document.documentElement.lang);
 	
 });
