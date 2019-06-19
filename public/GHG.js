@@ -12,7 +12,6 @@ $(document).ready(function (e) {
 		
 		$.get('/index.html/countries', function(responseText) {
 			var countries = responseText;
-			alert(countries);
 			addCountries(countries);
 		});
 
