@@ -108,7 +108,7 @@ router.get("/WoodPellets", function(req, res){
         electricityTranportedManure, n2oProducedManure, electricityDigestionManure);
     
 });
-}, 500);
+}, 100);
 
 //export this router to use in our index.js
 module.exports = router;
