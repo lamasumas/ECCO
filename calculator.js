@@ -2,7 +2,8 @@
 
   var fs = require("fs");
   var mongo = require("mongoose");
-  mongo.connect("mongodb://mongo/ecco",  { useNewUrlParser: true });
+  //mongo.connect("mongodb://mongo/ecco",  { useNewUrlParser: true });
+  mongo.connect("mongodb://localhost/ecco",  { useNewUrlParser: true });
  
   
  
