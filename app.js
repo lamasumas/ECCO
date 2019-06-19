@@ -5,13 +5,8 @@ var express = require("express");
 var fs = require("fs");
 var app = express();
 
-console.log("Eduardo Lamas 1");
 var mongo = require("mongoose");
 mongo.connect("mongodb://localhost/ecco",  { useNewUrlParser: true });
-<<<<<<< HEAD
-//mongo.connect("mongodb://54.91.147.51:27017",  { useNewUrlParser: true });
-=======
->>>>>>> parent of a21f179... docker compose set up
 var db = mongo.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -52,7 +47,6 @@ db.once('open', function() {
                 
                 files.forEach(x =>  new Country(JSON.parse(fs.readFileSync(__dirname+"/json/"+x))).save(function(err, theCountry) {
                     console.log("element added: "+ theCountry);
-
                 }));
               
             }
@@ -69,7 +63,6 @@ db.once('open', function() {
 });
 
 
-console.log("Eduardo Lamas 3");
 //Read the json files
 //readData();
 var formulas = require("./Formulas.js");
@@ -84,14 +77,13 @@ app.use("/formulas", formulas);
 app.get('/index.html', function (req, res) {
     res.sendFile( __dirname + "/" + "index.html" );
  });
-console.log("Eduardo Lamas 4");
+
  //A get request of the client, in order to get the country names
 app.get('/index.html/countries', function (req, res) {
     
-    mongo.model("country").find({}, function(err, names) {
+    mongo.model("country").find({}, "country", function(err, names) {
     var data = "";
     names.forEach(name => data+="@"+ name.country);
-    console.log("The countries: " + data);
     res.send(data);
     });
 
@@ -99,12 +91,7 @@ app.get('/index.html/countries', function (req, res) {
 
        
 });
-mongo.model("country").find({}, function(err, names) {
-    var data = "";
-    names.forEach(name => data+="@"+ name.country);
-    console.log("The countries: " + data);
-    console.log("HI");
-    });
+
 
  var server = app.listen(8081);
 
