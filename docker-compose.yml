@@ -9,7 +9,7 @@ services:
     volumes:
       - /app
     links:
-      - mongo
+      - "mongo"
     depends_on: 
       - "mongo"
   mongo:
