@@ -1,5 +1,4 @@
 /*jshint esversion: 6 */
-
 /**
  * Executed when the document is loaded
  */
@@ -17,6 +16,8 @@ $(document).ready(function (e) {
  
 		loadTooltips(document.documentElement.lang);
 	
+		var theUnit = new Unit(5,"K");
+		alert(theUnit.getValue("K"));
 });
 
 /**
