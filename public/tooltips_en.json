@@ -23,10 +23,7 @@
     "manure-truck": "Write the distance that the transportation truck should drive from one facility to another",
     "manure-methane": "Write the amount of methane content produced in the digestion state",
     "manure-temp": "Write down the useful heat for having an efficient output and the surrounding heat",
-    "manure-emision": "Wrtie down the amount of CO2, CH4 and N2O produced while handling and storaging the manure"
-
-
-
-
-
+    "manure-emision": "Wrtie down the amount of CO2, CH4 and N2O produced while handling and storaging the manure",
+    "treesToolTip": "The number of 10 year-old 'coniferous' or 'deciduous' trees which is planted in an urban area",
+    "housesToolTip": "Number of houses which emit the same amount of CO2 nationally"
 }
