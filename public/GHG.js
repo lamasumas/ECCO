@@ -304,7 +304,7 @@ function writeDots(theData)
 		var numberOfDots = (stringData.length-1)/3;
 		var rgx = /(\d+)(\d{3})/;
 		while (rgx.test(stringData)) {
-			stringData = stringData.replace(rgx, '$1' + '.' + '$2');
+			stringData = stringData.replace(rgx, '$1' + ',' + '$2');
 		}
 		return stringData;
 
