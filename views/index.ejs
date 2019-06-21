@@ -23,7 +23,7 @@
 								<option disabled selected value> -- select an option -- </option>
 								<option value="IWH">PV-Wind-Hydro</option>
 								<option value="DW">Demolish wood</option>
-								<option value="Saw">Sawdust</option>
+								<option value="Saw"><%=sawdust%></option>
 								<option value="Man">Manure</option>
 							</select>
 						</section>
@@ -65,12 +65,14 @@
 
 					</section>-->
 
-					<h3 id="titleIntro"> Greenhouse Gas (GHG) Calculation Tool</h3>
+					<h3 id="titleIntro"> 
+						<%= titleIntro %>
+						</h3>
 					<p id="descriptionIntro">
-						This tool is created for the need of a simple, easy-to-use and accurate way to calculate the GHG in different renewable energy technologies.
-						<br>
-						The tool is developed thanks to the fund of the ECCO Intereg project.<br>
-					<button id="start" class="btn btn-success" onclick="loadFirstScreen()"> Start   <i style="padding-left: 10%;" class="fas fa-play"></i> </button>
+						<%= descriptionIntro1 %><br>
+						<%= descriptionIntro2 %><br>
+						
+					<button id="start" class="btn btn-success" onclick="loadFirstScreen()">  <%= start %>  <i style="padding-left: 10%;" class="fas fa-play"></i> </button>
 					</p>
 				</section>
 			</section>
@@ -80,39 +82,39 @@
 			</section>
 
 			<section class="myForm" id="WindForm" style="display:none"> 
-				<h3> Output <i class="fas fa-plug"></i></h3>
-				<h4> <i id="wind-anual" class="far fa-question-circle"></i> The annual production of the system:</h4>
+				<h3> <%= outputWind %> <i class="fas fa-plug"></i></h3>
+				<h4> <i id="wind-anual" class="far fa-question-circle"></i> <%= windAnualProduction %></h4>
 				<input type="text" id="yearProduction">
 				(MWhelectricity/year) <br> 
-				<h4> <i id="wind-type" class="far fa-question-circle"></i>Type of energy:</h4>
+				<h4> <i id="wind-type" class="far fa-question-circle"></i><%=energyType%></h4>
 				<select id="typeOfEnergy">
-					<option value="wind">Wind</option>
-					<option value="pV">Pv</option>
-					<option value="Hydroelectric">Hydro</option>
+					<option value="wind"><%=windType%></option>
+					<option value="pV"><%=pvType%></option>
+					<option value="Hydroelectric"><%=hydroType%></option>
 				</select>
 				<br>
-				<button id="calculateWind" > Calculate</button>	
+				<button id="calculateWind" > <%=calcular%></button>	
 			</section>
 
 			<section class="myForm" id="woodPellets" style="display: none">
 				<table id="woodPelletsTable">
 					<tr  class="titleRow">
-						<th >Inputting <i class="fas fa-tree"></i></th>
-						<th>Pelletization <i class="fas fa-braille"></i></th>
-						<th>Transportation <i class="fas fa-truck-loading"></i></th>
-						<th>Combustion <i class="fab fa-gripfire"></i></th>
-						<th>Output <i class="fas fa-plug"></i></th>
+						<th><%=inputting%> <i class="fas fa-tree"></i></th>
+						<th><%=pellezitation%> <i class="fas fa-braille"></i></th>
+						<th><%=trandsportation%> <i class="fas fa-truck-loading"></i></th>
+						<th><%=combustion%> <i class="fab fa-gripfire"></i></th>
+						<th><%= outputWind %>  <i class="fas fa-plug"></i></th>
 					</tr>
 					<tr class="subtitleRow">
-						<td class="subtitleCell">Sawdust</td>
-						<td class="subtitleCell">Pellets</td>
-						<td class="subtitleCell">Transported pellets</td>
-						<td class="subtitleCell">Converted</td>
-						<td class="subtitleCell">Heat & Electricity</td>
+						<td class="subtitleCell"><%=sawdust%></td>
+						<td class="subtitleCell"><%=pellets%></td>
+						<td class="subtitleCell"><%=transportedPelletTitle%></td>
+						<td class="subtitleCell"><%=converted%></td>
+						<td class="subtitleCell"><%=heatElectricity%></td>
 					</tr>
 					<tr>
 						<th colspan="5">
-							<i id="pellets-anual" class="far fa-question-circle"></i>The annual output of the CHP plant 
+							<i id="pellets-anual" class="far fa-question-circle"></i><%=anualProductionTitle%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -137,7 +139,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th colspan="5"><i id="pellets-anual-weight" class="far fa-question-circle"></i> The annual weight of pellets used in combustion
+						<th colspan="5"><i id="pellets-anual-weight" class="far fa-question-circle"></i> <%=anualWeightPellets%>
 							<button class="maximizeRow">+</button>
 						</th>
 					</tr>
@@ -154,7 +156,7 @@
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<th colspan="5"><i id="pellets-lost" class="far fa-question-circle"></i>The percentage of weight lost between stages
+						<th colspan="5"><i id="pellets-lost" class="far fa-question-circle"></i>The percentage of weight lost between stages:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -278,12 +280,12 @@
 			<section class="myForm" id="woodChips" style="display: none">
 				<table id="woodChipsTable">
 					<tr class="titleRow">
-						<th>Inputting <i class="fas fa-tree"></i></th>
-						<th>Chipping <i class="fas fa-haykal"></i></th>
-						<th>Magnetic seperation <i class="fas fa-magnet"></i></th>
-						<th>Transportation <i class="fas fa-truck-loading"></i></th>
-						<th>Combustion <i class="fab fa-gripfire"></i></th>
-						<th>Output  <i class="fas fa-plug"></i></th>
+						<th><%=inputting%> <i class="fas fa-tree"></i></th>
+						<th><%=chipping%> <i class="fas fa-haykal"></i></th>
+						<th><%=magnetic%><i class="fas fa-magnet"></i></th>
+						<th><%=trandsportation%> <i class="fas fa-truck-loading"></i></th>
+						<th><%=combustion%> <i class="fab fa-gripfire"></i></th>
+						<th><%= outputWind %>   <i class="fas fa-plug"></i></th>
 					</tr>
 					<tr class="subtitleRow">
 						<td class="subtitleCell">Wood</td>
@@ -291,11 +293,11 @@
 						<td class="subtitleCell">Seperated chips</td>
 						<td class="subtitleCell">Transported chips</td>
 						<td class="subtitleCell">Converted Chips</td>
-						<td class="subtitleCell">Heat & Electricity</td>
+						<td class="subtitleCell"><%=heatElectricity%></td>
 					</tr>
 					<tr>
 						<th colspan="6">
-							<i id="chips-anual" class="far fa-question-circle"></i> The annual output of the CHP plant 
+							<i id="chips-anual" class="far fa-question-circle"></i> <%=anualProductionTitle%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -470,12 +472,12 @@
 			<section class="myForm" id="manure" style="display: none">
 				<table id="manureTable">
 					<tr  class="titleRow">
-						<th>Inputting <i class="fas fa-box-open"></i></th>
-						<th>Transportation <i class="fas fa-truck-loading"></i></th>
-						<th>Handling & Storage <i class="fas fa-boxes"></i></th>
-						<th>Digestion  <i class="fas fa-vials"></i></th>
-						<th>Combustion <i class="fab fa-gripfire"></i></th>
-						<th>Output <i class="fas fa-plug"></i></th>
+						<th><%=inputting%> <i class="fas fa-box-open"></i></th>
+						<th><%=trandsportation%> <i class="fas fa-truck-loading"></i></th>
+						<th><%=handling%> <i class="fas fa-boxes"></i></th>
+						<th><%=digestion%>  <i class="fas fa-vials"></i></th>
+						<th><%=combustion%> <i class="fab fa-gripfire"></i></th>
+						<th><%= outputWind %>  <i class="fas fa-plug"></i></th>
 					</tr>
 					<tr class="subtitleRow">
 						<td class="subtitleCell">Manure</td>
@@ -483,11 +485,11 @@
 						<td class="subtitleCell">Stored manure</td>
 						<td class="subtitleCell">Biogas</td>
 						<td class="subtitleCell">Converted biogas</td>
-						<td class="subtitleCell">Heat & Electricity</td>
+						<td class="subtitleCell"><%=heatElectricity%></td>
 					</tr>
 					<tr >
 						<th colspan="6">
-							<i id="manure-anual" class="far fa-question-circle"></i> The annual output of the CHP plant 
+							<i id="manure-anual" class="far fa-question-circle"></i> <%=anualProductionTitle%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
