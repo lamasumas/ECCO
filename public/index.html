@@ -120,8 +120,20 @@
 					<tr class="hiddenRow">
 						<td colspan="4"></td>
 						<td>
-							<input id="pelletEllectOutput"> MWh<sub>electricity</sub> <br>
-							<input id="pelletHeatOutput"> GJ<sub>heat</sub>/year
+							<input id="pelletEllectOutput"> 
+							<select>
+								<option value="G">GWh</option>
+								<option selected value="M">MWh</option>
+								<option value="K">kWh</option>
+							</select>
+							<sub>electricity</sub> <br>
+							<input id="pelletHeatOutput"> 
+							<select>
+								<option selected value="G">GJ</option>
+								<option value="M">MJ</option>
+								<option value="K">kj</option>
+							</select>
+							<sub>heat</sub>/year
 						</td>
 					</tr>
 					<tr>
@@ -132,7 +144,12 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input id="trasportedPellets"> ton<sub>transported_pellets</sub>/year
+							<input id="trasportedPellets"> 
+							<select>
+								<option selected value="Ton">Ton</option>
+								<option value="K">kg</option>
+							</select>
+							<sub>transported_pellets</sub>/year
 						</td>
 						<td colspan="2"></td>
 					</tr>
@@ -169,17 +186,37 @@
 					<tr class="hiddenRow">
 						<td></td>
 						<td>
-							<input id="electricityPelletization"> kWh<sub>electricity</sub>/ton<sub>pellets</sub>
+							<input id="electricityPelletization">
+							<select>
+								<option value="G">GWh</option>
+								<option selected value="M">MWh</option>
+								<option value="K">kWh</option>
+							</select><sub>electricity</sub>/ton<sub>pellets</sub>
 							<br>
-							<input id="heatPelletication">MJ<sub>gas</sub>/ton<sub>pellets</sub>
+							<input id="heatPelletication"><select>
+								<option value="G">GJ</option>
+								<option selected value="M">MJ</option>
+								<option value="K">kj</option>
+							</select>
+							<sub>gas</sub>/ton<sub>pellets</sub>
 						</td>
 						<td></td>
 						<td>
 							<input id="electricityTransportedPellets">
-							kWh<sub>electricity</sub>/ton<sub>transported_pellets</sub>
+							<select>
+								<option value="G">GWh</option>
+								<option value="M">MWh</option>
+								<option selected value="K">kWh</option>
+							</select>
+							<sub>electricity</sub>/ton<sub>transported_pellets</sub>
 							<br>
 							<input id="heatTransportedPellets">
-							kWh<sub>electricity</sub>/ton<sub>transported_pellets</sub>
+							<select>
+								<option value="G">GMh</option>
+								<option value="M">MWh</option>
+								<option selected value="K">kWh</option>
+							</select>
+							<sub>electricity</sub>/ton<sub>transported_pellets</sub>
 						</td>
 					</tr>
 					<tr>
@@ -192,7 +229,11 @@
 						<td colspan="2"></td>
 						<td>
 							<input id="kmTruckTransport_pellets">
-							km<sub>truck</sub>
+							<select>
+								<option selected value="K">km</option>
+								<option value="simple">m</option>
+							</select>
+							<sub>truck</sub>
 						</td>
 						<td colspan="2"></td>
 					</tr>
@@ -262,8 +303,19 @@
 					<tr class="hiddenRow">
 						<td colspan="5"></td>
 						<td>
-							<input id="chipsellectOutput"> MWh<sub>electricity </sub> <br>
-							<input id="chipsHeatOutput"> GJ<sub>heat</sub>/year
+							<input id="chipsellectOutput"> 
+							<select>
+								<option value="G">GMh</option>
+								<option selected value="M">MWh</option>
+								<option value="K">kWh</option>
+							</select>
+							<sub>electricity </sub> <br>
+							<input id="chipsHeatOutput"> <select>
+								<option selected value="G">GJ</option>
+								<option value="M">MJ</option>
+								<option value="K">kj</option>
+							</select>
+							<sub>heat</sub>/year
 						</td>
 					</tr>
 					<tr>
@@ -275,7 +327,12 @@
 					<tr class="hiddenRow">
 						<td colspan="3"></td>
 						<td>
-							<input id="trasportedChips"> ton<sub>transported_chips</sub>/year
+							<input id="trasportedChips"> 
+							<select>
+								<option selected value="Ton">Ton</option>
+								<option value="K">kg</option>
+							</select>
+							<sub>transported_chips</sub>/year
 						</td>
 						<td colspan="2"></td>
 					</tr>
@@ -316,19 +373,41 @@
 					<tr class="hiddenRow">
 						<td></td>
 						<td>
-							<input id="electricityChipping"> kWh<sub>electricity</sub>/ton<sub>pellets</sub>
+							<input id="electricityChipping">
+							 <select>
+								<option value="G">GMh</option>
+								<option value="M">MWh</option>
+								<option selected value="K">kWh</option>
+							</select>
+							<sub>electricity</sub>/ton<sub>pellets</sub>
 						</td>
 						<td>
-							<input id="electricityMegneticSeparation"> kWh<sub>electricity</sub>/ton<sub>pellets</sub>
+							<input id="electricityMegneticSeparation"> 
+							<select>
+								<option value="G">GMh</option>
+								<option value="M">MWh</option>
+								<option selected value="K">kWh</option>
+							</select>
+							<sub>electricity</sub>/ton<sub>pellets</sub>
 		
 						</td>
 						<td></td>
 						<td>
 							<input id="electricityTransportedChips">
-							kWh<sub>electricity</sub>/ton<sub>transported_chipos</sub>
+							<select>
+								<option value="G">GMh</option>
+								<option value="M">MWh</option>
+								<option selected value="K">kWh</option>
+							</select>
+							<sub>electricity</sub>/ton<sub>transported_chipos</sub>
 							<br>
 							<input id="heatTransportedChips">
-							kWh<sub>electricity</sub>/ton<sub>transported_chips</sub>
+							<select>
+								<option value="G">GJ</option>
+								<option selected value="M">MJ</option>
+								<option value="K">kJ</option>
+							</select>
+							<sub>electricity</sub>/ton<sub>transported_chips</sub>
 						</td> 
 						<td></td>
 					</tr>
@@ -342,7 +421,11 @@
 						<td colspan="3"></td>
 						<td>
 							<input id="kmTruckTransport_chips">
-							km<sub>truck</sub>
+							<select>
+								<option selected value="K">km</option>
+								<option value="simple">m</option>
+							</select>
+							<sub>truck</sub>
 						</td>
 						<td colspan="2"></td>
 					</tr>
@@ -412,8 +495,18 @@
 					<tr class="hiddenRow">
 						<td colspan="5"></td>
 						<td>
-							<input id="manurellectOutput"> MWh<sub>electricity</sub> <br>
-							<input id="manureHeatOutput"> GJ<sub>heat</sub>/year
+							<input id="manurellectOutput"> <select>
+								<option value="G">GMh</option>
+								<option selected value="M">MWh</option>
+								<option  value="K">kWh</option>
+							</select>
+							<sub>electricity</sub> <br>
+							<input id="manureHeatOutput"> <select>
+								<option selected value="G">GJ</option>
+								<option value="M">MJ</option>
+								<option value="K">kJ</option>
+							</select>
+							<sub>heat</sub>/year
 						</td>
 					</tr>
 					<tr>
@@ -423,7 +516,12 @@
 						</th>
 					</tr>
 					<tr class="hiddenRow">
-						<td> <input id="annualManureWeight">ton<sub>feedstock_manure</sub>/year</td>
+						<td> <input id="annualManureWeight">
+						<select>
+							<option selected value="Ton">Ton</option>
+							<option value="K">kg</option>
+						</select>
+						<sub>feedstock_manure</sub>/year</td>
 						<td colspan="5"></td>
 					</tr>
 					<tr>
@@ -473,20 +571,46 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input id="electricityTranportedManure"> kWh/ton<sub>transported_manure</sub>
+							<input id="electricityTranportedManure"> <select>
+								<option value="G">GMh</option>
+								<option value="M">MWh</option>
+								<option selected value="K">kWh</option>
+							</select>
+							/ton<sub>transported_manure</sub>
 						</td>
 						<td>
-							<input id="electricityDigestionManure"> kWh/ton<sub>stored_manure </sub>
+							<input id="electricityDigestionManure"> <select>
+								<option value="G">GMh</option>
+								<option value="M">MWh</option>
+								<option selected value="K">kWh</option>
+							</select>
+							/ton<sub>stored_manure </sub>
 							<br>
-							<input id="heatDigestionManure"> MJ/ton<sub>stored_manure</sub>
+							<input id="heatDigestionManure"> 
+							<select>
+								<option value="G">GJ</option>
+								<option selected value="M">MJ</option>
+								<option value="K">kJ</option>
+							</select>
+							/ton<sub>stored_manure</sub>
 
 						</td>
 						<td>
 							<input id="electricityCombustionManure">
-							kWh/m<sup>3</sup><sub>biogas</sub>
+							<select>
+								<option value="G">GMh</option>
+								<option value="M">MWh</option>
+								<option selected value="K">kWh</option>
+							</select>
+							/m<sup>3</sup><sub>biogas</sub>
 							<br>
 							<input id="heatCombustionManure">
-							MJ/m<sup>3</sup><sub>biogas</sub>
+							<select>
+								<option value="G">GJ</option>
+								<option selected value="M">MJ</option>
+								<option value="K">kJ</option>
+							</select>
+							/m<sup>3</sup><sub>biogas</sub>
 						</td> 
 						<td></td>
 					</tr>
@@ -500,7 +624,11 @@
 						<td></td>
 						<td>
 							<input id="kmTruckManure">
-							km<sub>truck</sub>
+							<select>
+								<option selected value="K">Km</option>
+								<option value="simple">m</option>
+							</select>
+							<sub>truck</sub>
 						</td>
 						<td colspan="4"></td>
 					</tr>

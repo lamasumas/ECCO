@@ -2,15 +2,12 @@
 
 class Unit{
 
-    constructor(value,theActualUnit)
-    {
-        this.value = value;
-        this.theActualUnit = theActualUnit;
-    }
-        getValue ( desireUnit ){
+    constructor()
+    {}
+        getValue(value,theActualUnit, desireUnit ){
             
-            
-            return this.wants[desireUnit].calculate(this.is[this.theActualUnit].calculate(this.value) );
+            console.log(this.wants[desireUnit].calculate(this.is[theActualUnit].calculate(value) ));
+            return this.wants[desireUnit].calculate(this.is[theActualUnit].calculate(value) );
         }
     
     }
