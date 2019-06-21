@@ -284,7 +284,7 @@ function writeDots(theData)
 		return stringData;
 
 	}
-
+ 
 
 /**
  * This method will validate the input, and it will try to parse it into a number.
