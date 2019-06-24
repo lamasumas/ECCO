@@ -20,11 +20,11 @@
 			<section class="firstScreen">
 							<select id="selector"  onchange=" energySelector()" >
 								
-								<option disabled selected value> -- select an option -- </option>
-								<option value="IWH">PV-Wind-Hydro</option>
-								<option value="DW">Demolish wood</option>
+								<option disabled selected value><%=energySelector1%> </option>
+								<option value="IWH"><%=energySelector2%></option>
+								<option value="DW"><%=energySelector3%></option>
 								<option value="Saw"><%=sawdust%></option>
-								<option value="Man">Manure</option>
+								<option value="Man"><%=energySelector4%></option>
 							</select>
 						</section>
 		
@@ -39,10 +39,10 @@
 				<section id="resultSection"> 
 						<table id="results" style="display:none">
 							<tr>
-								<th>Country</th>
-								<th>tonCO2/year</th>
-								<th> <i id="treesToolTip" class="far fa-question-circle"></i>Trees</th>
-								<th> <i id="housesToolTip" class="far fa-question-circle"></i>Houses</th>
+								<th><%=country%></th>
+								<th>tonCO2/<%=year%></th>
+								<th> <i id="treesToolTip" class="far fa-question-circle"></i><%=trees%></th>
+								<th> <i id="housesToolTip" class="far fa-question-circle"></i><%=houses%></th>
 							</tr>
 							<tr>
 								<td > 
@@ -85,7 +85,7 @@
 				<h3> <%= outputWind %> <i class="fas fa-plug"></i></h3>
 				<h4> <i id="wind-anual" class="far fa-question-circle"></i> <%= windAnualProduction %></h4>
 				<input type="text" id="yearProduction">
-				(MWhelectricity/year) <br> 
+				(MWhelectricity/<%=year%>) <br> 
 				<h4> <i id="wind-type" class="far fa-question-circle"></i><%=energyType%></h4>
 				<select id="typeOfEnergy">
 					<option value="wind"><%=windType%></option>
@@ -128,14 +128,14 @@
 								<option selected value="M">MWh</option>
 								<option value="K">kWh</option>
 							</select>
-							<sub>electricity</sub> <br>
+							<sub><%=electricityUnit%></sub> <br>
 							<input id="pelletHeatOutput"> 
 							<select>
 								<option selected value="G">GJ</option>
 								<option value="M">MJ</option>
 								<option value="K">kj</option>
 							</select>
-							<sub>heat</sub>/year
+							<sub><%=heat%></sub>/<%=year%>
 						</td>
 					</tr>
 					<tr>
@@ -151,12 +151,12 @@
 								<option selected value="Ton">Ton</option>
 								<option value="K">kg</option>
 							</select>
-							<sub>transported_pellets</sub>/year
+							<sub><%=transportedPellets%></sub>/<%=year%>
 						</td>
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<th colspan="5"><i id="pellets-lost" class="far fa-question-circle"></i>The percentage of weight lost between stages:
+						<th colspan="5"><i id="pellets-lost" class="far fa-question-circle"></i> <%=percentageLostTitle%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -164,23 +164,23 @@
 					<tr class="hiddenRow">
 						<td>
 							<input id="percentege_feedstock_sawdust_loss">
-							&percnt;<sub>feedstock_sawdust</sub>
+							&percnt;<sub><%=feedstockSawdust%></sub>
 						</td>
 						<td><input id="sawdust_loss">
-							&percnt;<sub>sawdust</sub>
+							&percnt;<sub><%=sawdustUnit%></sub>
 						</td>
 						<td>
 							<input id="pellets_loss">
-							&percnt;<sub>pellets</sub>
+							&percnt;<sub><%=pelletsUnit%></sub>
 						</td>
 						<td>
 							<input id="transported_pellets_loss">
-							&percnt;<sub>transported_pellets</sub>
+							&percnt;<sub><%=transportedPellets%></sub>
 						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th colspan="5"><i id="pellets-gas-electricity-used" class="far fa-question-circle"> </i>The electricity and/or gas used for the process
+						<th colspan="5"><i id="pellets-gas-electricity-used" class="far fa-question-circle"> </i><%=electricityWasted%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -193,14 +193,14 @@
 								<option value="G">GWh</option>
 								<option selected value="M">MWh</option>
 								<option value="K">kWh</option>
-							</select><sub>electricity</sub>/ton<sub>pellets</sub>
+							</select><sub><%=electricityUnit%></sub>/ton<sub><%=pelletsUnit%></sub>
 							<br>
 							<input id="heatPelletication"><select>
 								<option value="G">GJ</option>
 								<option selected value="M">MJ</option>
 								<option value="K">kj</option>
 							</select>
-							<sub>gas</sub>/ton<sub>pellets</sub>
+							<sub>gas</sub>/ton<sub><%=pelletsUnit%></sub>
 						</td>
 						<td></td>
 						<td>
@@ -210,7 +210,7 @@
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
 							</select>
-							<sub>electricity</sub>/ton<sub>transported_pellets</sub>
+							<sub><%=electricityUnit%></sub>/ton<sub><%=transportedPellets%></sub>
 							<br>
 							<input id="heatTransportedPellets">
 							<select>
@@ -218,11 +218,11 @@
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
 							</select>
-							<sub>electricity</sub>/ton<sub>transported_pellets</sub>
+							<sub><%=electricityUnit%></sub>/ton<sub><%=transportedPellets%></sub>
 						</td>
 					</tr>
 					<tr>
-						<th colspan="5"> <i id="pellets-truck" class="far fa-question-circle"> </i>The length of moving the pellets to the combustion plant by truck
+						<th colspan="5"> <i id="pellets-truck" class="far fa-question-circle"> </i><%=truckLength%>:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -235,28 +235,28 @@
 								<option selected value="K">km</option>
 								<option value="simple">m</option>
 							</select>
-							<sub>truck</sub>
+							<sub><%=truck%></sub>
 						</td>
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<th colspan="5"><i id="pellets-moisture" class="far fa-question-circle"></i>The moisture
+						<th colspan="5"><i id="pellets-moisture" class="far fa-question-circle"></i><%=moisture%>:
 							<button class="maximizeRow">+</button>
 						</th>
 					</tr>
 					<tr class="hiddenRow">
 						<td>
 							<input id="moisture_dust_pellets">
-							&percnt;<sub>sawdust</sub>
+							&percnt;<sub><%=sawdustUnit%></sub>
 						</td>
 						<td>
 							<input id="moisture_pellets">
-							&percnt;<sub>pellets</sub>
+							&percnt;<sub><%=pelletsUnit%></sub>
 						</td>
 						<td colspan="3"></td>
 					</tr>
 					<tr>
-						<th colspan="5"><i id="pellets-temp" class="far fa-question-circle"></i>The temperature of useful heat at a point of delivery  and the temperature of the surroundings 
+						<th colspan="5"><i id="pellets-temp" class="far fa-question-circle"></i><%=temperature%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -265,14 +265,14 @@
 						<td colspan="3"></td>
 						<td>
 							<input id="usefulC_pellets"> 
-							°C<sub>useful</sub>
+							°C<sub><%=useful%>:</sub>
 							<br>
 							<input id="surroundC_pellets"> 
-							°C<sub>surroundings</sub>
+							°C<sub><%=surroundings%>:</sub>
 						</td>
 					</tr>
 				</table>
-				<button id="calculatePellets">Calculate</button>
+				<button id="calculatePellets"><%=calculate%>:</button>
 			</section>
  
 
@@ -288,11 +288,11 @@
 						<th><%= outputWind %>   <i class="fas fa-plug"></i></th>
 					</tr>
 					<tr class="subtitleRow">
-						<td class="subtitleCell">Wood</td>
-						<td class="subtitleCell">Chips</td>
-						<td class="subtitleCell">Seperated chips</td>
-						<td class="subtitleCell">Transported chips</td>
-						<td class="subtitleCell">Converted Chips</td>
+						<td class="subtitleCell"><%=wood%></td>
+						<td class="subtitleCell"><%=chips%></td>
+						<td class="subtitleCell"><%=seperetedChips%></td>
+						<td class="subtitleCell"><%=transportedChips%></td>
+						<td class="subtitleCell"><%=convertedChips%></td>
 						<td class="subtitleCell"><%=heatElectricity%></td>
 					</tr>
 					<tr>
@@ -311,17 +311,17 @@
 								<option selected value="M">MWh</option>
 								<option value="K">kWh</option>
 							</select>
-							<sub>electricity </sub> <br>
+							<sub><%=electricityUnit%> </sub> <br>
 							<input id="chipsHeatOutput"> <select>
 								<option selected value="G">GJ</option>
 								<option value="M">MJ</option>
 								<option value="K">kj</option>
 							</select>
-							<sub>heat</sub>/year
+							<sub><%=heat%></sub>/<%=year%>
 						</td>
 					</tr>
 					<tr>
-						<th colspan="6"> <i id="chips-weight" class="far fa-question-circle"></i> The annual weight of wood chips used in combustion
+						<th colspan="6"> <i id="chips-weight" class="far fa-question-circle"></i> <%=annualWeightChips%>:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -334,12 +334,12 @@
 								<option selected value="Ton">Ton</option>
 								<option value="K">kg</option>
 							</select>
-							<sub>transported_chips</sub>/year
+							<sub><%=transportedChipsUnit%></sub>/<%=year%>
 						</td>
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<th colspan="6"> <i id="chips-lost" class="far fa-question-circle"></i> The percentage of weight lost between stages
+						<th colspan="6"> <i id="chips-lost" class="far fa-question-circle"></i> <%=percentageLostTitle%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -347,14 +347,14 @@
 					<tr class="hiddenRow">
 						<td>
 							<input id="feedstock_chips_loss">
-							&percnt;<sub>feedstock_sawdust</sub>
+							&percnt;<sub><%=feedstockSawdust%></sub>
 						</td>
 						<td><input id="wood_chips_loss">
-							&percnt;<sub>sawdust</sub>
+							&percnt;<sub><%=sawdustUnit%></sub>
 						</td>
 						<td>
 							<input id="chips_loss">
-							&percnt;<sub>chips</sub>
+							&percnt;<sub><%=chipsUnit%></sub>
 						</td>
 						<td>
 							<input id="seperated_chips_loss">
@@ -362,12 +362,12 @@
 						</td>
 						<td>
 							<input id="transported_chips_loss">
-							&percnt;<sub>transported_chips</sub>
+							&percnt;<sub><%=transportedChipsUnit%></sub>
 						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th colspan="6"> <i id="chips-gas-electricity-used" class="far fa-question-circle"></i>The electricity and/or gas used for the process
+						<th colspan="6"> <i id="chips-gas-electricity-used" class="far fa-question-circle"></i><%=electricityWasted%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -381,7 +381,7 @@
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
 							</select>
-							<sub>electricity</sub>/ton<sub>pellets</sub>
+							<sub><%=electricityUnit%></sub>/ton<sub><%=pelletsUnit%></sub>
 						</td>
 						<td>
 							<input id="electricityMegneticSeparation"> 
@@ -390,7 +390,7 @@
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
 							</select>
-							<sub>electricity</sub>/ton<sub>pellets</sub>
+							<sub><%=electricityUnit%></sub>/ton<sub><%=pelletsUnit%></sub>
 		
 						</td>
 						<td></td>
@@ -401,7 +401,7 @@
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
 							</select>
-							<sub>electricity</sub>/ton<sub>transported_chipos</sub>
+							<sub><%=electricityUnit%></sub>/ton<sub><%=transportedChipsUnit%></sub>
 							<br>
 							<input id="heatTransportedChips">
 							<select>
@@ -409,12 +409,12 @@
 								<option selected value="M">MJ</option>
 								<option value="K">kJ</option>
 							</select>
-							<sub>electricity</sub>/ton<sub>transported_chips</sub>
+							<sub><%=electricityUnit%></sub>/ton<sub><%=transportedChipsUnit%></sub>
 						</td> 
 						<td></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="chips-truck" class="far fa-question-circle"></i> The length of moving the chips to the combustion plant by truck
+						<th colspan="6"><i id="chips-truck" class="far fa-question-circle"></i> <%=truckLengthChips%>:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -427,12 +427,12 @@
 								<option selected value="K">km</option>
 								<option value="simple">m</option>
 							</select>
-							<sub>truck</sub>
+							<sub><%=truck%></sub>
 						</td>
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<th colspan="6"> <i id="chips-moisture" class="far fa-question-circle"></i> The moisture 
+						<th colspan="6"> <i id="chips-moisture" class="far fa-question-circle"></i> <%=moisture%> 
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -440,16 +440,16 @@
 					<tr class="hiddenRow">
 						<td>
 							<input id="moisture_wood_chips">
-							&percnt;<sub>wood</sub>
+							&percnt;<sub><%=woodUnit%></sub>
 						</td>
 						<td>
 							<input id="moisture_chips">
-							&percnt;<sub>chips</sub>
+							&percnt;<sub><%=chipsUnit%></sub>
 						</td>
 						<td colspan="4"></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="chips-temp" class="far fa-question-circle"></i>The temperature of useful heat at a point of delivery  and the temperature of the surroundings 
+						<th colspan="6"><i id="chips-temp" class="far fa-question-circle"></i><%=temperature%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -458,15 +458,15 @@
 						<td colspan="4"></td>
 						<td>
 							<input id="usefulC_chips"> 
-							°C<sub>useful</sub>
+							°C<sub><%=useful%>:</sub>
 							<br>
 							<input id="surroundC_chips"> 
-							°C<sub>surroundings</sub>
+							°C<sub><%=surroundings%>:</sub>
 						</td>
 						<td></td>
 					</tr>
 				</table>
-				<button id="calculateChips">Calculate</button>
+				<button id="calculateChips"><%=calculate%>:</button>
 			</section>
 
 			<section class="myForm" id="manure" style="display: none">
@@ -480,11 +480,11 @@
 						<th><%= outputWind %>  <i class="fas fa-plug"></i></th>
 					</tr>
 					<tr class="subtitleRow">
-						<td class="subtitleCell">Manure</td>
-						<td class="subtitleCell">Transported manure</td>
-						<td class="subtitleCell">Stored manure</td>
-						<td class="subtitleCell">Biogas</td>
-						<td class="subtitleCell">Converted biogas</td>
+						<td class="subtitleCell"><%=manure%></td>
+						<td class="subtitleCell"><%=transportedManure%></td>
+						<td class="subtitleCell"><%=storedManure%></td>
+						<td class="subtitleCell"><%=biogas%></td>
+						<td class="subtitleCell"><%=convertedBiogas%></td>
 						<td class="subtitleCell"><%=heatElectricity%></td>
 					</tr>
 					<tr >
@@ -502,17 +502,17 @@
 								<option selected value="M">MWh</option>
 								<option  value="K">kWh</option>
 							</select>
-							<sub>electricity</sub> <br>
+							<sub><%=electricityUnit%></sub> <br>
 							<input id="manureHeatOutput"> <select>
 								<option selected value="G">GJ</option>
 								<option value="M">MJ</option>
 								<option value="K">kJ</option>
 							</select>
-							<sub>heat</sub>/year
+							<sub><%=heat%></sub>/<%=year%>
 						</td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-weight" class="far fa-question-circle"></i>The annual weight of manure
+						<th colspan="6"><i id="manure-weight" class="far fa-question-circle"></i><%=annualWeightManure%>:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -523,11 +523,11 @@
 							<option selected value="Ton">Ton</option>
 							<option value="K">kg</option>
 						</select>
-						<sub>feedstock_manure</sub>/year</td>
+						<sub><%=feedstockManure%></sub>/<%=year%></td>
 						<td colspan="5"></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-efficient" class="far fa-question-circle"></i>Efficiency of transformation from manure to biogas
+						<th colspan="6"><i id="manure-efficient" class="far fa-question-circle"></i><%=efficiencyTransformation%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -536,11 +536,11 @@
 						<td colspan="4"></td>
 						<td>
 							<input id="efficienyManureTransformation"> 
-							m<sup>3</sup><sub>biogas</sub>/ton<sub>stored_manure</sub>
+							m<sup>3</sup><sub><%=biogasUnit%></sub>/ton<sub><%=storedManureUnit%></sub>
 						</td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-lost" class="far fa-question-circle"></i> The percentage of weight lost between stages
+						<th colspan="6"><i id="manure-lost" class="far fa-question-circle"></i> <%=percentageLostTitle%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -548,24 +548,24 @@
 					<tr class="hiddenRow">
 						<td>
 							<input id="percentege_feedstock_manure_loss">
-							&percnt;<sub>feedstock_manure</sub>
+							&percnt;<sub><%=feedstockManure%></sub>
 						</td>
 						<td><input id="manure_loss">
-							&percnt;<sub>manure</sub>
+							&percnt;<sub><%=manureUnit%></sub>
 						</td>
 						<td>
 							<input id="transported_manures_loss">
-							&percnt;<sub>transported_manure</sub>
+							&percnt;<sub><%=transportedManureUnit%></sub>
 						</td>
 						<td></td>
 						<td>
 							<input id="biogas_loss">
-							&percnt;<sub>biogas</sub>
+							&percnt;<sub><%=biogasUnit%></sub>
 						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-gas-electricity-used" class="far fa-question-circle"></i>The electricity and/or gas used for the process
+						<th colspan="6"><i id="manure-gas-electricity-used" class="far fa-question-circle"></i><%=electricityWasted%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -578,7 +578,7 @@
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
 							</select>
-							/ton<sub>transported_manure</sub>
+							/ton<sub><%=transportedManureUnit%></sub>
 						</td>
 						<td>
 							<input id="electricityDigestionManure"> <select>
@@ -586,7 +586,7 @@
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
 							</select>
-							/ton<sub>stored_manure </sub>
+							/ton<sub><%=storedManureUnit%> </sub>
 							<br>
 							<input id="heatDigestionManure"> 
 							<select>
@@ -594,7 +594,7 @@
 								<option selected value="M">MJ</option>
 								<option value="K">kJ</option>
 							</select>
-							/ton<sub>stored_manure</sub>
+							/ton<sub><%=storedManureUnit%></sub>
 
 						</td>
 						<td>
@@ -604,7 +604,7 @@
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
 							</select>
-							/m<sup>3</sup><sub>biogas</sub>
+							/m<sup>3</sup><sub><%=biogasUnit%></sub>
 							<br>
 							<input id="heatCombustionManure">
 							<select>
@@ -612,12 +612,12 @@
 								<option selected value="M">MJ</option>
 								<option value="K">kJ</option>
 							</select>
-							/m<sup>3</sup><sub>biogas</sub>
+							/m<sup>3</sup><sub><%=biogasUnit%></sub>
 						</td> 
 						<td></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-truck" class="far fa-question-circle"></i>The length of moving wet manure to the power plant by truck
+						<th colspan="6"><i id="manure-truck" class="far fa-question-circle"></i><%=truckLengthManure%>:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -630,12 +630,12 @@
 								<option selected value="K">Km</option>
 								<option value="simple">m</option>
 							</select>
-							<sub>truck</sub>
+							<sub><%=truck%></sub>
 						</td>
 						<td colspan="4"></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-methane" class="far fa-question-circle"></i>The percentage of methane gas in the biogas
+						<th colspan="6"><i id="manure-methane" class="far fa-question-circle"></i><%=methaneGas%>:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -644,12 +644,12 @@
 						<td colspan="3"></td>
 						<td>
 							<input id="methane_content">
-							&percnt;<sub>methane</sub>
+							&percnt;<sub><%=methaneUnit%></sub>
 						</td>
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-temp" class="far fa-question-circle"></i>The temperature of useful heat at a point of delivery  and the temperature of the surroundings 
+						<th colspan="6"><i id="manure-temp" class="far fa-question-circle"></i><%=temperature%>:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -658,15 +658,15 @@
 						<td colspan="4"></td>
 						<td>
 							<input id="usefulC_Manure"> 
-							°C<sub>Useful</sub>
+							°C<sub><%=useful%>:</sub>
 							<br>
 							<input id="surroundC_Manure"> 
-							°C<sub>Surroundings</sub>
+							°C<sub><%=surroundings%>:</sub>
 						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-emision" class="far fa-question-circle"></i>The emission of gases directly generated
+						<th colspan="6"><i id="manure-emision" class="far fa-question-circle"></i><%=emissionGasses%>:
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -674,23 +674,23 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input id="co2ProducedManure">kgCO<sup>2</sup>/ton<sub>transported_manure</sub>
+							<input id="co2ProducedManure">kgCO<sup>2</sup>/ton<sub><%=transportedManureUnit%></sub>
 							<br>
-							<input id="ch4ProducedManure">kgCH<sup>4</sup>/ton<sub>transported_manure</sub>
+							<input id="ch4ProducedManure">kgCH<sup>4</sup>/ton<sub><%=transportedManureUnit%></sub>
 							<br>
-							<input id = "N2oProducedManure"> kgN<sup>2</sup>O/ton<sub>transported_manure</sub>
+							<input id = "N2oProducedManure"> kgN<sup>2</sup>O/ton<sub><%=transportedManureUnit%></sub>
 						</td>
 						<td colspan="3"></td>
 					</tr>
 				</table>
-				<button id="calculateManure">Calculate</button>
+				<button id="calculateManure"><%=calculate%>:</button>
 			</section>
 
 			<h5 id="test"></h5>
 		</main>
 	<footer>
 		<p>
-			&copy; Developed by: Eduardo Lamas Suárez, Chi-Thang Phan-Tan and Daniel Ashcroft
+			&copy;<%=copyRight%>
 		</p>
 	</footer>
 	</body>
