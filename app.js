@@ -68,16 +68,40 @@ db.once('open', function() {
 //readData();
 var formulas = require("./Formulas.js");
 
+
+app.set('view engine', 'ejs');
+
 //Declare where the static elements are stored (html, css, js(client_side))
 app.use(express.static("public"));
 
 //Declare route for the get/post request of the formula calculation
+
 app.use("/formulas", formulas);
 
 
-app.get('/index.html', function (req, res) {
-    res.sendFile( __dirname + "/" + "index.html" );
+
+var englishLanguage = JSON.parse(fs.readFileSync("languages/english.json"));
+var spanishLanguage = JSON.parse(fs.readFileSync("languages/spanish.json"));
+var frenchLanguage = JSON.parse(fs.readFileSync("languages/french.json"));
+
+app.get('/', function (req, res) {
+
+    console.log("English");
+    res.render("index.ejs", englishLanguage );
  });
+
+ app.get('/spanish', function (req, res) {
+    console.log("Spanish");
+    res.render("index.ejs", spanishLanguage );
+ });
+
+
+ app.get('/french', function (req, res) {
+    console.log("French");
+    res.render("index.ejs", frenchLanguage );
+ });
+
+
 
  //A get request of the client, in order to get the country names
 app.get('/index.html/countries', function (req, res) {
