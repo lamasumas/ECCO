@@ -80,11 +80,20 @@ app.use("/formulas", formulas);
 
 
 
-var englishLanguage = JSON.parse(fs.readFileSync("english.json"));
+var englishLanguage = JSON.parse(fs.readFileSync("languages/english.json"));
+var spanishLanguage = JSON.parse(fs.readFileSync("languages/spanish.json"));
 
 app.get('/', function (req, res) {
+
+    console.log("English");
     res.render("index.ejs", englishLanguage );
  });
+
+ app.get('/spanish', function (req, res) {
+    console.log("Spanish");
+    res.render("index.ejs", spanishLanguage );
+ });
+
 
  //A get request of the client, in order to get the country names
 app.get('/index.html/countries', function (req, res) {
