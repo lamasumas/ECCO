@@ -214,7 +214,7 @@
      var pelec_pelletization = (electricityPelletization == 0)?  115 : electricityPelletization ;
      var pgas_pelletization = heatPelletication;
      var nwfeedstock = 1- percentege_feedstock_sawdust_loss /100;
-     var telec = efossil_elec;
+     var telec = pelec_combustion;
  
  
      var nheat = ( inflow == 0 ) ? 0.45 : outputheat / ( inflow * ( 1 - moistpellets / 100 )* lhv);
@@ -242,7 +242,7 @@
      var etransport_exhaust = getJSONData(countryJSON,"etransport_exhaust_Dry");
      
      var epelltization = nwfeedstock * ( 3.6 * pelec_pelletization * telec + pgas_pelletization* egas)/theYield;
-     var ecombustion = (nwfeedstock * nwpelletization * nwtransport)* (edirect_combustion + 3.6* pelec_combustion* telec + pgas_combustion *egas) /theYield;
+     var ecombustion = (nwfeedstock * nwpelletization * nwtransport)* (edirect_combustion + 3.6* pelec_combustion* efossil_elec + pgas_combustion *egas) /theYield;
      var etransport = ( nwfeedstock  * nwpelletization) * lengthtransport  *( nvehical * efuel + etransport_exhaust) / theYield;
      
      var E = epelltization + etransport + ecombustion;

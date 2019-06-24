@@ -113,7 +113,7 @@ function calculatePellets()
     allParameters += "percentege_feedstock_sawdust_loss="+getValidatedInput("percentege_feedstock_sawdust_loss")+"&";
     allParameters += "sawdust_loss="+getValidatedInput("sawdust_loss")+"&";
     allParameters += "kmTruckTransport_pellets="+getValidatedUnitInputValue("kmTruckTransport_pellets","K")+"&";
-	allParameters += "heatTransportedPellets="+getValidatedUnitInputValue("heatTransportedPellets","K")+"&";
+	allParameters += "heatTransportedPellets="+getValidatedUnitInputValue("heatTransportedPellets","M")+"&";
 	allParameters += "electricityTransportedPellets="+getValidatedUnitInputValue("electricityTransportedPellets", "K")+"&";
 	allParameters += "heatPelletication="+getValidatedUnitInputValue("heatPelletication","M");
 
