@@ -241,8 +241,8 @@
  
      var etransport_exhaust = getJSONData(countryJSON,"etransport_exhaust_Dry");
      
-     var epelltization = nwfeedstock * ( 3.6 * pelec_pelletization * telec + pgas_pelletization* egas)/theYield;
-     var ecombustion = (nwfeedstock * nwpelletization * nwtransport)* (edirect_combustion + 3.6* pelec_combustion* efossil_elec + pgas_combustion *egas) /theYield;
+     var epelltization = nwfeedstock * ( 3.6 * pelec_pelletization * efossil_elec + pgas_pelletization* egas)/theYield;
+     var ecombustion = (nwfeedstock * nwpelletization * nwtransport)* (edirect_combustion + 3.6* pelec_combustion* efossil_elec + pgas_combustion * egas) /theYield;
      var etransport = ( nwfeedstock  * nwpelletization) * lengthtransport  *( nvehical * efuel + etransport_exhaust) / theYield;
      
      var E = epelltization + etransport + ecombustion;
