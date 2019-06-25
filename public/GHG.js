@@ -36,6 +36,8 @@ function addCountries(countries)
 			$("#country").append(option);
 		}
 	});
+	$('#country [value="EU-28"]').prop("selected", true);
+
 }
 
 
