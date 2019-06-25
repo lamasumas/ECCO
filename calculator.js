@@ -88,8 +88,8 @@
        
        var ghgSavedHeat = 100 * ( 1 - Eheat / efossil_heat);
        var ghgsaved_elec = 100 * ( 1 - Eelec / efossil_elec);
-       var ghgSavedTotal = (afheat * ghgSavedHeat) + ( afelec *  ghgsaved_elec);
-       var co2 =  (outputheat + 3.6 * outputelec) * (efossil_heat * afheat + efossil_elec * afelec)*(ghgSavedTotal /100) /1000;
+      // var ghgSavedTotal = (afheat * ghgSavedHeat) + ( afelec *  ghgsaved_elec);
+       var co2 =  (outputheat * efossil_heat * (ghgSavedHeat / 100 ) + 3.6 * outputelec * efossil_elec * (ghgsaved_elec / 100))/1000
        
     
        var trees = (co2 * 1000) / getJSONData(countryJSON, "etree");
