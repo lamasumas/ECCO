@@ -201,7 +201,7 @@ function calculateWind()
 	var theCountry = document.getElementById("country").value;
 	var typeOfEnergy= document.getElementById("typeOfEnergy").value;
 	$.get("/formulas/Irradiation?country="+theCountry+"&typeOfEnergy="+(typeOfEnergy)+"&yearProduction="+
-	(document.getElementById("yearProduction").value), (response) => writeResults(response));
+	getValidatedUnitInputValue("yearProduction","M"), (response) => writeResults(response));
 
 }
 

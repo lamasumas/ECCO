@@ -84,17 +84,25 @@
 
 			<section class="myForm" id="WindForm" style="display:none"> 
 				<h3> <%= outputWind %> <i class="fas fa-plug"></i></h3>
-				<h4> <i id="wind-anual" class="far fa-question-circle"></i> <%= windAnualProduction %></h4>
-				<input type="text" id="yearProduction">
-				(MWhelectricity/<%=year%>) <br> 
 				<h4> <i id="wind-type" class="far fa-question-circle"></i> <%=energyType%></h4>
 				<select id="typeOfEnergy">
 					<option value="wind"><%=windType%></option>
 					<option value="pV"><%=pvType%></option>
 					<option value="Hydroelectric"><%=hydroType%></option>
 				</select>
+
+				<h4> <i id="wind-anual" class="far fa-question-circle"></i> <%= windAnualProduction %></h4>
+				<input type="text" id="yearProduction">
+				<select>
+								<option value="G">GWh</option>
+								<option selected value="M">MWh</option>
+								<option value="K">kWh</option>
+				</select>
+				<sub><%=electricityUnit%></sub>/<%=year%>
+				 <br> 
+				
 				<br>
-				<button id="calculateWind" > <%=calcular%></button>	
+				<button id="calculateWind" > <%=calcular%> </button>	
 			</section>
 
 			<section class="myForm" id="woodPellets" style="display: none">
