@@ -40,7 +40,7 @@
     "efficiencyTransformation": "Efficiency of transformation from manure to biogas:",
     "methaneGas": "The percentage of methane gas in the biogas:",
     "emissionGasses": "The emission of gases directly generated:",
-    "copyRight": "Developed by: Eduardo Lamas Suárez, Chi-Thang Phan-Tan and Daniel Ashcroft",
+    "copyRight": "Developed by: Martin Hill, Eduardo Lamas Suárez, Chi-Thang Phan-Tan and Daniel Ashcroft",
     "energySelector1": " -- select an option -- ",
     "energySelector2": "PV-Wind-Hydro",
     "energySelector3": "Demolish wood",

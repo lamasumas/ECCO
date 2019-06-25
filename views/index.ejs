@@ -42,8 +42,8 @@
 							<tr>
 								<th><%=country%></th>
 								<th>tonCO2/<%=year%></th>
-								<th> <i id="treesToolTip" class="far fa-question-circle"></i><%=trees%></th>
-								<th> <i id="housesToolTip" class="far fa-question-circle"></i><%=houses%></th>
+								<th> <i id="treesToolTip" class="far fa-question-circle"></i> <%=trees%></th>
+								<th> <i id="housesToolTip" class="far fa-question-circle"></i> <%=houses%></th>
 							</tr>
 							<tr>
 								<td > 
@@ -87,7 +87,7 @@
 				<h4> <i id="wind-anual" class="far fa-question-circle"></i> <%= windAnualProduction %></h4>
 				<input type="text" id="yearProduction">
 				(MWhelectricity/<%=year%>) <br> 
-				<h4> <i id="wind-type" class="far fa-question-circle"></i><%=energyType%></h4>
+				<h4> <i id="wind-type" class="far fa-question-circle"></i> <%=energyType%></h4>
 				<select id="typeOfEnergy">
 					<option value="wind"><%=windType%></option>
 					<option value="pV"><%=pvType%></option>
@@ -115,7 +115,7 @@
 					</tr>
 					<tr>
 						<th colspan="5">
-							<i id="pellets-anual" class="far fa-question-circle"></i><%=anualProductionTitle%>
+							<i id="pellets-anual" class="far fa-question-circle"></i> <%=anualProductionTitle%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -223,7 +223,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th colspan="5"> <i id="pellets-truck" class="far fa-question-circle"> </i><%=truckLength%>:
+						<th colspan="5"> <i id="pellets-truck" class="far fa-question-circle"> </i><%=truckLength%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -241,7 +241,7 @@
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<th colspan="5"><i id="pellets-moisture" class="far fa-question-circle"></i><%=moisture%>:
+						<th colspan="5"><i id="pellets-moisture" class="far fa-question-circle"></i> <%=moisture%>
 							<button class="maximizeRow">+</button>
 						</th>
 					</tr>
@@ -257,7 +257,7 @@
 						<td colspan="3"></td>
 					</tr>
 					<tr>
-						<th colspan="5"><i id="pellets-temp" class="far fa-question-circle"></i><%=temperature%>
+						<th colspan="5"><i id="pellets-temp" class="far fa-question-circle"></i> <%=temperature%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -266,14 +266,14 @@
 						<td colspan="3"></td>
 						<td>
 							<input id="usefulC_pellets"> 
-							°C<sub><%=useful%>:</sub>
+							°C<sub><%=useful%></sub>
 							<br>
 							<input id="surroundC_pellets"> 
-							°C<sub><%=surroundings%>:</sub>
+							°C<sub><%=surroundings%></sub>
 						</td>
 					</tr>
 				</table>
-				<button id="calculatePellets"><%=calculate%>:</button>
+				<button id="calculatePellets"><%=calculate%></button>
 			</section>
  
 
@@ -322,7 +322,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th colspan="6"> <i id="chips-weight" class="far fa-question-circle"></i> <%=annualWeightChips%>:
+						<th colspan="6"> <i id="chips-weight" class="far fa-question-circle"></i> <%=annualWeightChips%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -368,7 +368,7 @@
 						<td></td>
 					</tr>
 					<tr>
-						<th colspan="6"> <i id="chips-gas-electricity-used" class="far fa-question-circle"></i><%=electricityWasted%>
+						<th colspan="6"> <i id="chips-gas-electricity-used" class="far fa-question-circle"></i> <%=electricityWasted%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -415,7 +415,7 @@
 						<td></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="chips-truck" class="far fa-question-circle"></i> <%=truckLengthChips%>:
+						<th colspan="6"><i id="chips-truck" class="far fa-question-circle"></i> <%=truckLengthChips%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -450,7 +450,7 @@
 						<td colspan="4"></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="chips-temp" class="far fa-question-circle"></i><%=temperature%>
+						<th colspan="6"><i id="chips-temp" class="far fa-question-circle"></i> <%=temperature%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -459,15 +459,15 @@
 						<td colspan="4"></td>
 						<td>
 							<input id="usefulC_chips"> 
-							°C<sub><%=useful%>:</sub>
+							°C<sub><%=useful%></sub>
 							<br>
 							<input id="surroundC_chips"> 
-							°C<sub><%=surroundings%>:</sub>
+							°C<sub><%=surroundings%></sub>
 						</td>
 						<td></td>
 					</tr>
 				</table>
-				<button id="calculateChips"><%=calculate%>:</button>
+				<button id="calculateChips"><%=calculate%></button>
 			</section>
 
 			<section class="myForm" id="manure" style="display: none">
@@ -513,7 +513,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-weight" class="far fa-question-circle"></i><%=annualWeightManure%>:
+						<th colspan="6"><i id="manure-weight" class="far fa-question-circle"></i> <%=annualWeightManure%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -528,7 +528,7 @@
 						<td colspan="5"></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-efficient" class="far fa-question-circle"></i><%=efficiencyTransformation%>
+						<th colspan="6"><i id="manure-efficient" class="far fa-question-circle"></i> <%=efficiencyTransformation%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -618,7 +618,7 @@
 						<td></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-truck" class="far fa-question-circle"></i><%=truckLengthManure%>:
+						<th colspan="6"><i id="manure-truck" class="far fa-question-circle"></i> <%=truckLengthManure%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -636,7 +636,7 @@
 						<td colspan="4"></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-methane" class="far fa-question-circle"></i><%=methaneGas%>:
+						<th colspan="6"><i id="manure-methane" class="far fa-question-circle"></i> <%=methaneGas%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -650,7 +650,7 @@
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-temp" class="far fa-question-circle"></i><%=temperature%>:
+						<th colspan="6"><i id="manure-temp" class="far fa-question-circle"></i> <%=temperature%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -659,15 +659,15 @@
 						<td colspan="4"></td>
 						<td>
 							<input id="usefulC_Manure"> 
-							°C<sub><%=useful%>:</sub>
+							°C<sub><%=useful%></sub>
 							<br>
 							<input id="surroundC_Manure"> 
-							°C<sub><%=surroundings%>:</sub>
+							°C<sub><%=surroundings%></sub>
 						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th colspan="6"><i id="manure-emision" class="far fa-question-circle"></i><%=emissionGasses%>:
+						<th colspan="6"><i id="manure-emision" class="far fa-question-circle"></i> <%=emissionGasses%>
 							<button class="maximizeRow">+</button>
 					
 						</th>
@@ -684,7 +684,7 @@
 						<td colspan="3"></td>
 					</tr>
 				</table>
-				<button id="calculateManure"><%=calculate%>:</button>
+				<button id="calculateManure"><%=calculate%></button>
 			</section>
 
 			<h5 id="test"></h5>
