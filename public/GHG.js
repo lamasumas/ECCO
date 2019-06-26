@@ -119,7 +119,7 @@ function calculatePellets()
 		heatTransportedPellets: getValidatedUnitInputValue("heatTransportedPellets","M"),
 		electricityTransportedPellets: getValidatedUnitInputValue("electricityTransportedPellets", "K"),
 		heatPelletication: getValidatedUnitInputValue("heatPelletication","M")
-	}
+	};
 	$.ajax({
         url: "/formulas/WoodPellets",
         type: 'POST',
@@ -338,7 +338,7 @@ function getValidatedInput(theId){
 }
 
 function getValidatedUnitInputValue(theId, desiredUnit){
-	var input = document.getElementById(theId)
+	var input = document.getElementById(theId);
 	var x = parseFloat(input.value);
 	if(isNaN(x))
 		return 0;
