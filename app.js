@@ -3,6 +3,7 @@
 //Some necessary modules
 var express = require("express");
 var fs = require("fs");
+var bodyParser = require("body-parser");
 var app = express();
 
 var mongo = require("mongoose");
@@ -71,6 +72,7 @@ var formulas = require("./Formulas.js");
 
 app.set('view engine', 'ejs');
 
+app.use(bodyParser.json());
 //Declare where the static elements are stored (html, css, js(client_side))
 app.use(express.static("public"));
 

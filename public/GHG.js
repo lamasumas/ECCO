@@ -101,25 +101,32 @@ function loadFirstScreen(){
 function calculatePellets()
 {
 	var theCountry = document.getElementById("country").value;
-	var allParameters ="country="+theCountry + "&";
-	allParameters += "outputheat="+getValidatedUnitInputValue("pelletHeatOutput","G")+"&";
-    allParameters += "outputelec="+getValidatedUnitInputValue("pelletEllectOutput","M")+"&";
-	allParameters += "usefulC="+getValidatedInput("usefulC_pellets")+"&";
-	allParameters += "surroundingsC="+getValidatedInput("surroundC_pellets")+"&";
-    allParameters += "tonsTransportedPelletsYear="+getValidatedUnitInputValue("trasportedPellets","Ton")+"&";
-    allParameters += "moistpelletsParam="+getValidatedInput("moisture_pellets")+"&";
-    allParameters += "moistFeedstockSawdustParam="+getValidatedInput("moisture_dust_pellets")+"&";
-    allParameters += "pellets_loss="+getValidatedInput("pellets_loss")+"&";
-    allParameters += "electricityPelletization="+getValidatedUnitInputValue("electricityPelletization","K")+"&";
-    allParameters += "transported_pellets_loss="+getValidatedInput("transported_pellets_loss")+"&";
-    allParameters += "percentege_feedstock_sawdust_loss="+getValidatedInput("percentege_feedstock_sawdust_loss")+"&";
-    allParameters += "sawdust_loss="+getValidatedInput("sawdust_loss")+"&";
-    allParameters += "kmTruckTransport_pellets="+getValidatedUnitInputValue("kmTruckTransport_pellets","K")+"&";
-	allParameters += "heatTransportedPellets="+getValidatedUnitInputValue("heatTransportedPellets","M")+"&";
-	allParameters += "electricityTransportedPellets="+getValidatedUnitInputValue("electricityTransportedPellets", "K")+"&";
-	allParameters += "heatPelletication="+getValidatedUnitInputValue("heatPelletication","M");
-
-	$.get("/formulas/WoodPellets?"+allParameters, (response) => writeResults(response));
+	var dataToSend= {
+		country: theCountry,
+		outputheat: getValidatedUnitInputValue("pelletHeatOutput","G"), 
+		outputelec: getValidatedUnitInputValue("pelletEllectOutput","M"),
+		usefulC: getValidatedInput("usefulC_pellets"),
+		surroundingsC: getValidatedInput("surroundC_pellets"),
+		tonsTransportedPelletsYear: getValidatedUnitInputValue("trasportedPellets","Ton"),
+		moistpelletsParam: getValidatedInput("moisture_pellets"),
+		moistFeedstockSawdustParam: getValidatedInput("moisture_dust_pellets"),
+		pellets_loss: getValidatedInput("pellets_loss"),
+		electricityPelletization: getValidatedUnitInputValue("electricityPelletization","K"),
+		transported_pellets_loss: getValidatedInput("transported_pellets_loss"),
+		percentege_feedstock_sawdust_loss: getValidatedInput("percentege_feedstock_sawdust_loss"),
+		sawdust_loss: getValidatedInput("sawdust_loss"),
+		kmTruckTransport_pellets: getValidatedUnitInputValue("kmTruckTransport_pellets","K"),
+		heatTransportedPellets: getValidatedUnitInputValue("heatTransportedPellets","M"),
+		electricityTransportedPellets: getValidatedUnitInputValue("electricityTransportedPellets", "K"),
+		heatPelletication: getValidatedUnitInputValue("heatPelletication","M")
+	}
+	$.ajax({
+        url: "/formulas/WoodPellets",
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(dataToSend),
+		success: (response) => writeResults(response)
+	});
 }
 
 
@@ -130,27 +137,38 @@ function calculatePellets()
  */
 function calculateChips()
 {
-	var theCountry = document.getElementById("country").value;
-	var allParameters ="country="+theCountry + "&";
-	allParameters += "outputheat="+getValidatedUnitInputValue("chipsHeatOutput","G")+"&";
-	allParameters += "outputelec="+getValidatedUnitInputValue("chipsellectOutput","M")+"&";
-	allParameters += "usefulC="+getValidatedInput("usefulC_chips")+"&";
-	allParameters += "surroundingsC="+getValidatedInput("surroundC_chips")+"&";
-	allParameters += "tonsTransportedChipsYear="+getValidatedUnitInputValue("trasportedChips","Ton")+"&";
-	allParameters += "moistwoodParam="+getValidatedInput("moisture_wood_chips")+"&";
-	allParameters += "moistchipsParam="+getValidatedInput("moisture_chips")+"&";
-	allParameters += "feedstock_chips_loss="+getValidatedInput("feedstock_chips_loss")+"&";
-	allParameters += "electricityChipping="+getValidatedUnitInputValue("electricityChipping","K")+"&";
-	allParameters += "transported_chips_loss="+getValidatedInput("transported_chips_loss")+"&";
-	allParameters += "seperated_chips_loss="+getValidatedInput("seperated_chips_loss")+"&";
-	allParameters += "chips_loss="+getValidatedInput("chips_loss")+"&";
-	allParameters += "wood_chips_loss="+getValidatedInput("wood_chips_loss")+"&";
-	allParameters += "kmTruckTransport_chips="+getValidatedUnitInputValue("kmTruckTransport_chips","K")+"&";
-	allParameters += "heatTransportedChips="+getValidatedUnitInputValue("heatTransportedChips","M")+"&";
-	allParameters += "electricityTransportedChips="+getValidatedUnitInputValue("electricityTransportedChips","K")+"&";
-	allParameters += "electricityMegneticSeparation="+getValidatedUnitInputValue("electricityMegneticSeparation","K");
-	$.get("/formulas/WoodChips?"+allParameters, (response) => writeResults(response));
 
+	var theCountry = document.getElementById("country").value;
+	var dataToSend= {
+		country: theCountry,
+		outputheat: getValidatedUnitInputValue("chipsHeatOutput","G"),
+		outputelec: getValidatedUnitInputValue("chipsellectOutput","M"),
+		usefulC: getValidatedInput("usefulC_chips"),
+		surroundingsC: getValidatedInput("surroundC_chips"),
+		tonsTransportedChipsYear: getValidatedUnitInputValue("trasportedChips","Ton"),
+		moistwoodParam: getValidatedInput("moisture_wood_chips"),
+		moistchipsParam: getValidatedInput("moisture_chips"),
+		feedstock_chips_loss: getValidatedInput("feedstock_chips_loss"),
+		electricityChipping: getValidatedUnitInputValue("electricityChipping","K"),
+		transported_chips_loss: getValidatedInput("transported_chips_loss"),
+		seperated_chips_loss: getValidatedInput("seperated_chips_loss"),
+		chips_loss: getValidatedInput("chips_loss"),
+		wood_chips_loss: getValidatedInput("wood_chips_loss"),
+		kmTruckTransport_chips: getValidatedUnitInputValue("kmTruckTransport_chips","K"),
+		heatTransportedChips: getValidatedUnitInputValue("heatTransportedChips","M"),
+		electricityTransportedChips: getValidatedUnitInputValue("electricityTransportedChips","K"),
+		electricityMegneticSeparation: getValidatedUnitInputValue("electricityMegneticSeparation","K")
+	
+
+	};
+
+	$.ajax({
+        url: "/formulas/WoodChips",
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(dataToSend),
+		success: (response) => writeResults(response)
+	});
 }
 
 
@@ -162,31 +180,37 @@ function calculateChips()
 function calculateManure(){
 
 	var theCountry = document.getElementById("country").value;
-	var allParameters ="country="+theCountry + "&";
-	allParameters += "outputheat="+getValidatedUnitInputValue("manureHeatOutput", "G")+"&";
-	allParameters += "outputelec="+getValidatedUnitInputValue("manurellectOutput","M")+"&";
-	allParameters += "usefulC="+getValidatedInput("usefulC_Manure")+"&";
-	allParameters += "surroundingsC="+getValidatedInput("surroundC_Manure")+"&";
-	allParameters += "heatCombustionManure="+getValidatedUnitInputValue("heatCombustionManure","M")+"&";
-	allParameters += "electricityCombustionManure="+getValidatedUnitInputValue("electricityCombustionManure","K")+"&";
-	allParameters += "kmTruckManure="+getValidatedUnitInputValue("kmTruckManure","K")+"&";
-	allParameters += "annualManureWeight="+getValidatedUnitInputValue("annualManureWeight","Ton")+"&";
-	allParameters += "manure_loss="+getValidatedInput("manure_loss")+"&";
-	allParameters += "percentege_feedstock_manure_loss="+getValidatedInput("percentege_feedstock_manure_loss")+"&";
-	allParameters += "transported_manures_loss="+getValidatedInput("transported_manures_loss")+"&";
-	allParameters += "biogas_loss="+getValidatedInput("biogas_loss")+"&";
-	allParameters += "efficienyManureTransformation="+getValidatedInput("efficienyManureTransformation")+"&";
-	allParameters += "methane_content="+getValidatedInput("methane_content")+"&";
-	allParameters += "co2ProducedManure="+getValidatedInput("co2ProducedManure")+"&";
-	allParameters += "ch4ProducedManure="+getValidatedInput("ch4ProducedManure")+"&";
-	allParameters += "electricityTranportedManure="+getValidatedUnitInputValue("electricityTranportedManure","K")+"&";
-	allParameters += "n2oProducedManure="+getValidatedInput("N2oProducedManure")+"&";
-	allParameters += "electricityDigestionManure="+getValidatedUnitInputValue("electricityDigestionManure","K")+"&";
-	allParameters += "heatDigestionManure="+getValidatedUnitInputValue("heatDigestionManure","M");
+	var dataToSend = {
+		country: theCountry,
+		outputheat: getValidatedUnitInputValue("manureHeatOutput", "G"),
+		outputelec: getValidatedUnitInputValue("manurellectOutput","M"),
+		usefulC: getValidatedInput("usefulC_Manure"),
+		surroundingsC: getValidatedInput("surroundC_Manure"),
+		heatCombustionManure: getValidatedUnitInputValue("heatCombustionManure","M"),
+		electricityCombustionManure: getValidatedUnitInputValue("electricityCombustionManure","K"),
+		kmTruckManure: getValidatedUnitInputValue("kmTruckManure","K"),
+		annualManureWeight: getValidatedUnitInputValue("annualManureWeight","Ton"),
+		manure_loss: getValidatedInput("manure_loss"),
+		percentege_feedstock_manure_loss: getValidatedInput("percentege_feedstock_manure_loss"),
+		transported_manures_loss: getValidatedInput("transported_manures_loss"),
+		biogas_loss: getValidatedInput("biogas_loss"),
+		efficienyManureTransformation: getValidatedInput("efficienyManureTransformation"),
+		methane_content: getValidatedInput("methane_content"),
+		co2ProducedManure: getValidatedInput("co2ProducedManure"),
+		ch4ProducedManure: getValidatedInput("ch4ProducedManure"),
+		electricityTranportedManure: getValidatedUnitInputValue("electricityTranportedManure","K"),
+		n2oProducedManure: getValidatedInput("N2oProducedManure"),
+		electricityDigestionManure: getValidatedUnitInputValue("electricityDigestionManure","K"),
+		heatDigestionManure: getValidatedUnitInputValue("heatDigestionManure","M")
+	};
 
-
-	$.get("/formulas/Manure?"+allParameters, (response) => writeResults(response) );
-
+	$.ajax({
+        url: "/formulas/Manure",
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(dataToSend),
+		success: (response) => writeResults(response)
+	});
 
 }
 
@@ -202,8 +226,20 @@ function calculateWind()
 
 	var theCountry = document.getElementById("country").value;
 	var typeOfEnergy= document.getElementById("typeOfEnergy").value;
-	$.get("/formulas/Irradiation?country="+theCountry+"&typeOfEnergy="+(typeOfEnergy)+"&yearProduction="+
-	getValidatedUnitInputValue("yearProduction","M"), (response) => writeResults(response));
+	var dataToSend = {
+		country: theCountry,
+		typeOfEnergy: typeOfEnergy,
+		yearProduction: getValidatedUnitInputValue("yearProduction","M")
+
+	};
+
+$.ajax({
+        url: '/formulas/Irradiation',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(dataToSend),
+		success: (response)=> writeResults(response)
+	} );
 
 }
 
