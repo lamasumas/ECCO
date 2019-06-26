@@ -1,0 +1,29 @@
+
+
+html{
+	text-align:center;
+
+}
+
+body{
+	background-image: url("img/background_image.jpeg");
+
+	background-size: cover;
+	background-repeat: repeat;
+
+}
+
+table{
+    width:100%;
+}
+
+th, td {
+    border: 1px black solid;
+} 
+section{
+
+	overflow-x:auto;
+    background-color: lightgray;
+    border: 1px solid black;
+    border-radius: 10px 0px 10px 0px;
+}

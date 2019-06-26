@@ -104,6 +104,16 @@ app.get('/', function (req, res) {
  });
 
 
+ app.get('/databaseUserView', function (req, res) {
+    console.log("Database user view");
+    mongo.model("country").find({}, function(err, names) 
+    {
+
+        res.render("databaseView.ejs", {countries: names});
+    });
+});
+
+
 
  //A get request of the client, in order to get the country names
 app.get('/index.html/countries', function (req, res) {
