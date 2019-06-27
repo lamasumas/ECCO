@@ -90,6 +90,7 @@ function loadFirstScreen(){
 	
 	$(".intro").css("display","none");
 	$(".firstScreen").fadeIn().css("display","block");
+	$("#goDatabaseView").fadeIn().css("display","auto");
 	
 }
 

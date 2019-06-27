@@ -169,4 +169,15 @@ height:100%;
 }
 
 
- 
+ #goDatabaseView{
+		display:none;
+		border: 1px solid gray;
+		background-color: rgba(245, 245, 245, 0.822);
+		color:black;
+		box-shadow: 1px 1px;
+		text-decoration: none;
+			
+	}
+#goDatabaseView:hover{
+	background-color: rgba(226, 219, 219, 0.418);
+ }
