@@ -24,7 +24,7 @@ th, td {
     
 } 
 section{
-
+	text-align: center;
 	overflow-x:auto;
     background-color: lightgray;
     border: 1px solid black;

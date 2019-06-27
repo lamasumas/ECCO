@@ -304,9 +304,7 @@ function loadTooltips(language){
 		$(".fa-question-circle").each((x,y) =>{
 			y.setAttribute("title", response[y.id]);
 		});
-	}
-
-	);
+	});
 	
 	
 }
