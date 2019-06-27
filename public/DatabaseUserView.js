@@ -20,11 +20,19 @@ function setReferenceTooltips()
             switch(y.id)
             {
                 case "1":
-                y.setAttribute("title", "-" + response["2"]+ "\n-"+ response["9"]);
+                y.setAttribute("title", "-" + response["2"]);
+                break;
+
+                case "1-1":
+                y.setAttribute("title", "-"+ response["9"]);
                 break;
 
                 case "2":
-                y.setAttribute("title", "-" + response["2"]+ "\n-"+ response["10"]);
+                y.setAttribute("title", "-" + response["2"]);
+                break;
+
+                case "2-1":
+                y.setAttribute("title", "-"+ response["10"]);
                 break;
 
                 case "3":
