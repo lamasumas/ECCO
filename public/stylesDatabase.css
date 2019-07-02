@@ -35,6 +35,9 @@ section{
 	border-radius: 10px 0px 10px 0px;
 	padding:1%;
 }
+.units td {
+	font-size: 9px;
+}
 .second{
 	color:green;
 }
