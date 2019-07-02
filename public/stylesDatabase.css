@@ -24,16 +24,18 @@ th, td {
 	text-align:center;
     
 } 
-section{
+.generalSection{
 	margin-top: 5%;
 	margin-left: 1%;
 	margin-right: 1%;
 	text-align: center;
-	overflow-x:auto;
     background-color: lightgray;
     border: 1px solid black;
 	border-radius: 10px 0px 10px 0px;
 	padding:1%;
+}
+.generalSection section{
+	overflow-x:auto;
 }
 .units td {
 	font-size: 9px;
