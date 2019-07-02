@@ -513,13 +513,13 @@
 					<tr class="hiddenRow">
 						<td colspan="5"></td>
 						<td>
-							<input id="manurellectOutput"> <select>
+							<input placeholder="0" id="manurellectOutput"> <select>
 								<option value="G">GMh</option>
 								<option selected value="M">MWh</option>
 								<option  value="K">kWh</option>
 							</select>
 							<sub><%=electricityUnit%></sub> <br>
-							<input id="manureHeatOutput"> <select>
+							<input placeholder="0"  id="manureHeatOutput"> <select>
 								<option selected value="G">GJ</option>
 								<option value="M">MJ</option>
 								<option value="K">kJ</option>
@@ -534,7 +534,7 @@
 						</th>
 					</tr>
 					<tr class="hiddenRow">
-						<td> <input id="annualManureWeight">
+						<td> <input placeholder="0"  id="annualManureWeight">
 						<select>
 							<option selected value="Ton">Ton</option>
 							<option value="K">kg</option>
@@ -551,7 +551,7 @@
 					<tr class="hiddenRow">
 						<td colspan="4"></td>
 						<td>
-							<input id="efficienyManureTransformation"> 
+							<input placeholder="21" id="efficienyManureTransformation"> 
 							m<sup>3</sup><sub><%=biogasUnit%></sub>/ton<sub><%=storedManureUnit%></sub>
 						</td>
 					</tr>
@@ -563,19 +563,19 @@
 					</tr>
 					<tr class="hiddenRow">
 						<td>
-							<input id="percentege_feedstock_manure_loss">
+							<input  placeholder="0"  id="percentege_feedstock_manure_loss">
 							&percnt;<sub><%=feedstockManure%></sub>
 						</td>
-						<td><input id="manure_loss">
+						<td><input  placeholder="0"  id="manure_loss">
 							&percnt;<sub><%=manureUnit%></sub>
 						</td>
 						<td>
-							<input id="transported_manures_loss">
+							<input  placeholder="0"  id="transported_manures_loss">
 							&percnt;<sub><%=transportedManureUnit%></sub>
 						</td>
 						<td></td>
 						<td>
-							<input id="biogas_loss">
+							<input  placeholder="0" id="biogas_loss">
 							&percnt;<sub><%=biogasUnit%></sub>
 						</td>
 						<td></td>
@@ -589,7 +589,7 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input id="electricityTranportedManure"> <select>
+							<input  placeholder="0"  id="electricityTranportedManure"> <select>
 								<option value="G">GMh</option>
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
@@ -597,14 +597,14 @@
 							/ton<sub><%=transportedManureUnit%></sub>
 						</td>
 						<td>
-							<input id="electricityDigestionManure"> <select>
+							<input placeholder="0"  id="electricityDigestionManure"> <select>
 								<option value="G">GMh</option>
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
 							</select>
 							/ton<sub><%=storedManureUnit%> </sub>
 							<br>
-							<input id="heatDigestionManure"> 
+							<input  placeholder="0" id="heatDigestionManure"> 
 							<select>
 								<option value="G">GJ</option>
 								<option selected value="M">MJ</option>
@@ -614,7 +614,7 @@
 
 						</td>
 						<td>
-							<input id="electricityCombustionManure">
+							<input  placeholder="0" id="electricityCombustionManure">
 							<select>
 								<option value="G">GMh</option>
 								<option value="M">MWh</option>
@@ -622,7 +622,7 @@
 							</select>
 							/m<sup>3</sup><sub><%=biogasUnit%></sub>
 							<br>
-							<input id="heatCombustionManure">
+							<input placeholder="0"  id="heatCombustionManure">
 							<select>
 								<option value="G">GJ</option>
 								<option selected value="M">MJ</option>
@@ -641,7 +641,7 @@
 					<tr class="hiddenRow">
 						<td></td>
 						<td>
-							<input id="kmTruckManure">
+							<input placeholder="50" id="kmTruckManure">
 							<select>
 								<option selected value="K">Km</option>
 								<option value="simple">m</option>
@@ -659,7 +659,7 @@
 					<tr class="hiddenRow">
 						<td colspan="3"></td>
 						<td>
-							<input id="methane_content">
+							<input placeholder="55" id="methane_content">
 							&percnt;<sub><%=methaneUnit%></sub>
 						</td>
 						<td colspan="2"></td>
@@ -673,10 +673,10 @@
 					<tr class="hiddenRow">
 						<td colspan="4"></td>
 						<td>
-							<input id="usefulC_Manure"> 
+							<input placeholder="90" id="usefulC_Manure"> 
 							°C<sub><%=useful%></sub>
 							<br>
-							<input id="surroundC_Manure"> 
+							<input placeholder="10" id="surroundC_Manure"> 
 							°C<sub><%=surroundings%></sub>
 						</td>
 						<td></td>
@@ -690,11 +690,11 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input id="co2ProducedManure">kgCO<sup>2</sup>/ton<sub><%=transportedManureUnit%></sub>
+							<input placeholder="0"  id="co2ProducedManure">kgCO<sup>2</sup>/ton<sub><%=transportedManureUnit%></sub>
 							<br>
-							<input id="ch4ProducedManure">kgCH<sup>4</sup>/ton<sub><%=transportedManureUnit%></sub>
+							<input placeholder="0.155" id="ch4ProducedManure">kgCH<sup>4</sup>/ton<sub><%=transportedManureUnit%></sub>
 							<br>
-							<input id = "N2oProducedManure"> kgN<sup>2</sup>O/ton<sub><%=transportedManureUnit%></sub>
+							<input placeholder="0.0007" id = "N2oProducedManure"> kgN<sup>2</sup>O/ton<sub><%=transportedManureUnit%></sub>
 						</td>
 						<td colspan="3"></td>
 					</tr>
