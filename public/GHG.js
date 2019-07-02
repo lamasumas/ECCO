@@ -47,7 +47,7 @@ function addCountries(countries)
  */
 function energySelector(){
 
-	document.getElementById("results").style.display = "block";
+	document.getElementById("resultSection").style.display = "block";
 	var option = document.getElementById("selector").value;
 	$("#title").css("display","none");
 	switch (option)

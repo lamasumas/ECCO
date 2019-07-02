@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 	<head>
-		<title> Demo </title>
+		<title> Green House Gas Calculator </title>
 		<meta charset="utf-8"/>
 		<link rel="stylesheet" type="text/css" media="screen" href="styles.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -38,35 +38,40 @@
 		</header>
 		<main>
 
-				<section id="resultSection"> 
-						<table id="results" style="display:none">
-							<tr>
-								<th><%=country%></th>
-								<th>tonCO2/<%=year%></th>
-								<th> <i id="treesToolTip" class="far fa-question-circle"></i> <%=trees%></th>
-								<th> <i id="housesToolTip" class="far fa-question-circle"></i> <%=houses%></th>
-							</tr>
-							<tr>
-								<td > 
-									<select id="country">
-									</select>
-									</td>
-								<td> <span id="co2"></span> </td>
-								<td id="trees"></td>
-								<td id="houses"></td>			
+				<section class="row"> 
+
+						<section class="column">
+							<img class="logo" src="img/interreg_logo.png" alt="ECCO logo">
+						</section>
+						<section class="column" >
+						<section id="resultSection" style="display:none">
+							<table  id="results" >
+								<tr>
+									<th><%=country%></th>
+									<th>tonCO2/<%=year%></th>
+									<th> <i id="treesToolTip" class="far fa-question-circle"></i> <%=trees%></th>
+									<th> <i id="housesToolTip" class="far fa-question-circle"></i> <%=houses%></th>
 								</tr>
-						</table>
+								<tr>
+									<td > 
+										<select id="country">
+										</select>
+										</td>
+									<td> <span id="co2"></span> </td>
+									<td id="trees"></td>
+									<td id="houses"></td>			
+									</tr>
+							</table>
+							</section>
+						</section>
+						<section class="column">
+							<img class="logo" src="img/logo_cit.png" alt="CIT logo">
+						</section>
 					</section>
 
 			<section id="containerIntro">
 				<section class="intro">
 				
-					<section id="banner">
-						<img class="logo" src="img/interreg_logo.png" alt="ECCO logo">
-						<img class="logo" src="img/logo_cit.png" alt="CIT logo">
-
-					</section>
-
 					<h3 id="titleIntro"> 
 						<%= titleIntro %>
 						</h3>
@@ -79,7 +84,7 @@
 				</section>
 			</section>
 		
-		<a id="goDatabaseView" href="/databaseUserView">View database data</a>
+		<a id="goDatabaseView" href="/databaseUserView" target="_blank">View database data</a>
 			<section id="show">
 				<span></span>
 			</section>
@@ -133,14 +138,14 @@
 					<tr class="hiddenRow">
 						<td colspan="4"></td>
 						<td>
-							<input id="pelletEllectOutput"> 
+							<input placeholder="0" id="pelletEllectOutput"> 
 							<select>
 								<option value="G">GWh</option>
 								<option selected value="M">MWh</option>
 								<option value="K">kWh</option>
 							</select>
 							<sub><%=electricityUnit%></sub> <br>
-							<input id="pelletHeatOutput"> 
+							<input placeholder="0"  id="pelletHeatOutput"> 
 							<select>
 								<option selected value="G">GJ</option>
 								<option value="M">MJ</option>
@@ -157,7 +162,7 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input id="trasportedPellets"> 
+							<input  placeholder="0"  id="trasportedPellets"> 
 							<select>
 								<option selected value="Ton">Ton</option>
 								<option value="K">kg</option>
@@ -174,18 +179,18 @@
 					</tr>
 					<tr class="hiddenRow">
 						<td>
-							<input id="percentege_feedstock_sawdust_loss">
+							<input placeholder="0"  id="percentege_feedstock_sawdust_loss">
 							&percnt;<sub><%=feedstockSawdust%></sub>
 						</td>
-						<td><input id="sawdust_loss">
+						<td><input placeholder="0"  id="sawdust_loss">
 							&percnt;<sub><%=sawdustUnit%></sub>
 						</td>
 						<td>
-							<input id="pellets_loss">
+							<input  placeholder="0"  id="pellets_loss">
 							&percnt;<sub><%=pelletsUnit%></sub>
 						</td>
 						<td>
-							<input id="transported_pellets_loss">
+							<input  placeholder="0" id="transported_pellets_loss">
 							&percnt;<sub><%=transportedPellets%></sub>
 						</td>
 						<td></td>
@@ -199,14 +204,14 @@
 					<tr class="hiddenRow">
 						<td></td>
 						<td>
-							<input id="electricityPelletization">
+							<input placeholder="115" id="electricityPelletization">
 							<select>
 								<option value="G">GWh</option>
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
 							</select><sub><%=electricityUnit%></sub>/ton<sub><%=pelletsUnit%></sub>
 							<br>
-							<input id="heatPelletication"><select>
+							<input  placeholder="0"  id="heatPelletication"><select>
 								<option value="G">GJ</option>
 								<option selected value="M">MJ</option>
 								<option value="K">kj</option>
@@ -215,7 +220,7 @@
 						</td>
 						<td></td>
 						<td>
-							<input id="electricityTransportedPellets">
+							<input placeholder="0"  id="electricityTransportedPellets">
 							<select>
 								<option value="G">GWh</option>
 								<option value="M">MWh</option>
@@ -223,7 +228,7 @@
 							</select>
 							<sub><%=electricityUnit%></sub>/ton<sub><%=transportedPellets%></sub>
 							<br>
-							<input id="heatTransportedPellets">
+							<input placeholder="0"  id="heatTransportedPellets">
 							<select>
 								<option value="G">GJ</option>
 								<option value="M">MJ</option>
@@ -241,7 +246,7 @@
 					<tr  class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input id="kmTruckTransport_pellets">
+							<input placeholder="50" id="kmTruckTransport_pellets">
 							<select>
 								<option selected value="K">km</option>
 								<option value="simple">m</option>
@@ -257,11 +262,11 @@
 					</tr>
 					<tr class="hiddenRow">
 						<td>
-							<input id="moisture_dust_pellets">
+							<input placeholder="40" id="moisture_dust_pellets">
 							&percnt;<sub><%=sawdustUnit%></sub>
 						</td>
 						<td>
-							<input id="moisture_pellets">
+							<input placeholder="6" id="moisture_pellets">
 							&percnt;<sub><%=pelletsUnit%></sub>
 						</td>
 						<td colspan="3"></td>
@@ -275,10 +280,10 @@
 					<tr class="hiddenRow">
 						<td colspan="3"></td>
 						<td>
-							<input id="usefulC_pellets"> 
+							<input placeholder="90" id="usefulC_pellets"> 
 							°C<sub><%=useful%></sub>
 							<br>
-							<input id="surroundC_pellets"> 
+							<input placeholder="10" id="surroundC_pellets"> 
 							°C<sub><%=surroundings%></sub>
 						</td>
 					</tr>
