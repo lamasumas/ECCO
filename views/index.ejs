@@ -321,14 +321,14 @@
 					<tr class="hiddenRow">
 						<td colspan="5"></td>
 						<td>
-							<input id="chipsellectOutput"> 
+							<input placeholder="0" id="chipsellectOutput"> 
 							<select>
 								<option value="G">GMh</option>
 								<option selected value="M">MWh</option>
 								<option value="K">kWh</option>
 							</select>
 							<sub><%=electricityUnit%> </sub> <br>
-							<input id="chipsHeatOutput"> <select>
+							<input placeholder="0"  id="chipsHeatOutput"> <select>
 								<option selected value="G">GJ</option>
 								<option value="M">MJ</option>
 								<option value="K">kj</option>
@@ -345,7 +345,7 @@
 					<tr class="hiddenRow">
 						<td colspan="3"></td>
 						<td>
-							<input id="trasportedChips"> 
+							<input placeholder="0" id="trasportedChips"> 
 							<select>
 								<option selected value="Ton">Ton</option>
 								<option value="K">kg</option>
@@ -362,22 +362,22 @@
 					</tr>
 					<tr class="hiddenRow">
 						<td>
-							<input id="feedstock_chips_loss">
+							<input  placeholder="0" id="feedstock_chips_loss">
 							&percnt;<sub><%=feedstockSawdust%></sub>
 						</td>
-						<td><input id="wood_chips_loss">
+						<td><input placeholder="0"  id="wood_chips_loss">
 							&percnt;<sub><%=sawdustUnit%></sub>
 						</td>
 						<td>
-							<input id="chips_loss">
+							<input placeholder="0"  id="chips_loss">
 							&percnt;<sub><%=chipsUnit%></sub>
 						</td>
 						<td>
-							<input id="seperated_chips_loss">
+							<input  placeholder="0" id="seperated_chips_loss">
 							&percnt;<sub>seperated_chips</sub>
 						</td>
 						<td>
-							<input id="transported_chips_loss">
+							<input placeholder="0"  id="transported_chips_loss">
 							&percnt;<sub><%=transportedChipsUnit%></sub>
 						</td>
 						<td></td>
@@ -391,7 +391,7 @@
 					<tr class="hiddenRow">
 						<td></td>
 						<td>
-							<input id="electricityChipping">
+							<input placeholder="75" id="electricityChipping">
 							 <select>
 								<option value="G">GMh</option>
 								<option value="M">MWh</option>
@@ -400,7 +400,7 @@
 							<sub><%=electricityUnit%></sub>/ton<sub><%=pelletsUnit%></sub>
 						</td>
 						<td>
-							<input id="electricityMegneticSeparation"> 
+							<input placeholder="0.6" id="electricityMegneticSeparation"> 
 							<select>
 								<option value="G">GMh</option>
 								<option value="M">MWh</option>
@@ -411,7 +411,7 @@
 						</td>
 						<td></td>
 						<td>
-							<input id="electricityTransportedChips">
+							<input placeholder="0"  id="electricityTransportedChips">
 							<select>
 								<option value="G">GMh</option>
 								<option value="M">MWh</option>
@@ -419,7 +419,7 @@
 							</select>
 							<sub><%=electricityUnit%></sub>/ton<sub><%=transportedChipsUnit%></sub>
 							<br>
-							<input id="heatTransportedChips">
+							<input  placeholder="0" id="heatTransportedChips">
 							<select>
 								<option value="G">GJ</option>
 								<option selected value="M">MJ</option>
@@ -438,7 +438,7 @@
 					<tr class="hiddenRow">
 						<td colspan="3"></td>
 						<td>
-							<input id="kmTruckTransport_chips">
+							<input placeholder="50" id="kmTruckTransport_chips">
 							<select>
 								<option selected value="K">km</option>
 								<option value="simple">m</option>
@@ -455,11 +455,11 @@
 					</tr>
 					<tr class="hiddenRow">
 						<td>
-							<input id="moisture_wood_chips">
+							<input placeholder="50" id="moisture_wood_chips">
 							&percnt;<sub><%=woodUnit%></sub>
 						</td>
 						<td>
-							<input id="moisture_chips">
+							<input placeholder="30" id="moisture_chips">
 							&percnt;<sub><%=chipsUnit%></sub>
 						</td>
 						<td colspan="4"></td>
@@ -473,10 +473,10 @@
 					<tr class="hiddenRow">
 						<td colspan="4"></td>
 						<td>
-							<input id="usefulC_chips"> 
+							<input placeholder="90" id="usefulC_chips"> 
 							°C<sub><%=useful%></sub>
 							<br>
-							<input id="surroundC_chips"> 
+							<input placeholder="10" id="surroundC_chips"> 
 							°C<sub><%=surroundings%></sub>
 						</td>
 						<td></td>
