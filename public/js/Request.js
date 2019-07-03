@@ -1,4 +1,4 @@
-
+/*jshint esversion: 6 */
 /**
  * This medthod sends a get request to the nodejs server, so it can calculate the co2, trees 
  * and houses value of the pellets energy

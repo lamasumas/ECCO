@@ -1,5 +1,5 @@
 
-
+/*jshint esversion: 6 */
 class Unit{
 
     constructor()
@@ -85,7 +85,7 @@ class Unit{
         {
             return value/1000000000;
         }
-    }
+    };
     
     
     
