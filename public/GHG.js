@@ -18,8 +18,9 @@ $(document).ready(function (e) {
 		loadTooltips(document.documentElement.lang);
 
 	theUnit = new Unit();
+	lastOption = document.getElementById("resultsUnits").value;
 });
-
+var lastOption;
 var theUnit;
 /**
  * This method adds to the html country selector the actual values
@@ -356,8 +357,24 @@ function writeResults(response){
 	var co2 = parseFloat(splittedResponse[0]);
 	var trees = parseFloat(splittedResponse[1]);
 	var houses  = parseFloat(splittedResponse[2]);
+	var resultUnits = document.getElementById("resultsUnits");
 
-	document.getElementById("co2").innerHTML = writeDots(Math.round(co2));
+
+	document.getElementById("co2").innerHTML = writeDots(Math.round(theUnit.getValue(co2, "Ton" , resultUnits.selectedOptions[0].value)));
 	document.getElementById("trees").innerHTML= writeDots(Math.round(trees));
 	document.getElementById("houses").innerHTML= writeDots(Math.round(houses));
+}
+
+function removeDots(theNumber){
+	var splittted = theNumber.split(",");
+	
+	return splittted.join("");
+	
+}
+
+function resultTableListener(){
+	var co2 = parseFloat(removeDots(document.getElementById("co2").innerHTML));
+	document.getElementById("co2").innerHTML = writeDots(Math.round(theUnit.getValue(co2, lastOption, document.getElementById("resultsUnits").selectedOptions[0].value)));
+	lastOption = document.getElementById("resultsUnits").selectedOptions[0].value;
+	
 }

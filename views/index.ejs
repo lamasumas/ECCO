@@ -48,7 +48,11 @@
 							<table  id="results" >
 								<tr>
 									<th><%=country%></th>
-									<th>tonCO2/<%=year%></th>
+									<th><select id="resultsUnits" onchange="resultTableListener()"> 
+											<option selected value="Ton">Ton</option>
+											<option value="K">kg</option>
+										</select>
+										/<%=year%></th>
 									<th> <i id="treesToolTip" class="far fa-question-circle"></i> <%=trees%></th>
 									<th> <i id="housesToolTip" class="far fa-question-circle"></i> <%=houses%></th>
 								</tr>
@@ -57,9 +61,10 @@
 										<select id="country">
 										</select>
 										</td>
-									<td> <span id="co2"></span> </td>
-									<td id="trees"></td>
-									<td id="houses"></td>			
+									<td> <span id="co2">0</span> 
+									</td>
+									<td id="trees">0</td>
+									<td id="houses">0</td>			
 									</tr>
 							</table>
 							</section>
