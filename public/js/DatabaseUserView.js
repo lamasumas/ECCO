@@ -5,6 +5,10 @@ $(document).ready(function(e){
     
     setReferenceTooltips();
 });
+
+/**
+ * Function that loads the tooltips of the table into the ? symbols
+ */
 function setReferenceTooltips()
 {
     var settings = {
@@ -104,6 +108,9 @@ function setReferenceTooltips()
     });
 }
 
+/**
+ * This opens a tooltip url into a new tab
+ */
 function openTooltip(url){
     window.open(url, '_blank');
 

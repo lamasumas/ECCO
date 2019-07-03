@@ -147,6 +147,15 @@ function getValidatedInput(theId){
 		return x;
 }
 
+/**
+ * 
+ * @param {string} theId The id of the input that we want to validate the value
+ * @param {string} desiredUnit The desired unit choosen by the user
+ * 
+ * This units gets and transforms the value of the inputs into a desired unit and 
+ * it is returned.
+ * If the input has not been modified by the user a 0 will be returned instead
+ */
 function getValidatedUnitInputValue(theId, desiredUnit){
 	var input = document.getElementById(theId);
 	var x = parseFloat(input.value);
@@ -175,6 +184,13 @@ function writeResults(response){
 	document.getElementById("houses").innerHTML= writeDots(Math.round(houses));
 }
 
+/**
+ * 
+ * @param {string} theNumber
+ * 
+ * This function recive a string with the number format used in the result table ("100,300") and
+ * it is transformed into a formal float number string in order to be parse (100300) 
+ */
 function removeDots(theNumber){
 	var splittted = theNumber.split(",");
 	
@@ -182,6 +198,10 @@ function removeDots(theNumber){
 	
 }
 
+/**
+ * This is a listener for the unit selector of the result table, so the user is able to converted into any of the 
+ * possible options available
+ */
 function resultTableListener(){
 	var co2 = parseFloat(removeDots(document.getElementById("co2").innerHTML));
 	document.getElementById("co2").innerHTML = writeDots(Math.round(theUnit.getValue(co2, lastOption, document.getElementById("resultsUnits").selectedOptions[0].value)));
