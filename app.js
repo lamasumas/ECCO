@@ -81,29 +81,32 @@ app.use(express.static("public"));
 app.use("/formulas", formulas);
 
 
-
+//Pre-loading of the language files beforehand
 var englishLanguage = JSON.parse(fs.readFileSync("languages/english.json"));
 var spanishLanguage = JSON.parse(fs.readFileSync("languages/spanish.json"));
 var frenchLanguage = JSON.parse(fs.readFileSync("languages/french.json"));
 
+//Send to the client the  main window template in french 
 app.get('/', function (req, res) {
 
     console.log("English");
     res.render("index.ejs", englishLanguage );
  });
 
+//Send to the client the  main window template in french 
  app.get('/spanish', function (req, res) {
     console.log("Spanish");
     res.render("index.ejs", spanishLanguage );
  });
 
-
+//Send to the client the  main window template in french 
  app.get('/french', function (req, res) {
     console.log("French");
     res.render("index.ejs", frenchLanguage );
  });
 
 
+ //Send the databaseuserview template to the client side
  app.get('/databaseUserView', function (req, res) {
     console.log("Database user view");
     mongo.model("country").find({}, function(err, names) 
@@ -129,7 +132,7 @@ app.get('/index.html/countries', function (req, res) {
        
 });
 
-
+//The server start listening for more requests
  var server = app.listen(8081);
 
 
