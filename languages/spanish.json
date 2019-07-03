@@ -74,5 +74,6 @@
     "manureUnit": "abono",
     "transportedManureUnit": "abono_transportado",
     "methaneUnit": "metano",
-    "chipsUnit": "astillas"
+    "chipsUnit": "astillas",
+    "language": "es"
 }

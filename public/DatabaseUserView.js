@@ -92,8 +92,15 @@ function setReferenceTooltips()
 
                 
             }
+
             
-		});
+        });
+        for( var i= 0; i<19; i++)
+        {
+            document.getElementById("units"+i).setAttribute("title", response["units"+i]);
+
+
+        }
     });
 }
 

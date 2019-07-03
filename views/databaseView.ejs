@@ -21,7 +21,7 @@
 						Country
 					</th> 
 					<th>
-						eelec
+						e<sub>elec</sub>
 					</th>
 					<th>
 						PV
@@ -39,7 +39,7 @@
 						Fuel
 					</th>
 					<th>
-						egas
+						e<sub>gas</sub>
 					</th>
 					<th>
 						CH4
@@ -48,13 +48,13 @@
 						N2O
 					</th>
 					<th>
-						nvehicle Dry
+						n<sub>vehicle Dry</sub>
 					</th>
 					<th>
 						exhaust Dry
 					</th>
 					<th>
-						nvehicle Liquid
+						n<sub>vehicle Liquid</sub>
 					</th>
 					<th>
 						exhaust Liquid
@@ -74,7 +74,8 @@
 					<th>
 						House
 					</th>
-					<tr  class="units">
+				</tr>
+				<tr  class="units">
 						<td></td>
 						<td>g<sub>CO<sup>2</sup></sub>/kWh</td>
 						<td>g<sub>CO<sup>2</sup></sub>/kWh</td>
@@ -94,10 +95,16 @@
 						<td>MJ/kg</td>
 						<td>kg<sub>CO<sup>2</sup></sub>/tree</td>
 						<td>kg<sub>CO<sup>2</sup></sub>/house / year</td>
-					</tr>
-		
-				
 				</tr>
+
+				<tr>	
+				<% for (var i=0; i < 19 ; i++){%>
+					<td>
+						<i  id="units<%= i %>" class="far fa-question-circle"></i>
+					</td>
+				<%}%>
+				</tr>
+
 				<% for (var i=0; i < (countries.length); i++){%>
 					<tr>
 					<td>

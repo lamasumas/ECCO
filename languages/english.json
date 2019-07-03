@@ -74,7 +74,8 @@
     "manureUnit": "manure",
     "transportedManureUnit": "transported_manure",
     "methaneUnit": "methane",
-    "chipsUnit": "chips"
+    "chipsUnit": "chips",
+    "language": "en"
 
 
 

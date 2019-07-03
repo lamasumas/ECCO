@@ -74,6 +74,7 @@
     "manureUnit": "fumier",
     "transportedManureUnit": "fumier_transporté",
     "methaneUnit": "methane",
-    "chipsUnit": "copeaux"
+    "chipsUnit": "copeaux",
+    "language": "fr"
 
 }
