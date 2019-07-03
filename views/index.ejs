@@ -20,7 +20,8 @@
 			<a href="/spanish"> <img  class="icon" alt="Spainsh" src="img/Spain.png"></a>
 			<a href="/french"> <img  class="icon" alt="French" src="img/France.png"></a>
 			<br>
-			<section class="firstScreen">
+
+			<section id="finalEnergySelector" style="display:none">
 							<select id="selector"  onchange=" energySelector()" >
 								
 								<option disabled selected value><%=energySelector1%> </option>
@@ -30,14 +31,11 @@
 								<option value="Man"><%=energySelector4%></option>
 							</select>
 						</section>
-			
-			
-		
-		 
-					<img id="title" class="firstScreen" src="img/Example.png" alt="Input / Processing/ Output">
 					
 		</header>
 		<main>
+
+				
 
 				<section class="row"> 
 
@@ -74,6 +72,21 @@
 							<img class="logo" src="img/logo_cit.png" alt="CIT logo">
 						</section>
 					</section>
+
+
+			<section id="firstScreen" class="myForm">
+					<h3><%=initialSelector%></h3>
+					<select id="initialSelector"  onchange="initialEnergySelector()" >
+								
+								<option disabled selected value><%=energySelector1%> </option>
+								<option value="IWH"><%=energySelector2%></option>
+								<option value="DW"><%=energySelector3%></option>
+								<option value="Saw"><%=sawdust%></option>
+								<option value="Man"><%=energySelector4%></option>
+							</select>
+						</section>
+				</section>
+
 
 			<section id="containerIntro">
 				<section class="intro">

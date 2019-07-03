@@ -50,7 +50,6 @@ function energySelector(){
 
 	document.getElementById("resultSection").style.display = "block";
 	var option = document.getElementById("selector").value;
-	$("#title").css("display","none");
 	switch (option)
 	{
 		case "IWH":
@@ -83,6 +82,31 @@ function changeFormInDisplay(theId){
 
 }
 
+function initialEnergySelector(){
+
+	document.getElementById("resultSection").style.display = "block";
+	var option = document.getElementById("initialSelector").value;
+	document.getElementById("firstScreen").style.display="none";
+	document.getElementById("finalEnergySelector").style.display="block"
+	$("#goDatabaseView").fadeIn().css("display","auto");
+	switch (option)
+	{
+		case "IWH":
+			changeFormInDisplay("WindForm");
+			break;
+		case "DW":
+			changeFormInDisplay("woodChips");
+			break;
+		case "Saw":
+			changeFormInDisplay("woodPellets");
+			break;
+		case "Man":
+			changeFormInDisplay("manure");
+			break;
+
+	}
+
+}
 
 /**
  * This will prepare the first screen
@@ -90,8 +114,7 @@ function changeFormInDisplay(theId){
 function loadFirstScreen(){
 	
 	$(".intro").css("display","none");
-	$(".firstScreen").fadeIn().css("display","block");
-	$("#goDatabaseView").fadeIn().css("display","auto");
+	$("#firstScreen").fadeIn().css("display","block");
 	
 }
 

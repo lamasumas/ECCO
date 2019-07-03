@@ -75,7 +75,8 @@
     "transportedManureUnit": "transported_manure",
     "methaneUnit": "methane",
     "chipsUnit": "chips",
-    "language": "en"
+    "language": "en",
+    "initialSelector": "Select an energy type:"
 
 
 

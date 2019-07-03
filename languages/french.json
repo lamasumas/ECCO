@@ -75,6 +75,6 @@
     "transportedManureUnit": "fumier_transporté",
     "methaneUnit": "methane",
     "chipsUnit": "copeaux",
-    "language": "fr"
-
+    "language": "fr",
+    "initialSelector": "Sélectionnez un type d'énergie:"
 }

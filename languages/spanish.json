@@ -75,5 +75,6 @@
     "transportedManureUnit": "abono_transportado",
     "methaneUnit": "metano",
     "chipsUnit": "astillas",
-    "language": "es"
+    "language": "es",
+    "initialSelector": "Seleciona un tipo de energía:"
 }
