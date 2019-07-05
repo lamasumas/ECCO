@@ -9,14 +9,13 @@ $(document).ready(function (e) {
 		$("#calculateChips").attr("onclick", "calculateChips()");
 		$("#calculatePellets").attr("onclick", "calculatePellets()");
 		$("#calculateManure").attr("onclick", "calculateManure()");
-		
+
 		$.get('/index.html/countries', function(responseText) {
 			var countries = responseText;
 			addCountries(countries);
 		});
- 
+		
 		loadTooltips(document.documentElement.lang);
-
 	theUnit = new Unit();
 	lastOption = document.getElementById("resultsUnits").value;
 });
@@ -220,6 +219,9 @@ function removeDots(theNumber){
 	return splittted.join("");
 	
 }
+
+
+
 
 /**
  * This is a listener for the unit selector of the result table, so the user is able to converted into any of the 
