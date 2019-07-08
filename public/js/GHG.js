@@ -16,9 +16,18 @@ $(document).ready(function (e) {
 		});
 		
 		loadTooltips(document.documentElement.lang);
+		setInputBackground();
+		setUpMaxHandler();
+		
 	theUnit = new Unit();
 	lastOption = document.getElementById("resultsUnits").value;
 });
+
+
+
+
+
+
 var lastOption;
 var theUnit;
 /**
@@ -218,6 +227,33 @@ function removeDots(theNumber){
 	
 	return splittted.join("");
 	
+}
+
+function setInputBackground(){
+	$(document).on("input", "input", function()
+	{
+		if(this.value == "")
+		{
+			this.style.backgroundColor = "white"
+		}
+		else
+		{
+			this.style.backgroundColor = "wheat"
+		}
+	});
+}
+
+function setUpMaxHandler(){
+	$(document).on("input", "input[type='number']", function()
+	{
+		if(this.max < parseInt(this.value))
+			this.value = this.max;
+		
+		if(this.min > parseInt(this.value))
+		{
+			this.value = this.min;
+		}
+	});
 }
 
 
