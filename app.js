@@ -9,7 +9,7 @@ var app = express();
 var mongo = require("mongoose");
 //mongo.connect("mongodb://mongo/ecco",  { useNewUrlParser: true });
 //mongo.connect("mongodb://localhost/ecco",  { useNewUrlParser: true });
-mongo.connect("mongodb+srv://A:A@ecco-f52xt.mongodb.net/Ecco?retryWrites=true&w=majority",  { useNewUrlParser: true });
+mongo.connect("mongodb+srv://A:A@ecco-f52xt.mongodb.net/Ecco",  { useNewUrlParser: true });
 var db = mongo.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
