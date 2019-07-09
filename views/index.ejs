@@ -118,7 +118,7 @@
 				</select>
 
 				<h4> <i id="wind-anual" class="far fa-question-circle"></i> <%= windAnualProduction %></h4>
-				<input type="text" id="yearProduction">
+				<input type="text" id="yearProduction"  >
 				<select>
 								<option value="G">GWh</option>
 								<option selected value="M">MWh</option>
@@ -198,18 +198,18 @@
 					</tr>
 					<tr class="hiddenRow">
 						<td>
-							<input type="number" min="0" max="10" placeholder="0"  id="percentege_feedstock_sawdust_loss">
+							<input type="number" min="0" max="10" title='<%=feedstockSawdustLost%>' placeholder="0"  id="percentege_feedstock_sawdust_loss">
 							&percnt;<sub><%=feedstockSawdust%></sub>
 						</td>
-						<td><input type="number" min="0" max="10"  placeholder="0"  id="sawdust_loss">
+						<td><input type="number" min="0" max="10"  placeholder="0" title='<%=sawdustLost%>' id="sawdust_loss">
 							&percnt;<sub><%=sawdustUnit%></sub>
 						</td>
 						<td>
-							<input type="number" min="0" max="10"  placeholder="0"  id="pellets_loss">
+							<input type="number" min="0" max="10"  placeholder="0" title='<%=pelletsLost%>' id="pellets_loss">
 							&percnt;<sub><%=pelletsUnit%></sub>
 						</td>
 						<td>
-							<input type="number" min="0" max="10" placeholder="0" id="transported_pellets_loss">
+							<input type="number" min="0" max="10" placeholder="0" title='<%=transportedPelletsLost%>' id="transported_pellets_loss">
 							&percnt;<sub><%=transportedPellets%></sub>
 						</td>
 						<td></td>
@@ -223,14 +223,14 @@
 					<tr class="hiddenRow">
 						<td></td>
 						<td>
-							<input placeholder="115" id="electricityPelletization">
+							<input placeholder="115" title='<%=pelletElectricityWasted%>' id="electricityPelletization">
 							<select>
 								<option value="G">GWh</option>
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
 							</select><sub><%=electricityUnit%></sub>/ton<sub><%=pelletsUnit%></sub>
 							<br>
-							<input  placeholder="0"  id="heatPelletication"><select>
+							<input  placeholder="0" title='<%=pelletHeatWasted%>'  id="heatPelletication"><select>
 								<option value="G">GJ</option>
 								<option selected value="M">MJ</option>
 								<option value="K">kj</option>
@@ -239,7 +239,7 @@
 						</td>
 						<td></td>
 						<td>
-							<input placeholder="0"  id="electricityTransportedPellets">
+							<input placeholder="0" title='<%=pelletCombustionElectricityWasted%>'  id="electricityTransportedPellets">
 							<select>
 								<option value="G">GWh</option>
 								<option value="M">MWh</option>
@@ -247,7 +247,7 @@
 							</select>
 							<sub><%=electricityUnit%></sub>/ton<sub><%=transportedPellets%></sub>
 							<br>
-							<input placeholder="0"  id="heatTransportedPellets">
+							<input placeholder="0" title='<%=pelletCombustionHeatWasted%>' id="heatTransportedPellets">
 							<select>
 								<option value="G">GJ</option>
 								<option value="M">MJ</option>
@@ -265,7 +265,7 @@
 					<tr  class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input placeholder="50" id="kmTruckTransport_pellets">
+							<input placeholder="50" title='<%=truckDistace%>' id="kmTruckTransport_pellets">
 							<select>
 								<option selected value="K">km</option>
 								<option value="simple">m</option>
@@ -281,11 +281,11 @@
 					</tr>
 					<tr class="hiddenRow">
 						<td>
-							<input  placeholder="40" id="moisture_dust_pellets">
+							<input title='<%=moistureSawdust%>'  placeholder="40" id="moisture_dust_pellets">
 							&percnt;<sub><%=sawdustUnit%></sub>
 						</td>
 						<td>
-							<input placeholder="6" id="moisture_pellets">
+							<input placeholder="6" title='<%=moisturePellet%>' id="moisture_pellets">
 							&percnt;<sub><%=pelletsUnit%></sub>
 						</td>
 						<td colspan="3"></td>
@@ -299,10 +299,10 @@
 					<tr class="hiddenRow">
 						<td colspan="3"></td>
 						<td>
-							<input placeholder="90" id="usefulC_pellets"> 
+							<input placeholder="90" title='<%=temperatureUsefulDefault%>' id="usefulC_pellets"> 
 							°C<sub><%=useful%></sub>
 							<br>
-							<input placeholder="10" id="surroundC_pellets"> 
+							<input placeholder="10" title='<%=temperatureSurroundingDefault%>' id="surroundC_pellets"> 
 							°C<sub><%=surroundings%></sub>
 						</td>
 					</tr>
@@ -381,22 +381,22 @@
 					</tr>
 					<tr class="hiddenRow">
 						<td>
-							<input  type="number" min="0" max="10"  placeholder="0" id="feedstock_chips_loss">
+							<input  type="number" title='<%=feedstockWoodLost%>' min="0" max="10"  placeholder="0" id="feedstock_chips_loss">
 							&percnt;<sub><%=feedstockSawdust%></sub>
 						</td>
-						<td><input  type="number" min="0" max="10" placeholder="0"  id="wood_chips_loss">
+						<td><input  type="number" title='<%=woodLost%>' min="0" max="10" placeholder="0"  id="wood_chips_loss">
 							&percnt;<sub><%=sawdustUnit%></sub>
 						</td>
 						<td>
-							<input  type="number" min="0" max="10" placeholder="0"  id="chips_loss">
+							<input  type="number" title='<%=chipsLost%>' min="0" max="10" placeholder="0"  id="chips_loss">
 							&percnt;<sub><%=chipsUnit%></sub>
 						</td>
 						<td>
-							<input  type="number" min="0" max="10"  placeholder="0" id="seperated_chips_loss">
+							<input  type="number" title='<%=separatedLost%>' min="0" max="10"  placeholder="0" id="seperated_chips_loss">
 							&percnt;<sub>seperated_chips</sub>
 						</td>
 						<td>
-							<input type="number" min="0" max="10"  placeholder="0"  id="transported_chips_loss">
+							<input type="number" title='<%=transportedChipssLost%>' min="0" max="10"  placeholder="0"  id="transported_chips_loss">
 							&percnt;<sub><%=transportedChipsUnit%></sub>
 						</td>
 						<td></td>
@@ -410,7 +410,7 @@
 					<tr class="hiddenRow">
 						<td></td>
 						<td>
-							<input placeholder="75" id="electricityChipping">
+							<input placeholder="75" title='<%=electricityWastedChipping%>'id="electricityChipping">
 							 <select>
 								<option value="G">GMh</option>
 								<option value="M">MWh</option>
@@ -419,7 +419,7 @@
 							<sub><%=electricityUnit%></sub>/ton<sub><%=pelletsUnit%></sub>
 						</td>
 						<td>
-							<input placeholder="0.6" id="electricityMegneticSeparation"> 
+							<input placeholder="0.6" title='<%=electricytyWastedMagneticSeparation%>' id="electricityMegneticSeparation"> 
 							<select>
 								<option value="G">GMh</option>
 								<option value="M">MWh</option>
@@ -430,7 +430,7 @@
 						</td>
 						<td></td>
 						<td>
-							<input placeholder="0"  id="electricityTransportedChips">
+							<input placeholder="0" title='<%=pelletCombustionElectricityWasted%>' id="electricityTransportedChips">
 							<select>
 								<option value="G">GMh</option>
 								<option value="M">MWh</option>
@@ -438,7 +438,7 @@
 							</select>
 							<sub><%=electricityUnit%></sub>/ton<sub><%=transportedChipsUnit%></sub>
 							<br>
-							<input  placeholder="0" id="heatTransportedChips">
+							<input  placeholder="0" title='<%=pelletCombustionHeatWasted%>' id="heatTransportedChips">
 							<select>
 								<option value="G">GJ</option>
 								<option selected value="M">MJ</option>
@@ -457,7 +457,7 @@
 					<tr class="hiddenRow">
 						<td colspan="3"></td>
 						<td>
-							<input placeholder="50" id="kmTruckTransport_chips">
+							<input placeholder="50" title='<%=truckDistace%>' id="kmTruckTransport_chips">
 							<select>
 								<option selected value="K">km</option>
 								<option value="simple">m</option>
@@ -474,11 +474,11 @@
 					</tr>
 					<tr class="hiddenRow">
 						<td>
-							<input placeholder="50" id="moisture_wood_chips">
+							<input placeholder="50" title='<%=moistureWood%>' id="moisture_wood_chips">
 							&percnt;<sub><%=woodUnit%></sub>
 						</td>
 						<td>
-							<input placeholder="30" id="moisture_chips">
+							<input placeholder="30" title='<%=moistureChips%>' id="moisture_chips">
 							&percnt;<sub><%=chipsUnit%></sub>
 						</td>
 						<td colspan="4"></td>
@@ -495,7 +495,7 @@
 							<input placeholder="90" id="usefulC_chips"> 
 							°C<sub><%=useful%></sub>
 							<br>
-							<input placeholder="10" id="surroundC_chips"> 
+							<input placeholder="10" title='<%=temperatureSurroundingDefault%>' id="surroundC_chips"> 
 							°C<sub><%=surroundings%></sub>
 						</td>
 						<td></td>
@@ -570,7 +570,7 @@
 					<tr class="hiddenRow">
 						<td colspan="4"></td>
 						<td>
-							<input placeholder="21" id="efficienyManureTransformation"> 
+							<input placeholder="21" title='<%=manureEfficiency%>' id="efficienyManureTransformation"> 
 							m<sup>3</sup><sub><%=biogasUnit%></sub>/ton<sub><%=storedManureUnit%></sub>
 						</td>
 					</tr>
@@ -582,19 +582,19 @@
 					</tr>
 					<tr class="hiddenRow">
 						<td>
-							<input type="number" min="0" max="10"   placeholder="0"  id="percentege_feedstock_manure_loss">
+							<input type="number" title='<%=feedstockManureLost%>' min="0" max="10"   placeholder="0"  id="percentege_feedstock_manure_loss">
 							&percnt;<sub><%=feedstockManure%></sub>
 						</td>
-						<td><input   type="number" min="0" max="10" placeholder="0"  id="manure_loss">
+						<td><input   type="number" title='<%=manureLost%>' min="0" max="10" placeholder="0"  id="manure_loss">
 							&percnt;<sub><%=manureUnit%></sub>
 						</td>
 						<td>
-							<input  type="number" min="0" max="10"  type="number" min="0" max="10"  placeholder="0"  id="transported_manures_loss">
+							<input  type="number" title='<%=handlingManureLost%>' min="0" max="10"  type="number" min="0" max="10"  placeholder="0"  id="transported_manures_loss">
 							&percnt;<sub><%=transportedManureUnit%></sub>
 						</td>
 						<td></td>
 						<td>
-							<input   type="number" min="0" max="10" placeholder="0" id="biogas_loss">
+							<input   type="number" title='<%=combustionManureLost%>' min="0" max="10" placeholder="0" id="biogas_loss">
 							&percnt;<sub><%=biogasUnit%></sub>
 						</td>
 						<td></td>
@@ -608,7 +608,7 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input  placeholder="0"  id="electricityTranportedManure"> <select>
+							<input  placeholder="0" title='<%=electricityManureTransportWasted%>'  id="electricityTranportedManure"> <select>
 								<option value="G">GMh</option>
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
@@ -616,14 +616,14 @@
 							/ton<sub><%=transportedManureUnit%></sub>
 						</td>
 						<td>
-							<input placeholder="0"  id="electricityDigestionManure"> <select>
+							<input placeholder="0" title='<%=electricityManureDigestionWasted%>'  id="electricityDigestionManure"> <select>
 								<option value="G">GMh</option>
 								<option value="M">MWh</option>
 								<option selected value="K">kWh</option>
 							</select>
 							/ton<sub><%=storedManureUnit%> </sub>
 							<br>
-							<input  placeholder="0" id="heatDigestionManure"> 
+							<input  placeholder="0" title='<%=heatManureDigestionWasted%>' id="heatDigestionManure"> 
 							<select>
 								<option value="G">GJ</option>
 								<option selected value="M">MJ</option>
@@ -633,7 +633,7 @@
 
 						</td>
 						<td>
-							<input  placeholder="0" id="electricityCombustionManure">
+							<input  placeholder="0" title='<%=electricityManureCombustionWasted%>' id="electricityCombustionManure">
 							<select>
 								<option value="G">GMh</option>
 								<option value="M">MWh</option>
@@ -641,7 +641,7 @@
 							</select>
 							/m<sup>3</sup><sub><%=biogasUnit%></sub>
 							<br>
-							<input placeholder="0"  id="heatCombustionManure">
+							<input placeholder="0" title='<%=heatManureCombustionWasted%>'  id="heatCombustionManure">
 							<select>
 								<option value="G">GJ</option>
 								<option selected value="M">MJ</option>
@@ -660,7 +660,7 @@
 					<tr class="hiddenRow">
 						<td></td>
 						<td>
-							<input placeholder="50" id="kmTruckManure">
+							<input placeholder="50" title='<%=truckDistace%>' id="kmTruckManure">
 							<select>
 								<option selected value="K">Km</option>
 								<option value="simple">m</option>
@@ -678,7 +678,7 @@
 					<tr class="hiddenRow">
 						<td colspan="3"></td>
 						<td>
-							<input placeholder="55" id="methane_content">
+							<input placeholder="55" title='<%=methaneContent%>' id="methane_content">
 							&percnt;<sub><%=methaneUnit%></sub>
 						</td>
 						<td colspan="2"></td>
@@ -692,10 +692,10 @@
 					<tr class="hiddenRow">
 						<td colspan="4"></td>
 						<td>
-							<input placeholder="90" id="usefulC_Manure"> 
+							<input placeholder="90" title='<%=temperatureUsefulDefault%>' id="usefulC_Manure"> 
 							°C<sub><%=useful%></sub>
 							<br>
-							<input placeholder="10" id="surroundC_Manure"> 
+							<input placeholder="10" title='<%=temperatureSurroundingDefault%>' id="surroundC_Manure"> 
 							°C<sub><%=surroundings%></sub>
 						</td>
 						<td></td>
@@ -709,11 +709,11 @@
 					<tr class="hiddenRow">
 						<td colspan="2"></td>
 						<td>
-							<input placeholder="0"  id="co2ProducedManure">kgCO<sup>2</sup>/ton<sub><%=transportedManureUnit%></sub>
+							<input placeholder="0" title='<%=co2Emision%>'  id="co2ProducedManure">kgCO<sup>2</sup>/ton<sub><%=transportedManureUnit%></sub>
 							<br>
-							<input placeholder="0.155" id="ch4ProducedManure">kgCH<sup>4</sup>/ton<sub><%=transportedManureUnit%></sub>
+							<input placeholder="0.155" title='<%=ch4Emision%>' id="ch4ProducedManure">kgCH<sup>4</sup>/ton<sub><%=transportedManureUnit%></sub>
 							<br>
-							<input placeholder="0.0007" id = "N2oProducedManure"> kgN<sup>2</sup>O/ton<sub><%=transportedManureUnit%></sub>
+							<input placeholder="0.0007" title='<%=n2hEmision%>' id = "N2oProducedManure"> kgN<sup>2</sup>O/ton<sub><%=transportedManureUnit%></sub>
 						</td>
 						<td colspan="3"></td>
 					</tr>

@@ -25,7 +25,7 @@
     "manure-temp": "Escribe el calor necesario para  poder tener un output eficiente y tambien el calor de los alrededores",
     "manure-emision": "Escribe la cantidad de CO2, CH4, y N2O producido en el manejo y almacenaje del abono",
     "treesToolTip": "El número de 'coniferas' o 'caducifolias' de 10 años de antigüedad que han sido plantadas en areas urbanas",
-    "housesToolTip": "El número de casas que emiten la misma cantidad de CO2 nacionalmente"
-
+    "housesToolTip": "El número de casas que emiten la misma cantidad de CO2 nacionalmente",
+    
 
 }

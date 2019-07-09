@@ -95,7 +95,7 @@ function initialEnergySelector(){
 	document.getElementById("resultSection").style.display = "block";
 	var option = document.getElementById("initialSelector").value;
 	document.getElementById("firstScreen").style.display="none";
-	document.getElementById("finalEnergySelector").style.display="block"
+	document.getElementById("finalEnergySelector").style.display="block";
 	$("#goDatabaseView").fadeIn().css("display","auto");
 	switch (option)
 	{
@@ -234,11 +234,11 @@ function setInputBackground(){
 	{
 		if(this.value == "")
 		{
-			this.style.backgroundColor = "white"
+			this.style.backgroundColor = "white";
 		}
 		else
 		{
-			this.style.backgroundColor = "wheat"
+			this.style.backgroundColor = "wheat";
 		}
 	});
 }
