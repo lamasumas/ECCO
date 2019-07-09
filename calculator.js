@@ -3,8 +3,9 @@
   var fs = require("fs");
   var mongo = require("mongoose");
   //mongo.connect("mongodb://mongo/ecco",  { useNewUrlParser: true });
-  mongo.connect("mongodb://localhost/ecco",  { useNewUrlParser: true });
- 
+  //mongo.connect("mongodb://localhost/ecco",  { useNewUrlParser: true });
+  mongo.connect("mongodb+srv://A:A@ecco-f52xt.mongodb.net/Ecco?retryWrites=true&w=majority",  { useNewUrlParser: true });
+  
   
  
   var generalJSON;

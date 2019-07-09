@@ -37,10 +37,10 @@ db.once('open', function() {
     var Country = mongo.model("country", countryScheme, "country");
     module.exports = mongo.model("country");
 
-    Country.deleteMany({}, function(erro, theCountry)  {
+    /*Country.deleteMany({}, function(erro, theCountry)  {
         console.log("Database cleaned"); 
-    });
-
+    });*/
+/*
    fs.readdir(__dirname+"/json", (err, files) => {
             if(err){
                 console.log("Error while loading the json files");
@@ -55,7 +55,7 @@ db.once('open', function() {
             catch(error){
                 console.log(error);
             }
-        } );
+        } );*/
        
 
 
