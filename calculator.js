@@ -250,7 +250,7 @@
      var Eelec = E * afelec ;
      var Eheat = E * afheat ;
      
- 
+  
      var ghgSavedHeat = 100 * ( efossil_heat - Eheat / nheat ) / efossil_heat ;
      var ghgsaved_elec = 100 * ( efossil_elec - Eelec / nelec) / efossil_elec ;
      var ghgSavedTotal = (afheat * ghgSavedHeat) + ( afelec *  ghgsaved_elec);
