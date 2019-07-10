@@ -1,4 +1,9 @@
 /*jshint esversion: 6 */
+
+
+
+
+
 /**
  * This medthod sends a get request to the nodejs server, so it can calculate the co2, trees 
  * and houses value of the pellets energy
@@ -162,8 +167,8 @@ function loadTooltips(language){
 		case "en":
 			settings = {
 				"async": true,
-				"url": "./tooltips_en.json",
-				"method": "GET"
+       			"url": "./tooltips_en.json",
+        		"method": "GET"
 			};
 			break;
 		case "es":
@@ -184,6 +189,8 @@ function loadTooltips(language){
 	
 
 	$.ajax(settings).done(function(response){
+		console.log("hi");
+		console.log(response);
 		$(".fa-question-circle").each((x,y) =>{
 			y.setAttribute("title", response[y.id]);
 		});
