@@ -4,7 +4,7 @@
   var mongo = require("mongoose");
   //mongo.connect("mongodb://mongo/ecco",  { useNewUrlParser: true });
   //mongo.connect("mongodb://localhost/ecco",  { useNewUrlParser: true });
-  mongo.connect("mongodb+srv://A:A@ecco-f52xt.mongodb.net/Ecco?retryWrites=true&w=majority",  { useNewUrlParser: true });
+  mongo.connect("mongodb+srv://GHG:GHG@ecco-f52xt.mongodb.net/Ecco?retryWrites=true&w=majority",  { useNewUrlParser: true });
   
   
  
