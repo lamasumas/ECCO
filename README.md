@@ -15,7 +15,7 @@ uses a mongodb databse hosted in mongodb atlas.
 <p>
 If you are willing to use the tool locally or in a online server, the only thing needed is to run the command "npm install" 
 in order to install all the needed modules used by nodejs. After that with simply running "node app.js" the server will 
-start running, if it is running locally the webpage will be in "localhost:8080", if it is in a server it will be 
+start running, if it is running locally the webpage will be in "localhost:8081", if it is in a server it will be 
 "ThePublicIPorDNS:8080"
 </p>
 
