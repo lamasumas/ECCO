@@ -31,4 +31,13 @@ The team who is developing the actual ECCO One Stop Shop is made by:
   <li>Eduardo Lamas Suárez</li>
   <li>Chi-Thang Phan-Tan</li>
   <li>Daniel Ashcroft</i>
-</ul
+</ul>
+
+<h3>References</h3>
+<nav>
+  <ul>
+   <li><a target="_blank" href="http://www.nweurope.eu/projects/project-search/ecco-creating-new-local-energy-community-co-operatives/">ECCO project webpage</a>  </li>
+    <li><a target="_blank" href="https://www.cit.ie/">CIT webpage</a></li>
+  </ul>
+</nav>
+
